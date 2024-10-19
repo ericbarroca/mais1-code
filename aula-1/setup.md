@@ -5,6 +5,7 @@ Iniciaremos pelo estudo das ferramentas mais básicas que todo o desenvolvedor d
 - `CMD/Shell`: São linguagens escripitadas que nos permitem dar comandos ao computador para uso de diversas aplicações e que nos permite ter agilidade, precisaão e possibilidade de automação de tarefas. No `Windows` usaremos o `CMD` e para quem estiver em `Linux` pode usar `shell/bash`.
 - Versionador de Código (`GIT`): É um sistema de gerenciamento de código, ele permite que múltiplas pessoas trabalhem simultaneamente no mesmo código, backups e versionamentos. O mais utilizado é o `GIT`, que é o que utilizaremos.
 - IDE (`Visual Code`): IDEs são os editores de código, onde escreveremos e testaremos nosso código. Existem milhares de IDEs cada uma com suas vantagens e desvantagens. Neste curso utilizaremos o `Visual Code`.
+- Linguagem de Programação (`C#`): Escolheremos `C#` como a linguagem a ser usada para demonstrar os fundamentos de programação para este curso, porém fique a vontade de escolher outra linguagem para realizar o seu projeto.
 
 ## CMD
 
@@ -60,6 +61,21 @@ Baixar e instalar o (Visual Code)[https://code.visualstudio.com/download]
 
 Através do `CMD` navegue até a pasta desejada e use o comando `code .`. Isto abrirá a pasta em que você se localiza na IDE.
 
+## Exercícos
+
+- Exercíco 1: Utilizar as ferramentas aprendidas para baixar este projeto em sua máquina. Para um passo a passo acesse este [link](exercicios.md#ecercícios-aula-1).
+
+## A linguagem C#
+
+### Introdução
+
+`C#` é uma linguagem de programação orientada a objetos, desenvolvida pela Microsoft e "concorrente" direta do `Java`.
+
+### Instalação
+
+Primeiro por se tratar de uma linguagem compilada, precisamos baixar o seu compilador e sdk. Logo em seguida instalaremos as extensões no Visual Code que nos permitem trabalhar de uma maneira melhor com C# e .Net (framework).
+
+Seguiremos esta [documentação](https://code.visualstudio.com/docs/languages/dotnet). E em seguida instalaremos o `C# DevKit` como extensão.
 
 ## Referencias
 
