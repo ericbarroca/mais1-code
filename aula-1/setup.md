@@ -83,4 +83,5 @@ Seguiremos esta [documentação](https://code.visualstudio.com/docs/languages/do
 - [Como instalar o GIT no Windows (Passo a passo!), Dicas de Programação](https://dicasdeprogramacao.com.br/como-instalar-o-git-no-windows/)
 - [Começando - O Básico do GIT](https://git-scm.com/book/pt-br/v2/Come%C3%A7ando-O-B%C3%A1sico-do-Git).
 - [Branches no Git - Branches em poucas palavras](https://git-scm.com/book/pt-br/v2/Branches-no-Git-Branches-em-poucas-palavras)
+- [DotNet, Visual Studio](https://code.visualstudio.com/docs/languages/dotnet)
 

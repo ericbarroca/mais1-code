@@ -10,3 +10,4 @@ Repositório destinados aos alunos de programação do curso da `mais1code` cont
 - [Branches no Git - Branches em poucas palavras](https://git-scm.com/book/pt-br/v2/Branches-no-Git-Branches-em-poucas-palavras)
 - [Docs Github](https://docs.github.com/pt/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#como-criar-um-personal-access-token-classic)
 - [How to clonne using https in git, Git Project](https://gitprotect.io/blog/how-to-clone-using-https-in-git/)
+- [DotNet, Visual Studio](https://code.visualstudio.com/docs/languages/dotnet)
