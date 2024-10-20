@@ -25,7 +25,7 @@ _start:
 ```
 
 **C#**
-``` c#
+```csharp 
 int num1 = 5
 int num2 = 3
 int result = num1 + num2
@@ -58,7 +58,7 @@ Variáveis são elementos do código responsáveis por armazenar valoes em memó
 
 Abaixo temos exemplos de declarações, atribuições e leitura de variáveis em `C#`:
 
-```c#
+```csharp
 //Declaração
 int a;
 
@@ -106,7 +106,7 @@ Aproveitando nosso exemplo que é com variáveis do tipo inteiro podemos realiza
 Apesar de falarmos do nosso exemplo alguns destes operadores podem ser aplicados a `strings` e outros tipos. Exemplos de uso:
 
 
-```c#
+```csharp
 int a = 1 + 2
 int b = a - 1
 int c = a * b
