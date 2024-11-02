@@ -68,7 +68,7 @@ Uma tabela-verdade é uma ferramenta usada na lógica para determinar o valor de
 | false |	true |	false |
 | false |	false |	false |
 
-#### Tabela-Verdade para o Operador `OR (||)`
+### Tabela-Verdade para o Operador `OR (||)`
 | A | B | A \|\| B |
 |-------|-------|--------|
 | true | true | true | 
@@ -76,12 +76,12 @@ Uma tabela-verdade é uma ferramenta usada na lógica para determinar o valor de
 | false | true | true | 
 | false | false | false |
 
-## Tabela-Verdade para o Operador `NOT (!)`
+### Tabela-Verdade para o Operador `NOT (!)`
 | A |	!A |
 | true |	false |
 |false |	true |
 
-```charp
+```csharp
 bool chuva = true;
 bool temGuardaChuva = false;
 
@@ -106,6 +106,8 @@ for (int i = 0; i < 5; i++) {
 }
 ```
 
+Repare que o trecho `i++` é um incremento a variável `i` declarada no `for`, a cada iteração ela será acrescida de `1`.
+
 ### Laço while
 O laço while executa um bloco de código enquanto a condição especificada for verdadeira.
 
@@ -118,7 +120,7 @@ while (contador < 5) {
 }
 ```
 
-## Vetores e Listas
+Repare que no `while` nós incrementador o `contador` através do `contador++` da mesma forma que fizemos no `for` com a variável `i`.
 
 ## Referencias
 
