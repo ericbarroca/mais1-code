@@ -1,15 +1,19 @@
 # Calculadora Console
 
+> [!IMPORTANT] 
+> Não se esqueça de enviar os seus exercícios para o repositório, siga as intruções [aqui](../../README.md#como-enviar-os-seus-exercícos-e-projetos-para-o-repositorio). 
+
 > [!NOTE] 
 > Para este exercício, use a função `Console.Writeline()` para imprimir os valores no prompt de comando, como no exemplo abaixo.
 
 ``` csharp
 // See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+int num = 3;
+Console.WriteLine(num);
 
 ```
 
-Ao executar esta aplicação será escrito "Hello, World!" no Prompt de Comandos.
+Ao executar esta aplicação será escrito `3` no Prompt de Comandos.
 
 ## Exercícios
 

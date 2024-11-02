@@ -86,6 +86,9 @@ Em `C#` podemos ter diversos tipos de dados, porém vamos inicar com os tipos pr
 
 Agora, dado como se declara variáveis é interessante sabermos como realizar mais operações com elas, como somar, dividir e outras mais.
 
+> [!NOTE]
+> A sintaxe de uma variável é <tipo> <nome>, quando não fazemos a atribuição ela terá o valor padrão daquele tipo de dado. Caso já queira realizar a atribuição <tipo> <nome> = <valor> 
+
 ### Operadores
 
 Já mostramos um operador sem falar que ele era um, o operador de atribuição: `=`. Quando atribuimos valor a uma variável o utilizamos. 
