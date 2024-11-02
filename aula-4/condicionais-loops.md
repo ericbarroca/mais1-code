@@ -78,8 +78,9 @@ Uma tabela-verdade é uma ferramenta usada na lógica para determinar o valor de
 
 ### Tabela-Verdade para o Operador `NOT (!)`
 | A |	!A |
+|-------|-------|
 | true |	false |
-|false |	true |
+| false |	true |
 
 ```csharp
 bool chuva = true;
