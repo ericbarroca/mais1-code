@@ -3,11 +3,11 @@
 > [!NOTE] 
 > Para este exercício, use a função `Console.Writeline()` para imprimir os valores no prompt de comando, como no exemplo abaixo.
 
-´´´ csharp
+``` csharp
 // See https://aka.ms/new-console-template for more information
 Console.WriteLine("Hello, World!");
 
-´´´
+```
 
 Ao executar esta aplicação será escrito "Hello, World!" no Prompt de Comandos.
 
