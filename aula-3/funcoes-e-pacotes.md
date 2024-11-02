@@ -104,7 +104,31 @@ Repare que uma função mesmo tendo sida criada com retorno de valor (`AdicionaF
 
 ## Pacotes/Bibliotecas
 
+Um último tema que não abordamos e é importante ter uma visão no momento, mesmo que simplificada, são pacotes. Como explicado, `Funções` são uma forma de reutilizarmos nosso código e melhorar nossa produtividade. Porém existe um outro lado deste problema que podemos exemplificar a seguir.
+
+Imagine que você tem diversas funções criadas, imagine centenas delas ou milhares. Se você tiver que saber o que cada uma faz ou ter uma ligeira ideia de a qual área cada uma pertence, é melhor desitir e não escrever código. Precisamos de uma forma de organizar funções, poder agrupa-las por área de conhecimento (ou qualquer outro agrupamento que faça sentido) para podermos usar só o que precisamos ou até mesmo compartilha-las em outros projetos. Para isso nasceram os pacotes ou bibliotecas.
+
+Nós já vimos um exemplo de um pacote, sabe qual era?
+
+<details>
+<summary><b>Resposta</b></summary>
+O pacote <b>System;</b>, da onde chamamos a função <b>WriteLine</b>> que pertence a uma classe chamada <b>Console</b>. Logo a linha <b>Console.Writeline(...)</b> é a chamada de uma função de dentro de um pacote.
+</details>
+
+Na nova versão que estamos usando do framework a importação dos pacotes está omitida, por isso não vemos a linha de importação `using System;` no topo do nosso arquivo, porém se quisermos importar algum pacote que ainda não está em uso, teriamos que o fazer.
+
+Mais a frente abordaremos em mais detalhes os pacotes e outras estruturas de organização da linguagem.
+
 ### Funções importantes já existentes no framework
+
+- `Console.ReadLine()`: Captura o que o usuário digitou no prompt ao pressionar enter.
+```csharp
+string userInput = Console.ReadLine()
+```
+- `int.Parse(string)`: Converte um valor texto (`string`) para inteiro (`int`).
+```csharp
+int numInput = int.Parse(Console.ReadLine())
+```
 
 ## Referências
 
