@@ -75,7 +75,7 @@ Através do `CMD` navegue até a pasta desejada e use o comando `code .`. Isto a
 
 Primeiro por se tratar de uma linguagem compilada, precisamos baixar o seu compilador e sdk. Logo em seguida instalaremos as extensões no Visual Code que nos permitem trabalhar de uma maneira melhor com C# e .Net (framework).
 
-Seguiremos esta [documentação](https://code.visualstudio.com/docs/languages/dotnet). E em seguida instalaremos o `C# DevKit` como extensão.
+Seguiremos esta [documentação](https://code.visualstudio.com/docs/languages/dotnet). E em seguida instalaremos o `DotNet SDK` e odo `C# DevKit` como extensão.
 
 ## Referencias
 
