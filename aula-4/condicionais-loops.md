@@ -122,3 +122,4 @@ while (contador < 5) {
 
 ## Referencias
 
+- [Instruções - C# Programming Guide, Microsoft](https://learn.microsoft.com/pt-br/dotnet/csharp/programming-guide/statements-expressions-operators/statements)
