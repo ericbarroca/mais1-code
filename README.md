@@ -11,3 +11,10 @@ Repositório destinados aos alunos de programação do curso da `mais1code` cont
 - [Docs Github](https://docs.github.com/pt/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#como-criar-um-personal-access-token-classic)
 - [How to clonne using https in git, Git Project](https://gitprotect.io/blog/how-to-clone-using-https-in-git/)
 - [DotNet, Visual Studio](https://code.visualstudio.com/docs/languages/dotnet)
+- [Linguagem de Programação, Wikipidea](https://pt.wikipedia.org/wiki/Linguagem_de_programa%C3%A7%C3%A3o)
+- [How do I write an assembly language program to add two numbers?, Quora](https://www.quora.com/How-do-I-write-an-assembly-language-program-to-add-two-numbers)
+- [O que é Teoria das Categorias, Otávio Paulino Pace - Medium](https://medium.com/@otaviopp8/o-que-%C3%A9-teoria-das-categorias-5e7ed0d64a94)
+- [Tipos de Operadores do C#, DevMedia](https://www.devmedia.com.br/tipos-de-operadores-do-csharp/18873)
+
+## Inidcações de Leitura
+- [Category Theory for Programmers, Bartosz Milewiski](https://unglueit-files.s3.amazonaws.com/ebf/e90890f0a6ea420c9825657d6f3a851d.pdf) (Avançado)
