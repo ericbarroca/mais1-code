@@ -29,6 +29,12 @@ Repositório destinados aos alunos de programação do curso da `mais1code` cont
 - [Tipos de Operadores do C#, DevMedia](https://www.devmedia.com.br/tipos-de-operadores-do-csharp/18873)
 - [Funções Locais, Microsoft](https://learn.microsoft.com/pt-br/dotnet/csharp/programming-guide/classes-and-structs/local-functions)
 - [Função (matemática), Wikipidea](https://pt.wikipedia.org/wiki/Fun%C3%A7%C3%A3o_(matem%C3%A1tica))
+- [Instruções - C# Programming Guide, Microsoft](https://learn.microsoft.com/pt-br/dotnet/csharp/programming-guide/statements-expressions-operators/statements)
+- [Matrizes - C# Language Reference, Microsoft](https://learn.microsoft.com/pt-br/dotnet/csharp/language-reference/builtin-types/arrays)
+- [Problem Solving Skills, Arc.dev](https://arc.dev/talent-blog/problem-solving-skills/)
+- [How to develop a strong problem solving skill as a software developer, Nathan - Dev.to](https://dev.to/nathan20/how-to-develop-strong-problem-solving-skills-as-a-software-developer-25nb)
+- [Os Fundamentos: Regras de Inferência - DCC/UFMG](https://homepages.dcc.ufmg.br/~msalvim/courses/ilc/Aula1.3_RegrasInferencia[still].pdf)
+- [Problems - Leetcode](https://leetcode.com/problems)
 
 ## Inidcações de Leitura
 - [Category Theory for Programmers, Bartosz Milewiski](https://unglueit-files.s3.amazonaws.com/ebf/e90890f0a6ea420c9825657d6f3a851d.pdf) (Avançado)
