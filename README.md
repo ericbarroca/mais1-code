@@ -35,6 +35,7 @@ Repositório destinados aos alunos de programação do curso da `mais1code` cont
 - [How to develop a strong problem solving skill as a software developer, Nathan - Dev.to](https://dev.to/nathan20/how-to-develop-strong-problem-solving-skills-as-a-software-developer-25nb)
 - [Os Fundamentos: Regras de Inferência - DCC/UFMG](https://homepages.dcc.ufmg.br/~msalvim/courses/ilc/Aula1.3_RegrasInferencia[still].pdf)
 - [Problems - Leetcode](https://leetcode.com/problems)
+- [Tutorials - C# Fundamentals, Microsoft](https://learn.microsoft.com/pt-br/dotnet/csharp/fundamentals/tutorials/oop)
 
 ## Inidcações de Leitura
 - [Category Theory for Programmers, Bartosz Milewiski](https://unglueit-files.s3.amazonaws.com/ebf/e90890f0a6ea420c9825657d6f3a851d.pdf) (Avançado)
