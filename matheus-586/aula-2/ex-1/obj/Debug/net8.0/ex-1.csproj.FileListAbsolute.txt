@@ -1,0 +1,5 @@
+C:\Users\futura123\Desktop\mais1code\mais1-code\matheus-586\aula-2\ex-1\obj\Debug\net8.0\ex-1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\futura123\Desktop\mais1code\mais1-code\matheus-586\aula-2\ex-1\obj\Debug\net8.0\ex-1.AssemblyInfoInputs.cache
+C:\Users\futura123\Desktop\mais1code\mais1-code\matheus-586\aula-2\ex-1\obj\Debug\net8.0\ex-1.AssemblyInfo.cs
+C:\Users\futura123\Desktop\mais1code\mais1-code\matheus-586\aula-2\ex-1\obj\Debug\net8.0\ex-1.csproj.CoreCompileInputs.cache
+C:\Users\futura123\Desktop\mais1code\mais1-code\matheus-586\aula-2\ex-1\obj\Debug\net8.0\ex-1.sourcelink.json
