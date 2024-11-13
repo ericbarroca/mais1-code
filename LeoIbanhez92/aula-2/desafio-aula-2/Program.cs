@@ -27,3 +27,14 @@ Console.WriteLine($"Você digitou: {num1} e {num2}!");
 int soma = num1 + num2;
 
 Console.WriteLine("O resultado da soma dos dois números que vc digitou foi: " + "" + soma);
+
+//Escreva um programa que imprima se um número é par ou ímpar (Se o resto da divisão de um número por 2 for 0, ele é par).
+
+if (soma % 2 ==0) {
+
+    Console.WriteLine("E esse número é PAR.");
+
+}else {
+    Console.WriteLine("E esse número é ÍMPAR.");
+}
+
