@@ -2,16 +2,16 @@
 Console.WriteLine("Hello, World!");
 
 //Delaração
-int num;
-string t;
+int nume;
+//string t;
 
 
 //Atribuição
-num = 12;
+nume = 12;
 //t = "Marco ";
 
 
-int soma = 2 + num;
+int soma = 2 + nume;
 Console.WriteLine(soma);
 
 //operadores
@@ -24,3 +24,22 @@ resultado = numero / resultado;
 //resultado /= numero;
 
 Console.WriteLine(resultado);
+
+//----------------------------------------------
+// codigo sem função
+int num = 3;
+int incremento = num + 2;
+Console.WriteLine(incremento);
+
+int num2 = 5;
+incremento = num2 + 2;
+Console.WriteLine(incremento);
+
+// codigo com função
+void escreveNumMais2(int num){
+    int incremento = num + 2;
+    Console.WriteLine(incremento);
+}
+
+ escreveNumMais2(3);
+ escreveNumMais2(5);
