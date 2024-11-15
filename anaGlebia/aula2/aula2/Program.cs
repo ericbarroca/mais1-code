@@ -32,15 +32,6 @@ numero = int.Parse(Console.ReadLine());
     Console.WriteLine("O numero é impar");
     Console.WriteLine();
 
-// if(num % 2 == 0){
-//     Console.WriteLine('O numero e par');
-// }else{
-//     Console.WriteLine('O numero e impar');
-// }
 
-// int numero;
-            
-            // Console.Write("Pressione qualquer chave para terminar . . . ");
-            // Console.ReadKey();
 
 
