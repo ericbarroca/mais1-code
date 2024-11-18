@@ -1,0 +1,15 @@
+C:\Users\gui98\Desktop\mais1code\mais1-code\yvetan98\aula-2\ex-1\bin\Debug\net8.0\ex-1.exe
+C:\Users\gui98\Desktop\mais1code\mais1-code\yvetan98\aula-2\ex-1\bin\Debug\net8.0\ex-1.deps.json
+C:\Users\gui98\Desktop\mais1code\mais1-code\yvetan98\aula-2\ex-1\bin\Debug\net8.0\ex-1.runtimeconfig.json
+C:\Users\gui98\Desktop\mais1code\mais1-code\yvetan98\aula-2\ex-1\bin\Debug\net8.0\ex-1.dll
+C:\Users\gui98\Desktop\mais1code\mais1-code\yvetan98\aula-2\ex-1\bin\Debug\net8.0\ex-1.pdb
+C:\Users\gui98\Desktop\mais1code\mais1-code\yvetan98\aula-2\ex-1\obj\Debug\net8.0\ex-1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\gui98\Desktop\mais1code\mais1-code\yvetan98\aula-2\ex-1\obj\Debug\net8.0\ex-1.AssemblyInfoInputs.cache
+C:\Users\gui98\Desktop\mais1code\mais1-code\yvetan98\aula-2\ex-1\obj\Debug\net8.0\ex-1.AssemblyInfo.cs
+C:\Users\gui98\Desktop\mais1code\mais1-code\yvetan98\aula-2\ex-1\obj\Debug\net8.0\ex-1.csproj.CoreCompileInputs.cache
+C:\Users\gui98\Desktop\mais1code\mais1-code\yvetan98\aula-2\ex-1\obj\Debug\net8.0\ex-1.sourcelink.json
+C:\Users\gui98\Desktop\mais1code\mais1-code\yvetan98\aula-2\ex-1\obj\Debug\net8.0\ex-1.dll
+C:\Users\gui98\Desktop\mais1code\mais1-code\yvetan98\aula-2\ex-1\obj\Debug\net8.0\refint\ex-1.dll
+C:\Users\gui98\Desktop\mais1code\mais1-code\yvetan98\aula-2\ex-1\obj\Debug\net8.0\ex-1.pdb
+C:\Users\gui98\Desktop\mais1code\mais1-code\yvetan98\aula-2\ex-1\obj\Debug\net8.0\ex-1.genruntimeconfig.cache
+C:\Users\gui98\Desktop\mais1code\mais1-code\yvetan98\aula-2\ex-1\obj\Debug\net8.0\ref\ex-1.dll
