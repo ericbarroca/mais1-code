@@ -3,12 +3,14 @@ Console.WriteLine("Hello, World!");
 
 //Delaração
 int nume;
-//string t;
+string t;
 
 
 //Atribuição
 nume = 12;
-//t = "Marco ";
+t = "Marco ";
+Console.WriteLine(t);
+
 
 
 int soma = 2 + nume;
@@ -43,3 +45,7 @@ void escreveNumMais2(int num){
 
  escreveNumMais2(3);
  escreveNumMais2(5);
+
+
+//---------------------------------------------------
+

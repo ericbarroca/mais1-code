@@ -7,5 +7,4 @@ Console.WriteLine(resultado + antesDaSubtracao);
 
 
 resultado -= 5;
-
 Console.WriteLine(resultado + " esse é o resultado verdadeiro!!!");
