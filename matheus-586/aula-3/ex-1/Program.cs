@@ -9,9 +9,3 @@ int somaDoisNumerosDividePorQuatro (int num1, int num2){
 
 int resultado = somaDoisNumerosDividePorQuatro(5,7);
 Console.WriteLine(resultado);
-
-
-
-
-
-git commit -m "criacao da aula 3 com o ex-1 feito (feito com o professor em aula)"
