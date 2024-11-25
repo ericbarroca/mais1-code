@@ -1,4 +1,4 @@
-﻿class Calculadora 
+class Calculadora 
 {
     static int Somar (int num, int num2) {
         return num + num2;
@@ -30,7 +30,7 @@
             string primeiroNum = Console.ReadLine();
 
             if(int.TryParse(primeiroNum, out num)) {
-                if(num <0) {
+                if(num < 0) {
                     Console.WriteLine("O número não pode ser negativo. Digite um número válido!");
                 }else {
                     break;
