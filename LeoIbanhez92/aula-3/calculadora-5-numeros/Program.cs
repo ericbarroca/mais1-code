@@ -1,9 +1,12 @@
 ﻿//Escreva um programa como o anterior, mas agora o usuário pode digitar entre 2 a 5 números para realizar uma operação. Exemplo:
-
+using System.Globalization;
 class Calculadora2 
 {
     static void Main () {
-        int[] receber5Numeros = new int[5];
+
+        CultureInfo cultura = CultureInfo.InvariantCulture;
+
+        double[] receber5Numeros = new double[5];
 
         int contador = 0;
 
@@ -15,7 +18,7 @@ class Calculadora2
                 break;
             }
 
-            if(int.TryParse(armazenar, out int numero)) {
+            if(double.TryParse(armazenar, NumberStyles.Any, cultura, out double numero)) {
                 receber5Numeros[contador] = numero;
                 contador++;
             }
@@ -46,57 +49,57 @@ class Calculadora2
             operacaoEscolhida = Console.ReadLine();
             
 
-            System.Console.WriteLine("Você escolher a operação de número: " + operacaoEscolhida);
+            Console.WriteLine("Você escolher a operação de número: " + operacaoEscolhida);
 
             switch (operacaoEscolhida) {
                 case "1":
-                    int soma = 0;
+                    double soma = 0;
                     for (int i = 0; i < contador; i++) {
                         soma += receber5Numeros[i];
                     }
-                    System.Console.WriteLine("A soma dos número inseridos é: " + soma);
+                    Console.WriteLine("A soma dos número inseridos é: " + soma);
                     operacaoValida = true;
                     break;
                 
                 case "2":
-                    int subtrair = receber5Numeros[0];
+                    double subtrair = receber5Numeros[0];
                     for (int i = 1; i < contador; i++ ){
                         subtrair -= receber5Numeros[i];
                     }
-                    System.Console.WriteLine("A subtração dos números inseridos é: " + subtrair);
+                    Console.WriteLine("A subtração dos números inseridos é: " + subtrair);
                     operacaoValida = true;
                     break;
 
                 case"3":
-                    int multiplicar = 1;
+                    double multiplicar = 1;
                     for (int i = 0; i < contador; i++) {
                         multiplicar *= receber5Numeros[i];
                     }
-                    System.Console.WriteLine("A multiplicação dos números inseridos é: " + multiplicar);
+                    Console.WriteLine("A multiplicação dos números inseridos é: " + multiplicar);
                     operacaoValida = true;
                     break;
 
                 case"4":
                     double dividir = receber5Numeros[0];
                     if (dividir == 0) {
-                        System.Console.WriteLine("Erro: não é possível dividir por zero!");
+                        Console.WriteLine("Erro: não é possível dividir por zero!");
                         operacaoValida = false;
                         break;
                     }
 
                     for (int i = 1; i < contador; i++) {
                         if(receber5Numeros[i] == 0){
-                            System.Console.WriteLine("Erro: Não é possível dividir por zero!");
+                            Console.WriteLine("Erro: Não é possível dividir por zero!");
                             return;
                         }
                         dividir /= receber5Numeros[i];
                     }
                     if (dividir < 0.0001 || dividir > 10000) {
-                        System.Console.WriteLine("O resultado da divisão é: " + dividir.ToString("F6"));
+                        Console.WriteLine("O resultado da divisão é: " + dividir.ToString("F6, cultura"));
                     }
                     else 
                     {
-                        System.Console.WriteLine("O resultado da divisão é: " + dividir);
+                        Console.WriteLine("O resultado da divisão é: " + dividir);
 
                     }
                     operacaoValida = true;
