@@ -1,0 +1,15 @@
+C:\Users\futura123\Desktop\mais1code\mais1-code\matheus-586\aula-4\ex-1\bin\Debug\net8.0\ex-1.exe
+C:\Users\futura123\Desktop\mais1code\mais1-code\matheus-586\aula-4\ex-1\bin\Debug\net8.0\ex-1.deps.json
+C:\Users\futura123\Desktop\mais1code\mais1-code\matheus-586\aula-4\ex-1\bin\Debug\net8.0\ex-1.runtimeconfig.json
+C:\Users\futura123\Desktop\mais1code\mais1-code\matheus-586\aula-4\ex-1\bin\Debug\net8.0\ex-1.dll
+C:\Users\futura123\Desktop\mais1code\mais1-code\matheus-586\aula-4\ex-1\bin\Debug\net8.0\ex-1.pdb
+C:\Users\futura123\Desktop\mais1code\mais1-code\matheus-586\aula-4\ex-1\obj\Debug\net8.0\ex-1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\futura123\Desktop\mais1code\mais1-code\matheus-586\aula-4\ex-1\obj\Debug\net8.0\ex-1.AssemblyInfoInputs.cache
+C:\Users\futura123\Desktop\mais1code\mais1-code\matheus-586\aula-4\ex-1\obj\Debug\net8.0\ex-1.AssemblyInfo.cs
+C:\Users\futura123\Desktop\mais1code\mais1-code\matheus-586\aula-4\ex-1\obj\Debug\net8.0\ex-1.csproj.CoreCompileInputs.cache
+C:\Users\futura123\Desktop\mais1code\mais1-code\matheus-586\aula-4\ex-1\obj\Debug\net8.0\ex-1.sourcelink.json
+C:\Users\futura123\Desktop\mais1code\mais1-code\matheus-586\aula-4\ex-1\obj\Debug\net8.0\ex-1.dll
+C:\Users\futura123\Desktop\mais1code\mais1-code\matheus-586\aula-4\ex-1\obj\Debug\net8.0\refint\ex-1.dll
+C:\Users\futura123\Desktop\mais1code\mais1-code\matheus-586\aula-4\ex-1\obj\Debug\net8.0\ex-1.pdb
+C:\Users\futura123\Desktop\mais1code\mais1-code\matheus-586\aula-4\ex-1\obj\Debug\net8.0\ex-1.genruntimeconfig.cache
+C:\Users\futura123\Desktop\mais1code\mais1-code\matheus-586\aula-4\ex-1\obj\Debug\net8.0\ref\ex-1.dll
