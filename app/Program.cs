@@ -48,4 +48,47 @@ void escreveNumMais2(int num){
 
 
 //---------------------------------------------------
+//If e else
+int idade = 16;
+
+if (idade >= 18){
+    Console.WriteLine ("Você é maior de idade");
+} else{
+    Console.WriteLine ("Você é menor de idade");
+}
+
+//else if
+int temperatura = 16;
+if (temperatura >= 20){
+    Console.WriteLine ("Clima quente");
+} 
+else if (temperatura > 10) 
+    Console.WriteLine ("Clima agradavel");
+else{
+    Console.WriteLine ("Clima frio");
+}
+
+// Lógica Bolleana
+bool A = true;
+bool B = false;
+
+bool resultad = !A || B && A;
+Console.WriteLine (resultado);
+
+//Loops
+for(int j = 0; j < 5; j++){
+    Console.WriteLine ("Iteração: " + j);
+}
+
+int i = 0;
+while(i < 5){
+    Console.WriteLine ("Iteração: " + i);
+    i++;
+}
+
+//----------------------------------------------
+//vetores
+
+
+
 
