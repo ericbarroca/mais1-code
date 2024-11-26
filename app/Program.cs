@@ -88,7 +88,29 @@ while(i < 5){
 
 //----------------------------------------------
 //vetores
+// Declaração e Inicialização
+int[] idades = new int[3] { 20, 30, 40 };
 
+//Lendo vetores
+int[] numeros = new int[3] { 10, 20, 30 };
+
+Console.WriteLine(numeros[0]); 
+Console.WriteLine(numeros[2]); 
+Console.WriteLine(numeros[1]); 
+
+//Vetores bidimensionais
+//Criação dos vetores bidimensiionais
+int[,] matriz = new int[2, 2] {
+    { 1, 2 },
+    { 3, 4 }
+};
+
+//Laço para ler um vetores bidimensionais
+for (int linha = 0; linha < matriz.GetLength(0); linha++) {
+    for (int coluna = 0; coluna < matriz.GetLength(1); coluna++) {
+        Console.WriteLine(matriz[linha, coluna]);
+    }
+}
 
 
 
