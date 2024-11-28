@@ -1,0 +1,15 @@
+/home/leonardo/mais1code/mais1-code/LeoIbanhez92/aula-4/exer-4/bin/Debug/net8.0/exer-4
+/home/leonardo/mais1code/mais1-code/LeoIbanhez92/aula-4/exer-4/bin/Debug/net8.0/exer-4.deps.json
+/home/leonardo/mais1code/mais1-code/LeoIbanhez92/aula-4/exer-4/bin/Debug/net8.0/exer-4.runtimeconfig.json
+/home/leonardo/mais1code/mais1-code/LeoIbanhez92/aula-4/exer-4/bin/Debug/net8.0/exer-4.dll
+/home/leonardo/mais1code/mais1-code/LeoIbanhez92/aula-4/exer-4/bin/Debug/net8.0/exer-4.pdb
+/home/leonardo/mais1code/mais1-code/LeoIbanhez92/aula-4/exer-4/obj/Debug/net8.0/exer-4.GeneratedMSBuildEditorConfig.editorconfig
+/home/leonardo/mais1code/mais1-code/LeoIbanhez92/aula-4/exer-4/obj/Debug/net8.0/exer-4.AssemblyInfoInputs.cache
+/home/leonardo/mais1code/mais1-code/LeoIbanhez92/aula-4/exer-4/obj/Debug/net8.0/exer-4.AssemblyInfo.cs
+/home/leonardo/mais1code/mais1-code/LeoIbanhez92/aula-4/exer-4/obj/Debug/net8.0/exer-4.csproj.CoreCompileInputs.cache
+/home/leonardo/mais1code/mais1-code/LeoIbanhez92/aula-4/exer-4/obj/Debug/net8.0/exer-4.sourcelink.json
+/home/leonardo/mais1code/mais1-code/LeoIbanhez92/aula-4/exer-4/obj/Debug/net8.0/exer-4.dll
+/home/leonardo/mais1code/mais1-code/LeoIbanhez92/aula-4/exer-4/obj/Debug/net8.0/refint/exer-4.dll
+/home/leonardo/mais1code/mais1-code/LeoIbanhez92/aula-4/exer-4/obj/Debug/net8.0/exer-4.pdb
+/home/leonardo/mais1code/mais1-code/LeoIbanhez92/aula-4/exer-4/obj/Debug/net8.0/exer-4.genruntimeconfig.cache
+/home/leonardo/mais1code/mais1-code/LeoIbanhez92/aula-4/exer-4/obj/Debug/net8.0/ref/exer-4.dll
