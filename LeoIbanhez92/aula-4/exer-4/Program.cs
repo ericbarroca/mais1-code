@@ -231,9 +231,32 @@ double receberNumeros;
 
 System.Console.WriteLine("Preencha a primeira matriz");
 
-for (int i = 0; i < 2; i++)
+for (int i = 0; i < matriz.GetLength(0); i++)
 {
-    for (int j = 0; j < 2; j++)
+    for (int j = 0; j < matriz.GetLength(1); j++)
+    {
+        System.Console.WriteLine($"Digite o valor para a posição ({i + 1}, {j + 1}) da matriz!");
+
+        while (!double.TryParse(Console.ReadLine(), out receberNumeros))
+        {
+            System.Console.WriteLine("Entrada iválida! Digite uma entrada válida");
+        }
+
+        matriz[i, j] = receberNumeros;
+    }
+}
+
+double[,] matriz = new double[2, 2];
+double[,] matriz2 = new double[2, 2];
+double[,] matrizSoma = new double[2, 2];
+
+double receberNumeros;
+
+System.Console.WriteLine("Preencha a primeira matriz");
+
+for (int i = 0; i < matriz.GetLength(0); i++)
+{
+    for (int j = 0; j < matriz.GetLength(1); j++)
     {
         System.Console.WriteLine($"Digite o valor para a posição ({i + 1}, {j + 1}) da matriz!");
 
@@ -248,9 +271,9 @@ for (int i = 0; i < 2; i++)
 
 System.Console.WriteLine("Preencha a segunda matriz");
 
-for (int i = 0; i < 2; i++)
+for (int i = 0; i < matriz2.GetLength(0); i++)
 {
-    for (int j = 0; j < 2; j++)
+    for (int j = 0; j < matriz2.GetLength(1); j++)
     {
         System.Console.WriteLine($"Digite o valor para a posição ({i + 1}, {j + 1}) da matriz 2!");
 
@@ -263,9 +286,9 @@ for (int i = 0; i < 2; i++)
     }
 }
 
-for (int i = 0; i < 2; i++)
+for (int i = 0; i < matriz.GetLength(0); i++)
 {
-    for (int j = 0; j < 2; j++)
+    for (int j = 0; j < matriz.GetLength(1); j++)
     {
         matrizSoma[i, j] = matriz[i, j] + matriz2[i, j];
 
@@ -273,9 +296,9 @@ for (int i = 0; i < 2; i++)
 }
 
 System.Console.WriteLine("\nResultado da soma das matrizes!");
-for (int i = 0; i < 2; i++)
+for (int i = 0; i < matrizSoma.GetLength(0); i++)
 {
-    for (int j = 0; j < 2; j++)
+    for (int j = 0; j < matrizSoma.GetLength(1); j++)
     {
         System.Console.WriteLine(matrizSoma[i, j] + " ");
     }
