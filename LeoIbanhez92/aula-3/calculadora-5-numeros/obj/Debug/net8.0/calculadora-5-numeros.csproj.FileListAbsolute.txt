@@ -1,0 +1,15 @@
+/home/leonardo/mais1code/mais1-code/LeoIbanhez92/aula-3/calculadora-5-numeros/bin/Debug/net8.0/calculadora-5-numeros
+/home/leonardo/mais1code/mais1-code/LeoIbanhez92/aula-3/calculadora-5-numeros/bin/Debug/net8.0/calculadora-5-numeros.deps.json
+/home/leonardo/mais1code/mais1-code/LeoIbanhez92/aula-3/calculadora-5-numeros/bin/Debug/net8.0/calculadora-5-numeros.runtimeconfig.json
+/home/leonardo/mais1code/mais1-code/LeoIbanhez92/aula-3/calculadora-5-numeros/bin/Debug/net8.0/calculadora-5-numeros.dll
+/home/leonardo/mais1code/mais1-code/LeoIbanhez92/aula-3/calculadora-5-numeros/bin/Debug/net8.0/calculadora-5-numeros.pdb
+/home/leonardo/mais1code/mais1-code/LeoIbanhez92/aula-3/calculadora-5-numeros/obj/Debug/net8.0/calculadora-5-numeros.GeneratedMSBuildEditorConfig.editorconfig
+/home/leonardo/mais1code/mais1-code/LeoIbanhez92/aula-3/calculadora-5-numeros/obj/Debug/net8.0/calculadora-5-numeros.AssemblyInfoInputs.cache
+/home/leonardo/mais1code/mais1-code/LeoIbanhez92/aula-3/calculadora-5-numeros/obj/Debug/net8.0/calculadora-5-numeros.AssemblyInfo.cs
+/home/leonardo/mais1code/mais1-code/LeoIbanhez92/aula-3/calculadora-5-numeros/obj/Debug/net8.0/calculadora-5-numeros.csproj.CoreCompileInputs.cache
+/home/leonardo/mais1code/mais1-code/LeoIbanhez92/aula-3/calculadora-5-numeros/obj/Debug/net8.0/calculadora-5-numeros.sourcelink.json
+/home/leonardo/mais1code/mais1-code/LeoIbanhez92/aula-3/calculadora-5-numeros/obj/Debug/net8.0/calculadora-5-numeros.dll
+/home/leonardo/mais1code/mais1-code/LeoIbanhez92/aula-3/calculadora-5-numeros/obj/Debug/net8.0/refint/calculadora-5-numeros.dll
+/home/leonardo/mais1code/mais1-code/LeoIbanhez92/aula-3/calculadora-5-numeros/obj/Debug/net8.0/calculadora-5-numeros.pdb
+/home/leonardo/mais1code/mais1-code/LeoIbanhez92/aula-3/calculadora-5-numeros/obj/Debug/net8.0/calculadora-5-numeros.genruntimeconfig.cache
+/home/leonardo/mais1code/mais1-code/LeoIbanhez92/aula-3/calculadora-5-numeros/obj/Debug/net8.0/ref/calculadora-5-numeros.dll
