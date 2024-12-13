@@ -112,5 +112,20 @@ for (int linha = 0; linha < matriz.GetLength(0); linha++) {
     }
 }
 
+// matriz 2,2
+// int [,] m1 = new int[2,2];
+// int [,] m2 = new int[2,2];
 
+// int [,] CriaMatriz (tamanhoD1, tamanhoD2){
+//     int [,] m = new int [tamanhoD1, tamanhoD2];
+//     for (int linha = 0; linha < m.GetLength(0); linha++) {
+//         for (int coluna = 0; coluna < m.GetLength(1); coluna++) {
+//             m[linha,coluna] = int.Parse(Console.ReadLine());
+//         }
+//     }
 
+//     return m;
+// }
+
+// int [,] m1 = CriaMatriz(2,2);
+// int [,] m2 = CriaMatriz(2,2);

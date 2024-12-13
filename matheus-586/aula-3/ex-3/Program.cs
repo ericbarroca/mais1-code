@@ -14,8 +14,8 @@ int PedeEArmazenaONumeroDigitado(int num1) {
     return num1;
 }
 
-int numero1 = PedeEArmazenaONumeroDigitado(0);
-int numero2 = PedeEArmazenaONumeroDigitado(1);
+int numero1 = PedeEArmazenaONumeroDigitado(1);
+int numero2 = PedeEArmazenaONumeroDigitado(2);
 
 void Soma2NumerosEImprimeNatela(){
     Console.WriteLine("O Primeiro número digitado foi: " + numero1);
