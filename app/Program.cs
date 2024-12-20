@@ -1,12 +1,12 @@
 ﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+// Console.WriteLine("Hello, World!");
 
-//Delaração
+// //Delaração
 int nume;
 string t;
 
 
-//Atribuição
+// //Atribuição
 nume = 12;
 t = "Marco ";
 Console.WriteLine(t);
@@ -16,7 +16,7 @@ Console.WriteLine(t);
 int soma = 2 + nume;
 Console.WriteLine(soma);
 
-//operadores
+// //operadores
 int numero = 2;
 
 float resultado = numero * 6;
@@ -27,8 +27,8 @@ resultado = numero / resultado;
 
 Console.WriteLine(resultado);
 
-//----------------------------------------------
-// codigo sem função
+// //----------------------------------------------
+// // codigo sem função
 int num = 3;
 int incremento = num + 2;
 Console.WriteLine(incremento);
@@ -47,8 +47,8 @@ void escreveNumMais2(int num){
  escreveNumMais2(5);
 
 
-//---------------------------------------------------
-//If e else
+// //---------------------------------------------------
+// //If e else
 int idade = 16;
 
 if (idade >= 18){
@@ -57,7 +57,7 @@ if (idade >= 18){
     Console.WriteLine ("Você é menor de idade");
 }
 
-//else if
+// //else if
 int temperatura = 16;
 if (temperatura >= 20){
     Console.WriteLine ("Clima quente");
@@ -68,14 +68,14 @@ else{
     Console.WriteLine ("Clima frio");
 }
 
-// Lógica Bolleana
+// // Lógica Bolleana
 bool A = true;
 bool B = false;
 
 bool resultad = !A || B && A;
 Console.WriteLine (resultado);
 
-//Loops
+// //Loops
 for(int j = 0; j < 5; j++){
     Console.WriteLine ("Iteração: " + j);
 }
@@ -86,9 +86,9 @@ while(i < 5){
     i++;
 }
 
-//----------------------------------------------
-//vetores
-// Declaração e Inicialização
+// //----------------------------------------------
+// //vetores
+// // Declaração e Inicialização
 int[] idades = new int[3] { 20, 30, 40 };
 
 //Lendo vetores
@@ -105,12 +105,12 @@ int[,] matriz = new int[2, 2] {
     { 3, 4 }
 };
 
-//Laço para ler um vetores bidimensionais
-for (int linha = 0; linha < matriz.GetLength(0); linha++) {
-    for (int coluna = 0; coluna < matriz.GetLength(1); coluna++) {
-        Console.WriteLine(matriz[linha, coluna]);
-    }
-}
+// //Laço para ler um vetores bidimensionais
+// for (int linha = 0; linha < matriz.GetLength(0); linha++) {
+//     for (int coluna = 0; coluna < matriz.GetLength(1); coluna++) {
+//         Console.WriteLine(matriz[linha, coluna]);
+//     }
+// }
 
 // matriz 2,2
 // int [,] m1 = new int[2,2];
@@ -129,3 +129,52 @@ for (int linha = 0; linha < matriz.GetLength(0); linha++) {
 
 // int [,] m1 = CriaMatriz(2,2);
 // int [,] m2 = CriaMatriz(2,2);
+
+//exercicio da calculadora aula-3/desafio-2
+// int soma(params int[] nums) {
+//     int resultado = 0;
+//     for(int i=0;i<nums.GetLength(0);i++) {
+//         resultado+=nums[i];
+//     }
+
+//     return resultado;
+// }
+
+// int sub(params int[] nums) {
+//     int resultado = 0;
+//     for(int i=0;i<nums.GetLength(0);i++) {
+//         resultado-=nums[i];
+//     }
+
+//     return resultado;
+// }
+
+// int escolha(string mensagem) {
+//     Console.WriteLine(mensagem);
+//     return int.Parse(Console.ReadLine());
+// }
+// int operacao(char op, params int[] nums) {
+//     if (op == '+') {
+//         return soma(nums);
+//     }
+
+//     if (op == '-') {
+//         return sub(nums);
+//     }
+
+//     return 0;
+// }
+
+// int qtd;
+// int[] nums;
+// char op;
+
+// qtd = escolha("Escolha a qtd de numeros");
+// nums = new int[qtd];
+// for(int i=0;i<qtd;i++) {
+//     nums[i] = escolha("Escolha um numero");
+// }
+
+// Console.WriteLine("Escolha a operacao");
+// op = Console.ReadLine()[0];
+// Console.WriteLine(operacao(op,nums));

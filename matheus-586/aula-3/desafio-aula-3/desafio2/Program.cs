@@ -6,12 +6,7 @@
 
 
 // Fazendo ainda..
-using System;
 
-class Program
-{
-    static void Main()
-    {
         Console.WriteLine("Caso você continuar esse programa, deverá escrever no mínimo 2 números e no máximo 5, você concorda? (responda com Sim ou Não)");
         string resposta = Console.ReadLine();
 
@@ -58,8 +53,6 @@ class Program
             Console.WriteLine("Programa encerrado.");
         }
     }
-}
-}
 }
 
 // ----------------------------------------------------------------------
