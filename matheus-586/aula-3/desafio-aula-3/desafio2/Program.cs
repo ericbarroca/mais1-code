@@ -4,113 +4,56 @@
 //     - Usuário digita 1 da enter, 5 da enter e 8 da enter. A operação deve usar estes 3 números.
 //     - Usuário digita 1 da enter, 5 da enter, 8 da enter e 6 da enter. A operação deve usar estes 4 números.
 
+//vou trabalhar em cima desse código que o professor fez na aula
 
-// Fazendo ainda..
-
-        Console.WriteLine("Caso você continuar esse programa, deverá escrever no mínimo 2 números e no máximo 5, você concorda? (responda com Sim ou Não)");
-        string resposta = Console.ReadLine();
-
-        if (resposta.ToLower() == "sim")
-        {
-            int[] numeros = new int[5];
-            int contador = 0;
-
-            while (contador < 5)
-            {
-                Console.WriteLine("Digite um número:");
-                if (int.TryParse(Console.ReadLine(), out int numero))
-                {
-                    numeros[contador] = numero;
-                    contador++;
-
-                    if (contador >= 2){
-                        Console.WriteLine("Deseja continuar? (Sim/Não)");
-                        string respostaSeContinua = Console.ReadLine().ToLower();
-                        while (respostaSeContinua != "sim" && respostaSeContinua != "não")
-                        {
-                            Console.WriteLine("Resposta inválida. Digite Sim ou Não.");
-                            respostaSeContinua = Console.ReadLine().ToLower();
-                        }
-                        if (respostaSeContinua == "não"){
-                            break;
-                        }else{
-                            Console.WriteLine("Insira somente um número inteiro por favor");
-                        }
-                    
-            }
-
-            Console.WriteLine("\nNúmeros inseridos:");
-            foreach (int Numero in numeros)
-            {
-                if (numero != 0)
-                {
-                    Console.WriteLine(numero);
-                }
-            }
-        }
-        else
-        {
-            Console.WriteLine("Programa encerrado.");
-        }
-    }
-}
-
-// ----------------------------------------------------------------------
-// int soma(int num1, int num2){
-//     int resultado = num1 + num2;
-//     return resultado;
-// }
-
-
-// int subtracao(int num1, int num2){
-//     int resultado = num1 - num2;
-//     return resultado;
-// }
-
-// int multiplicacao(int num1, int num2){
-//     int resultado = num1 * num2;
-//     return resultado;
-// }
-
-// int divisao(int num1, int num2){
-//     int resultado = num1 / num2;
-//     return resultado;
-// }
-
-// Console.WriteLine("Qual operação matemática você deseja fazer? (+, -, * ou /)");
-
-// string operador;
-// while (true){
-//     operador = Console.ReadLine();
-//     if (operador == "+" || operador == "-" || operador == "*" || operador == "/"){
-//         break;
+//exercicio da calculadora aula-3/desafio-2
+// int soma(params int[] nums) {
+//     int resultado = 0;
+//     for(int i=0;i<nums.GetLength(0);i++) {
+//         resultado+=nums[i];
 //     }
-//     Console.WriteLine("Escreva um operador válido por favor (+, -, *, /)");
+
+//     return resultado;
 // }
 
+// int sub(params int[] nums) {
+//     int resultado = 0;
+//     for(int i=0;i<nums.GetLength(0);i++) {
+//         resultado-=nums[i];
+//     }
 
-
-// if (operador == "+"){
-//     int resultado = soma(num1, num2);
-//     Console.WriteLine("O resultado da soma é: " + resultado);
-// }
-// else if (operador == "-")
-// {
-//     int resultado = subtracao(num1, num2);
-//     Console.WriteLine("O resultado da subtração é: " + resultado);
-// }
-// else if (operador == "*"){
-//     int resultado = multiplicacao(num1, num2);
-//     Console.WriteLine("O resultado da multiplicação é: " + resultado);
+//     return resultado;
 // }
 
-// else if (operador == "/"){
-//     int resultado = divisao(num1, num2);
-//     Console.WriteLine("O resultado da divisão é: " + resultado);
+// int escolha(string mensagem) {
+//     Console.WriteLine(mensagem);
+//     return int.Parse(Console.ReadLine());
+// }
+// int operacao(char op, params int[] nums) {
+//     if (op == '+') {
+//         return soma(nums);
+//     }
 
-// }else{
-//     Console.WriteLine("Escolha uma das operações direcionadas (+, -, *, /)");
+//     if (op == '-') {
+//         return sub(nums);
+//     }
+
+//     return 0;
 // }
 
+// int qtd;
+// int[] nums;
+// char op;
 
-//Tô pensando ainda....
+// while (nums<2 && nums > 5){
+//     qtd = escolha("Escolha a qtd de numeros");
+// }
+
+// nums = new int[qtd];
+// for(int i=0;i<qtd;i++) {
+//     nums[i] = escolha("Escolha um numero");
+// }
+
+// Console.WriteLine("Escolha a operacao");
+// op = Console.ReadLine()[0];
+// Console.WriteLine(operacao(op,nums));

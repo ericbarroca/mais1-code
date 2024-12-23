@@ -28,7 +28,7 @@ public class Pessoa {
         if(ComprimentoCabelo > 0){
         Console.WriteLine($"Nome: {Nome}, CM: {ComprimentoCabelo} Idade: {Idade}");
         } else {
-            Console.WriteLine($"Nome: {Nome}, Idade: {Idade}");
+            global::System.Object value = Console.WriteLine($"Nome: {Nome}, Idade: {Idade}");
         }
 
     }
