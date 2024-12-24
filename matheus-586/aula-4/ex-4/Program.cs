@@ -2,7 +2,9 @@
 Console.WriteLine("Escreva um numero para ver sua tabuada.");
 int numeroEscrito = int.Parse(Console.ReadLine());
 
-for(int j = 2; j <= 10; j++){
+Console.WriteLine ($"A tabuada do número {numeroEscrito} é: ");
+
+for(int j = 1; j <= 10; j++){
     int tabuada = numeroEscrito * j;
     Console.WriteLine (tabuada);
 }
