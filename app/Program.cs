@@ -106,11 +106,11 @@ int[,] matriz = new int[2, 2] {
 };
 
 // //Laço para ler um vetores bidimensionais
-// for (int linha = 0; linha < matriz.GetLength(0); linha++) {
-//     for (int coluna = 0; coluna < matriz.GetLength(1); coluna++) {
-//         Console.WriteLine(matriz[linha, coluna]);
-//     }
-// }
+for (int linha = 0; linha < matriz.GetLength(0); linha++) {
+    for (int coluna = 0; coluna < matriz.GetLength(1); coluna++) {
+        Console.WriteLine(matriz[linha, coluna]);
+    }
+}
 
 // matriz 2,2
 // int [,] m1 = new int[2,2];
