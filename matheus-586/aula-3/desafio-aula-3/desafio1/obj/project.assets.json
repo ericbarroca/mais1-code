@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\futura123\\Desktop\\mais1code\\mais1-code\\matheus-586\\aula-3\\desafio-aula-3\\desafio\\desafio.csproj",
+      "projectUniqueName": "C:\\Users\\futura123\\Desktop\\mais1code\\mais1-code\\matheus-586\\aula-3\\desafio-aula-3\\desafio1\\desafio.csproj",
       "projectName": "desafio",
-      "projectPath": "C:\\Users\\futura123\\Desktop\\mais1code\\mais1-code\\matheus-586\\aula-3\\desafio-aula-3\\desafio\\desafio.csproj",
+      "projectPath": "C:\\Users\\futura123\\Desktop\\mais1code\\mais1-code\\matheus-586\\aula-3\\desafio-aula-3\\desafio1\\desafio.csproj",
       "packagesPath": "C:\\Users\\futura123\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\futura123\\Desktop\\mais1code\\mais1-code\\matheus-586\\aula-3\\desafio-aula-3\\desafio\\obj\\",
+      "outputPath": "C:\\Users\\futura123\\Desktop\\mais1code\\mais1-code\\matheus-586\\aula-3\\desafio-aula-3\\desafio1\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\futura123\\AppData\\Roaming\\NuGet\\NuGet.Config"

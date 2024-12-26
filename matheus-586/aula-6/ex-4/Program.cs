@@ -1,0 +1,1 @@
+﻿// - Crie uma classe abstrata chamada `FormaGeometrica` com um método abstrato `CalcularArea`. Em seguida, crie duas subclasses `Retangulo` e `Circulo`, cada uma implementando o método `CalcularArea`. Teste as classes criando instâncias de `Retangulo` e `Circulo`, e chamando o método `CalcularArea`.

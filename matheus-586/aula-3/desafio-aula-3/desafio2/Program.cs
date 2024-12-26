@@ -4,56 +4,89 @@
 //     - Usuário digita 1 da enter, 5 da enter e 8 da enter. A operação deve usar estes 3 números.
 //     - Usuário digita 1 da enter, 5 da enter, 8 da enter e 6 da enter. A operação deve usar estes 4 números.
 
-//vou trabalhar em cima desse código que o professor fez na aula
+int soma(params int[] nums)
+{
+    int resultado = 0;
+    foreach (var num in nums) resultado += num;
+    return resultado;
+}
 
-//exercicio da calculadora aula-3/desafio-2
-// int soma(params int[] nums) {
-//     int resultado = 0;
-//     for(int i=0;i<nums.GetLength(0);i++) {
-//         resultado+=nums[i];
-//     }
+int subtracao(params int[] nums)
+{
+    int resultado = 0;
+    for (int i = 0; i < nums.GetLength(0); i++)
+    {
+        resultado -= nums[i];
+    }
 
-//     return resultado;
-// }
+    return resultado;
+}
 
-// int sub(params int[] nums) {
-//     int resultado = 0;
-//     for(int i=0;i<nums.GetLength(0);i++) {
-//         resultado-=nums[i];
-//     }
+int multiplicacao(params int[] nums)
+{
+    int resultado = 1;
+    foreach (var num in nums) resultado *= num;
+    return resultado;
+}
 
-//     return resultado;
-// }
+int divisao(params int[] nums)
+{
+    double resultado = nums[0];
+    for (int i = 1; i < nums.Length; i++) 
+    {
+        if (nums[i] == 0) 
+        {
+            throw new DivideByZeroException("Divisão por zero não permitida.");
+        }
+        resultado /= nums[i];
+    }
+    return (int)resultado;
+}
 
-// int escolha(string mensagem) {
-//     Console.WriteLine(mensagem);
-//     return int.Parse(Console.ReadLine());
-// }
-// int operacao(char op, params int[] nums) {
-//     if (op == '+') {
-//         return soma(nums);
-//     }
 
-//     if (op == '-') {
-//         return sub(nums);
-//     }
+int escolha(string mensagem)
+{
+    while (true)
+    {
+        Console.Write(mensagem + ": ");
+        try
+        {
+            return int.Parse(Console.ReadLine());
+        }
+        catch (FormatException)
+        {
+            Console.WriteLine("Entrada inválida. Por favor, digite um número inteiro.");
+        }
+        catch (OverflowException)
+        {
+            Console.WriteLine("Número muito grande. Por favor, digite um número inteiro válido.");
+        }
+    }
+}
 
-//     return 0;
-// }
+int operacao(char op, params int[] nums)
+{
+     switch (op) 
+    {
+        case '+': return soma(nums);
+        case '-': return subtracao(nums);
+        case '*': return multiplicacao(nums);
+        case '/': return divisao(nums);
+        default: throw new ArgumentException("Operação inválida.");
+    }
+}
 
-// int qtd;
-// int[] nums;
-// char op;
+int qtd;
+int[] nums;
+char op;
 
-// while (nums<2 && nums > 5){
-//     qtd = escolha("Escolha a qtd de numeros");
-// }
+qtd = escolha("Escolha a qtd de numeros");
+nums = new int[qtd];
+for (int i = 0; i < qtd; i++)
+{
+    nums[i] = escolha("Escolha um numero");
+}
 
-// nums = new int[qtd];
-// for(int i=0;i<qtd;i++) {
-//     nums[i] = escolha("Escolha um numero");
-// }
-
-// Console.WriteLine("Escolha a operacao");
-// op = Console.ReadLine()[0];
-// Console.WriteLine(operacao(op,nums));
+Console.WriteLine("Escolha a operacao");
+op = Console.ReadLine()[0];
+Console.WriteLine(operacao(op, nums));
