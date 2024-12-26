@@ -14,11 +14,7 @@ int soma(params int[] nums)
 int subtracao(params int[] nums)
 {
     int resultado = 0;
-    for (int i = 0; i < nums.GetLength(0); i++)
-    {
-        resultado -= nums[i];
-    }
-
+    foreach (var num in nums) resultado -= num;
     return resultado;
 }
 
