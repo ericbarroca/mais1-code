@@ -1,0 +1,15 @@
+C:\Users\futura123\Desktop\mais1code\mais1-code\matheus-586\aula-4\ex-9\obj\Debug\net8.0\ex-9.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\futura123\Desktop\mais1code\mais1-code\matheus-586\aula-4\ex-9\obj\Debug\net8.0\ex-9.AssemblyInfoInputs.cache
+C:\Users\futura123\Desktop\mais1code\mais1-code\matheus-586\aula-4\ex-9\obj\Debug\net8.0\ex-9.AssemblyInfo.cs
+C:\Users\futura123\Desktop\mais1code\mais1-code\matheus-586\aula-4\ex-9\obj\Debug\net8.0\ex-9.csproj.CoreCompileInputs.cache
+C:\Users\futura123\Desktop\mais1code\mais1-code\matheus-586\aula-4\ex-9\obj\Debug\net8.0\ex-9.sourcelink.json
+C:\Users\futura123\Desktop\mais1code\mais1-code\matheus-586\aula-4\ex-9\bin\Debug\net8.0\ex-9.exe
+C:\Users\futura123\Desktop\mais1code\mais1-code\matheus-586\aula-4\ex-9\bin\Debug\net8.0\ex-9.deps.json
+C:\Users\futura123\Desktop\mais1code\mais1-code\matheus-586\aula-4\ex-9\bin\Debug\net8.0\ex-9.runtimeconfig.json
+C:\Users\futura123\Desktop\mais1code\mais1-code\matheus-586\aula-4\ex-9\bin\Debug\net8.0\ex-9.dll
+C:\Users\futura123\Desktop\mais1code\mais1-code\matheus-586\aula-4\ex-9\bin\Debug\net8.0\ex-9.pdb
+C:\Users\futura123\Desktop\mais1code\mais1-code\matheus-586\aula-4\ex-9\obj\Debug\net8.0\ex-9.dll
+C:\Users\futura123\Desktop\mais1code\mais1-code\matheus-586\aula-4\ex-9\obj\Debug\net8.0\refint\ex-9.dll
+C:\Users\futura123\Desktop\mais1code\mais1-code\matheus-586\aula-4\ex-9\obj\Debug\net8.0\ex-9.pdb
+C:\Users\futura123\Desktop\mais1code\mais1-code\matheus-586\aula-4\ex-9\obj\Debug\net8.0\ex-9.genruntimeconfig.cache
+C:\Users\futura123\Desktop\mais1code\mais1-code\matheus-586\aula-4\ex-9\obj\Debug\net8.0\ref\ex-9.dll
