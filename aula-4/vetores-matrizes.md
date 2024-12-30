@@ -103,6 +103,41 @@ for (int i = 0; i < matriz.GetLength(0); i++) {
 
 `GetLength(...)` é uma função do `Array` que permite descobrirmos o tamanho de uma dimensão da matriz. Logo, se usamos `GetLength(0)`, saberemos o tabanho da linha.
 
+### Exemplo Soma de Matrizes
+
+O programa abaixo contém uma função que criar matrizes de 2 dimensões e uma que soma as 2, retornando uma matriz com o resultado.
+
+```csharp
+int[,] CriaMatriz2D(int tamanhoD1, int tamanhoD2) {
+    int [,] m = new int[tamanhoD1,tamanhoD2];
+
+    for(int linha=0;linha<m.GetLength(0);linha++) {
+        for(int coluna=0;coluna<m.GetLength(1);coluna++) {
+            m[linha,coluna] = int.Parse(Console.ReadLine());
+        }
+    }
+
+    return m;
+}
+
+int[,] m1 = CriaMatriz2D(2,2);
+int[,] m2 = CriaMatriz2D(2,2);
+
+int[,] Soma(int[,] m1, int[,] m2) {
+    int[,] m = new int[m1.GetLength(0),m1.GetLength(1)];
+
+    for(int linha=0;linha<m.GetLength(0);linha++) {
+        for(int coluna=0;coluna<m.GetLength(1);coluna++) {
+            m[linha,coluna] = m1[linha, coluna] + 
+                m2[linha,coluna];
+            Console.WriteLine(m[linha, coluna]);
+        }
+    }
+
+    return m;
+}
+```
+
 ## Referencias
 
 - [Matrizes - C# Language Reference, Microsoft](https://learn.microsoft.com/pt-br/dotnet/csharp/language-reference/builtin-types/arrays)

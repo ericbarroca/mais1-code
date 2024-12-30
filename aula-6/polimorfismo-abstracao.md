@@ -42,6 +42,66 @@ Forma forma = new Retangulo();
 forma.Desenhar();  // Saída: Desenhando um retângulo.
 ```
 
+### Exemplo veículos
+
+```csharp
+public class Veiculo
+{
+
+    public Veiculo(string motor)
+    {
+        this.motor = motor;
+    }
+
+    private string motor { get; }
+    public int Velocidade { get; set; }
+
+    public int Locomover(int tempo)
+    {
+        Console.WriteLine($"Locomovi com o motor: {motor}");
+        return Velocidade * tempo;
+    }
+}
+
+public class Carro : Veiculo
+{
+
+    public Carro(string motor, int tamanhoPortaMalas,
+     string categoria) : base(motor)
+    {
+        this.TamanhoPortaMalas = tamanhoPortaMalas;
+        this.Categoria = categoria;
+    }
+
+    public int TamanhoPortaMalas {get;}
+
+    public string Categoria{get;} //Black, Confort, x
+}
+
+public class Moto : Veiculo
+{
+
+    public Moto(string motor) : base(motor)
+    {
+
+    }
+
+    private bool levaPassageiro;
+}
+
+Carro camaro = new Carro("V8", 50, "UberX");
+camaro.Velocidade = 80;
+int distancia = camaro.Locomover(2);
+Console.WriteLine(distancia);
+Console.WriteLine(camaro.Categoria);
+
+Moto ninja = new Moto("600cc");
+ninja.Velocidade = 100;
+distancia = ninja.Locomover(1);
+Console.WriteLine(distancia);
+string cat = ninja.Categoria;
+```
+
 ## Referências
 
 - [Tutorials - C# Fundamentals, Microsoft](https://learn.microsoft.com/pt-br/dotnet/csharp/fundamentals/tutorials/oop)

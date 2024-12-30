@@ -187,7 +187,7 @@ public class Pato {
 
 Pato pato = new Pato();
 pato.Patas = 2;
-casar(pato)
+casar(pato);
 
 void casar(Pato noivo) {
     noivo.Patas +=1;
@@ -200,7 +200,7 @@ Console.WriteLine(pato.Patas);
 
 <details>
 <summary><b>Resposta</b></summary>
-2
+3
 </details>
 
 - [Tutorials - C# Fundamentals, Microsoft](https://learn.microsoft.com/pt-br/dotnet/csharp/fundamentals/tutorials/oop)
