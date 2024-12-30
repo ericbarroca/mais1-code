@@ -1,10 +1,12 @@
 # Interfaces e Listas
 
-Nesta aula, exploraremos interfaces, listas e filas em C#. Interfaces são um dos principais pilares da Programação Orientada a Objetos, fornecendo uma maneira de definir contratos que classes e estruturas podem implementar. Vamos ver como as listas e filas utilizam interfaces para fornecer uma estrutura consistente e flexível.
+Nesta aula, exploraremos `interfaces`, `listas` e `filas` em `C#`. `Interfaces` são um dos principais pilares da Programação Orientada a Objetos, fornecendo uma maneira de definir contratos que classes e estruturas podem implementar. Vamos ver como as listas e filas utilizam interfaces para fornecer uma estrutura consistente e flexível.
 
 ## Interfaces
 
-Uma interface é um contrato que define um conjunto de métodos e propriedades que uma classe ou estrutura deve implementar. Interfaces não contêm implementação, apenas a assinatura dos membros.
+Uma `interface` é um contrato que define um conjunto de métodos e propriedades que uma `classe` deve implementar. `Interfaces` não contêm implementação, apenas a assinatura dos métodos.
+
+Lembrem, `interfaces` servem de garatia que uma classe exibirá um comportamento. Porém os detalhes e implementação deste comportamento ficam por conta da `classe` que está implementando a `interface`.
 
 ### Definição de Interfaces
 
@@ -39,7 +41,7 @@ public class Carro : IVeiculo {
 
 ## Listas
 
-Uma lista é uma coleção genérica que pode armazenar um número variável de elementos. A classe `List<T>` em C# implementa a interface `IList<T>`, fornecendo métodos para manipulação de listas.
+Uma lista é uma coleção genérica que pode armazenar um número variável de elementos. A classe `List<T>` em `C#` implementa a interface `IList<T>`, fornecendo métodos para manipulação de listas.
 
 ### Uso de Listas
 
@@ -79,7 +81,7 @@ public interface IList<T> : ICollection<T> {
 
 ### Buscas em Listas
 
-Um predicado é uma função que retorna um valor booleano (`true` ou `false`) com base na avaliação de uma condição. Em C#, predicados são usados frequentemente com listas para encontrar, filtrar ou manipular elementos que atendem a certas condições. Eles são especialmente úteis quando combinados com métodos da classe `List<T>`.
+Um predicado é uma função que retorna um valor booleano (`true` ou `false`) com base na avaliação de uma condição. Em `C#`, predicados são usados frequentemente com listas para encontrar, filtrar ou manipular elementos que atendem a certas condições. Eles são especialmente úteis quando combinados com métodos da classe `List<T>`.
 
 Aqui está um exemplo de um predicado que verifica se um número é par:
 
@@ -98,6 +100,8 @@ int primeiroPar = numeros.Find(EhPar);
 
 Console.WriteLine(primeiroPar);  // Saída: 2
 ```
+
+No exemplo acima passamos a função como um agumento do método, chamamos isso de uma função de primeira classe. Onde não estamos executando a função e passando o resultado, mas sim passandoa função para ser executada dentro de outra função no momento adequado.
 
 #### `FindAll`
 O método `FindAll` retorna todos os elementos de uma lista que correspondem a um predicado especificado.
@@ -149,6 +153,17 @@ while (fila.Count > 0) {
     Console.WriteLine(fila.Dequeue());
 }
 ```
+
+O que será escrito na tela do programa do código acima?
+
+<details>
+<summary><b>Resposta</b></summary>
+Primeiro
+
+Segundo
+
+Terceiro
+</details>
 
 ### Métodos Comuns de Filas
 
