@@ -174,3 +174,7 @@ Terceiro
 - `Peek()`: Retorna o item no início da fila sem removê-lo.
 
 - `Count`: Obtém o número de elementos na fila.
+
+## Referências
+
+- [Saiba como gerenciar coletas de dados usando List<T> em C# - Microsoft](https://learn.microsoft.com/pt-br/dotnet/csharp/tour-of-csharp/tutorials/arrays-and-collections)

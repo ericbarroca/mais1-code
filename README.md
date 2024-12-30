@@ -36,6 +36,8 @@ Repositório destinados aos alunos de programação do curso da `mais1code` cont
 - [Os Fundamentos: Regras de Inferência - DCC/UFMG](https://homepages.dcc.ufmg.br/~msalvim/courses/ilc/Aula1.3_RegrasInferencia[still].pdf)
 - [Problems - Leetcode](https://leetcode.com/problems)
 - [Tutorials - C# Fundamentals, Microsoft](https://learn.microsoft.com/pt-br/dotnet/csharp/fundamentals/tutorials/oop)
+- [Saiba como gerenciar coletas de dados usando List<T> em C#, Microsoft](https://learn.microsoft.com/pt-br/dotnet/csharp/tour-of-csharp/tutorials/arrays-and-collections)
+- [Padrões DAO e Repository - Carolina Dias Fonseca, Dev.io](https://dev.to/diariodeumacdf/padroes-dao-e-repository-13nj)
 
 ## Inidcações de Leitura
 - [Category Theory for Programmers, Bartosz Milewiski](https://unglueit-files.s3.amazonaws.com/ebf/e90890f0a6ea420c9825657d6f3a851d.pdf) (Avançado)
