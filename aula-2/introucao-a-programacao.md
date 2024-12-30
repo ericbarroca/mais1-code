@@ -26,9 +26,9 @@ _start:
 
 **C#**
 ```cs
-int num1 = 5
-int num2 = 3
-int result = num1 + num2
+int num1 = 5;
+int num2 = 3;
+int result = num1 + num2;
 ```
 
 ## Conceitos e Fundamentos
@@ -63,13 +63,13 @@ Abaixo temos exemplos de declarações, atribuições e leitura de variáveis em
 int a;
 
 //Atribuição
-a = 1
+a = 1;
 
 //Declaração com atribuição
-int b = 2
+int b = 2;
 
 //atribuição e leitura
-a = b
+a = b;
 ```
 
 Em `C#` precisamos declarar o tipo da variável. O tipo da variável informa o programa sobre qual o tipo de dado que aquela variável está armazenando, como por exemplo texto, número inteiro... Mas, por que isso importa?
@@ -110,12 +110,12 @@ Apesar de falarmos do nosso exemplo alguns destes operadores podem ser aplicados
 
 
 ```cs
-int a = 1 + 2
-int b = a - 1
-int c = a * b
-string d = "io"
-string e = "io"
-e = d + e
+int a = 1 + 2;
+int b = a - 1;
+int c = a * b;
+string d = "io";
+string e = "io";
+e = d + e;
 ```
 
 **Qual o valor das variáveis `a`, `b`, `c`, `d` e `e` ao final do programa?**
