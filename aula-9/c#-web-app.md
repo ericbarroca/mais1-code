@@ -16,6 +16,10 @@ MVC no Contexto Cliente-Servidor:
 - `Cliente` (View): Envia requisições ao servidor e exibe os dados recebidos.
 - `Servidor` (Controller e Model): Processa as requisições, manipula dados (Model) e retorna respostas formatadas para o cliente (View).
 
+<p align="center">
+    <img src="mvc.drawio.png">
+</p>
+
 ### Exemplo Prático
 
 Imagine um sistema simples de gerenciamento de biblioteca. 
