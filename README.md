@@ -40,6 +40,8 @@ Repositório destinados aos alunos de programação do curso da `mais1code` cont
 - [Padrões DAO e Repository - Carolina Dias Fonseca, Dev.io](https://dev.to/diariodeumacdf/padroes-dao-e-repository-13nj)
 - [Modelo client-servidor, Wikipedia](https://pt.wikipedia.org/wiki/Modelo_cliente%E2%80%93servidor)
 - [EEL878 - redes de Computadores I, Luís Henrique Maciel Kosmalski Costa - UFRJ](https://www.gta.ufrj.br/ensino/eel878/redes1-2020-4/slides/Parte2_Aplicacoes_1P.pdf)
+- [Introdução ao ASP.NET Core MVC, Microsoft](https://learn.microsoft.com/pt-br/aspnet/core/tutorials/first-mvc-app/start-mvc?view=aspnetcore-9.0&WT.mc_id=dotnet-35129-website&tabs=visual-studio)
+- [Tutorial: Criar uma API mínima com o ASP.NET Core, Microsoft](https://learn.microsoft.com/pt-br/aspnet/core/tutorials/min-web-api?view=aspnetcore-9.0&tabs=visual-studio)
 
 ## Inidcações de Leitura
 - [Category Theory for Programmers, Bartosz Milewiski](https://unglueit-files.s3.amazonaws.com/ebf/e90890f0a6ea420c9825657d6f3a851d.pdf) (Avançado)
