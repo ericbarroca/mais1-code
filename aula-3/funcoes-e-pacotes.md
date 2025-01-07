@@ -8,10 +8,10 @@ Até o momento nós escrevemos código em um arquivo e como se ele fosse um para
 
 ```csharp
 
-int num1 = 2
-int num2 = 4
+int num1 = 2;
+int num2 = 4;
 
-int res = num1 + num2
+int res = num1 + num2;
 ```
 
 Porém, imagine que eu estamos escrevendo um código que gostaríamos de reutilizá-lo em outras partes do nosso código. No modelo atual teriamos que rescrever este trecho toda vez que quisermos o usar, o que gera bastante repetição e é pouco produtivo. Para resolver esta questão nós temos as `Funções`. Funções nos permitem escrever o código uma vez e o reutilizar em qualquer lugar apenas referenciando o nome da função e passando seus argumentos.
@@ -84,12 +84,12 @@ Para chamar uma função em qualquer parte do seu código você deve seguir a se
 
 ```csharp
 
-int resultado = SomaDoisNumeros(2,4)
+int resultado = SomaDoisNumeros(2,4);
 
-string texto = "olá"
-AdicionaFimAUmaString(texto)
+string texto = "olá";
+AdicionaFimAUmaString(texto);
 
-EscreveAbacaxi()
+EscreveAbacaxi();
 
 ```
 
@@ -123,11 +123,11 @@ Mais a frente abordaremos em mais detalhes os pacotes e outras estruturas de org
 
 - `Console.ReadLine()`: Captura o que o usuário digitou no prompt ao pressionar enter.
 ```csharp
-string userInput = Console.ReadLine()
+string userInput = Console.ReadLine();
 ```
 - `int.Parse(string)`: Converte um valor texto (`string`) para inteiro (`int`).
 ```csharp
-int numInput = int.Parse(Console.ReadLine())
+int numInput = int.Parse(Console.ReadLine());
 ```
 
 ## Referências
