@@ -28,9 +28,9 @@ int multiplicacao(params int[] nums)
 int divisao(params int[] nums)
 {
     double resultado = nums[0];
-    for (int i = 1; i < nums.Length; i++) 
+    for (int i = 1; i < nums.Length; i++)
     {
-        if (nums[i] == 0) 
+        if (nums[i] == 0)
         {
             throw new DivideByZeroException("Divisão por zero não permitida.");
         }
@@ -62,7 +62,7 @@ int escolha(string mensagem)
 
 int operacao(char op, params int[] nums)
 {
-     switch (op) 
+    switch (op)
     {
         case '+': return soma(nums);
         case '-': return subtracao(nums);
@@ -76,8 +76,19 @@ int qtd;
 int[] nums;
 char op;
 
-qtd = escolha("Escolha a qtd de numeros");
+do
+{
+    Console.Write("Escolha a quantidade de números (3-5): ");
+    qtd = Convert.ToInt32(Console.ReadLine());
+    if (qtd < 3 || qtd > 5)
+    {
+        Console.WriteLine("Quantidade inválida. Por favor, escolha entre 3 e 5.");
+    }
+} while (qtd < 3 || qtd > 5);
+
+
 nums = new int[qtd];
+
 for (int i = 0; i < qtd; i++)
 {
     nums[i] = escolha("Escolha um numero");
