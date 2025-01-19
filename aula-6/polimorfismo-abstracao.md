@@ -23,6 +23,117 @@ forma.Desenhar();  // Saída: Desenhando um círculo.
 
 ```
 
+O Polimorfiso serve para que possamos atribuir comportamentos distintos a medida que criamos classes derivadas de outras e queremos fazer mudanças em alguns comportamentos. Notem, que para poder mudar o comportamento da função da classe pai, esta deve ter o modificador `virtual` enquanto a função que está na classe filha e sobrescreverá o comportamento, deve ter o modificador `override`.
+
+O uso do Polimorfismo nos permite simplificar nosso código e tratar objetos como o seu tipo pai, porém garantindo o comportamento específico dos filhos, como mostrado no exemplo abaixo.
+
+#### Exemplo Pizza
+
+Arquivo `pizza.cs`
+
+```csharp
+public class Produto {
+
+    public int ID{get;set;}
+    public string Tamanho {get; private set;}
+    public string[] Adicionais{get;private set;}
+
+    public decimal Valor{get; internal set;}
+
+    public Produto(int id, string tamanho) {
+        ID = id;
+        Tamanho = tamanho;
+    }
+
+    public virtual void CalcularPreco(params string[] adicionais) {
+        if(Tamanho == "pequeno") {
+            Valor+=10;
+        } else if(Tamanho == "medio") {
+            Valor+=15;
+        } else {
+            Valor+=20;
+        }
+
+        //Calcular Adicionais
+        if (adicionais == null) {
+            return;
+        }
+
+        Adicionais = adicionais;
+        Valor+=adicionais.GetLength(0)*5;
+    }
+}
+
+public class Pizza:Produto {
+
+    public Pizza(int id, string sabor, string tamanho)
+    : base(id, tamanho) {
+        Sabor = sabor;
+    }
+
+    public string Sabor {get; private set;}
+
+    public override void CalcularPreco(params string[] adicionais) {
+        base.CalcularPreco(adicionais);
+        
+        if (Sabor == "mussarela") {
+            Valor*=2;
+        } else {
+            Valor*=3;
+        }
+        
+    }
+}
+
+public class Esfiha : Produto {
+
+    public string Sabor {get; private set;}
+
+    public Esfiha(int id, string sabor, string tamanho) : 
+    base(id,tamanho) {
+        Sabor = sabor;
+    }
+
+    public override void CalcularPreco(params string[] adicionais){
+        base.CalcularPreco(adicionais);
+        
+        if(Sabor == "carne") {
+            Valor+=5;
+        } else {
+            Valor+=8;
+        }
+    }
+
+}
+```
+
+Arquivo `Program.cs`
+
+```csharp
+Pizza pizzaMussarela = new Pizza(1, "mussarela", "pequeno");
+// Pizza pizzaCalabresa = new Pizza(2,"calabresa","pequeno");
+Esfiha esfihaCarne = new Esfiha(3, "carne", "grande");
+
+Produto p = new Produto(4,"medio");
+Animal a = new Cachorro();
+
+
+void Total(params Produto[] produtos)
+{
+
+    decimal total = 0;
+    for (int i = 0; i < produtos.Length; i++)
+    {
+        produtos[i].CalcularPreco();
+        total += produtos[i].Valor;
+    }
+
+    Console.WriteLine(total);
+}
+
+Total(pizzaMussarela, esfihaCarne);
+```
+
 ### Abstração
 Abstração: É o processo de simplificar sistemas complexos, destacando apenas os aspectos essenciais e ocultando os detalhes desnecessários.
 
@@ -42,64 +153,55 @@ Forma forma = new Retangulo();
 forma.Desenhar();  // Saída: Desenhando um retângulo.
 ```
 
-### Exemplo veículos
+Repare que na classe abstarta não se implementam as funções, apenas se cria a assinatura do método, para ser implementado por suas classes filhas. Toda classe filha que herdar de uma classe abstrata será obrigada a implementar (override) todas as funções `abstract` da classe pai.
+
+É importante saber que não podemos criar uma instância da classe pai, somente de suas classes filhas.
+
+#### Exemplo Geometria
+
+Arquivo `geometria.cs`
 
 ```csharp
-public class Veiculo
+/*
+Crie uma classe abstrata chamada FormaGeometrica com um método
+abstrato CalcularArea. Em seguida, crie duas subclasses Retangulo
+e Circulo, cada uma implementando o método CalcularArea.
+Teste as classes criando instâncias de Retangulo e Circulo, 
+e chamando o método CalcularArea.
+*/
+
+public abstract class FormaGeometrica {
+    public abstract double CalcularArea(double x, double y);
+}
+
+public class Retangulo : FormaGeometrica
 {
-
-    public Veiculo(string motor)
+    public override double CalcularArea(double x, double y)
     {
-        this.motor = motor;
-    }
-
-    private string motor { get; }
-    public int Velocidade { get; set; }
-
-    public int Locomover(int tempo)
-    {
-        Console.WriteLine($"Locomovi com o motor: {motor}");
-        return Velocidade * tempo;
+        return x*y;
     }
 }
 
-public class Carro : Veiculo
+public class Circulo : FormaGeometrica
 {
-
-    public Carro(string motor, int tamanhoPortaMalas,
-     string categoria) : base(motor)
+    public override double CalcularArea(double x, double y)
     {
-        this.TamanhoPortaMalas = tamanhoPortaMalas;
-        this.Categoria = categoria;
+        return x*y*y;
     }
-
-    public int TamanhoPortaMalas {get;}
-
-    public string Categoria{get;} //Black, Confort, x
 }
+```
 
-public class Moto : Veiculo
-{
+Arquivo `Program.cs`
 
-    public Moto(string motor) : base(motor)
-    {
+```csharp
+FormaGeometrica retangulo = new Retangulo();
+FormaGeometrica circulo = new Circulo();
 
-    }
+double areaRet = retangulo.CalcularArea(2,2);
+double areaCirc = circulo.CalcularArea(Math.PI,2);
 
-    private bool levaPassageiro;
-}
-
-Carro camaro = new Carro("V8", 50, "UberX");
-camaro.Velocidade = 80;
-int distancia = camaro.Locomover(2);
-Console.WriteLine(distancia);
-Console.WriteLine(camaro.Categoria);
-
-Moto ninja = new Moto("600cc");
-ninja.Velocidade = 100;
-distancia = ninja.Locomover(1);
-Console.WriteLine(distancia);
-string cat = ninja.Categoria;
+Console.WriteLine(areaRet);
+Console.WriteLine(areaCirc);
 ```
 
 ## Referências

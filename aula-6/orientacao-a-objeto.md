@@ -145,6 +145,72 @@ gatinho.Comer();
 ```
 </details>
 
+#### Exemplo veículos
+
+Arquivo `veiculo.cs` 
+
+```csharp
+public class Veiculo
+{
+
+    public Veiculo(string motor)
+    {
+        this.motor = motor;
+    }
+
+    private string motor { get; }
+    public int Velocidade { get; set; }
+
+    public int Locomover(int tempo)
+    {
+        Console.WriteLine($"Locomovi com o motor: {motor}");
+        return Velocidade * tempo;
+    }
+}
+
+public class Carro : Veiculo
+{
+
+    public Carro(string motor, int tamanhoPortaMalas,
+     string categoria) : base(motor)
+    {
+        this.TamanhoPortaMalas = tamanhoPortaMalas;
+        this.Categoria = categoria;
+    }
+
+    public int TamanhoPortaMalas {get;}
+
+    public string Categoria{get;} //Black, Confort, x
+}
+
+public class Moto : Veiculo
+{
+
+    public Moto(string motor) : base(motor)
+    {
+
+    }
+
+    private bool levaPassageiro;
+}
+```
+
+Arquivo: `Program.cs`
+
+```csharp
+Carro camaro = new Carro("V8", 50, "UberX");
+camaro.Velocidade = 80;
+int distancia = camaro.Locomover(2);
+Console.WriteLine(distancia);
+Console.WriteLine(camaro.Categoria);
+
+Moto ninja = new Moto("600cc");
+ninja.Velocidade = 100;
+distancia = ninja.Locomover(1);
+Console.WriteLine(distancia);
+string cat = ninja.Categoria;
+```
+
 ## Argumentos por Valor e por Referência
 ### Passagem de Argumentos por Valor
 
