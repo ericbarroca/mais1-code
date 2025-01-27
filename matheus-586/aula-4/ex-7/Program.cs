@@ -14,7 +14,7 @@ int media = somatorio / 3;
 
 if (media >= 7){
     Console.WriteLine("Você foi aprovado ");
-} if (media <= 5 && media < 7){
+} if (media <= 6 && media >= 5){
     Console.WriteLine("Você está de recuperação ");
 }if (media < 5){
     Console.WriteLine("Você está reprovado ");
