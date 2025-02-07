@@ -1,2 +1,17 @@
 ﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+
+using ProjetoFinal.Models;
+using ProjetoFinal.Repository;
+
+Pet p1 = new Pet("alberto", DateTime.Now, Especie.cachorro, "");
+Pet p2 = new Pet("joao", DateTime.Now, Especie.cachorro, "");
+
+PetRepository repo = new PetRepository();
+repo.Upsert(p1);
+repo.Upsert(p2);
+
+p2.Nome="paulo";
+
+repo.Upsert(p2);
+
+Console.ReadLine();
