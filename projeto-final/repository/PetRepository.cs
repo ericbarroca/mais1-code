@@ -53,11 +53,26 @@ public class PetRepository : Repository<DAO.Pet>, IRepository<Pet>
 
     public bool Remove(int id)
     {
-        return false;
+        if (id <= 0) {
+            return false;
+        }
+
+        DAO.Pet pet = items.SingleOrDefault(p=>p.ID == id);
+
+        if(pet is null) {
+            return false;
+        }
+
+        return items.Remove(pet);
     }
 
     public List<Pet> List()
     {
-        return null;
+        List<Pet> pets = new List<Pet>();
+        foreach(DAO.Pet pet in items) {
+            pets.Add(new Pet(pet));
+        }
+
+        return pets;
     }
 }

@@ -14,4 +14,8 @@ p2.Nome="paulo";
 
 repo.Upsert(p2);
 
+repo.Remove(p1.ID);
+
+List<Pet> pets = repo.List();
+
 Console.ReadLine();
