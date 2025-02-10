@@ -25,7 +25,7 @@ public class PetRepository : Repository<DAO.Pet>, IRepository<Pet>
             int maxID = 0;
 
             if (items.Count > 0) {
-               maxID =  items.Max(p=>p.ID);
+                maxID =  items.Max(p=>p.ID);
             }
 
             entidade.ID = maxID+1;
