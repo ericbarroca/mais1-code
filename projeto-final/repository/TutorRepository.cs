@@ -23,12 +23,7 @@ namespace ProjetoFinal.Repository
         {
             tutores.FirstOrDefault(t => t.NumeroDocumento == numeroDocumento);
 
-            if (tutores is null)
-        {
-            return null;
-        }
-
-        return new Tutor(tutores);
+            return new Tutor(tutores);
         }
     }
 }
