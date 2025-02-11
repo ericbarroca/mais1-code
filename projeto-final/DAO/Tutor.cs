@@ -3,33 +3,35 @@ namespace ProjetoFinal.DAO;
 using ProjetoFinal.Models;
 using ProjetoFinal.Repository;
 
-public class Tutor : PetRepository{
+public class Tutor {
 
-    public string NomeTutor {get; set;}
+    public string Nome {get; set;}
 
-    public DateTime DataNascimentoTutor {get; set;}
+    public DateTime DataNascimento {get; set;}
 
-    public string EnderecoTutor {get; set;}
+    public string Endereco {get; set;}
 
-    public int TelefoneTutor {get; set;}
+    public int Telefone {get; set;}
 
-    public DocumentoTutor TipoDocumento {get; set;}
+    public Documento Documento {get; set;}
 
-    public string NumeroDocumento {get; set;}
+    public List<DAO.Pet> Pets {get;set;}
 
-
-    public Tutor(string nomeTutor, DateTime dataNascimentoTutor, string enderecoTutor, int telefoneTutor)
+    public Tutor(string nome, Documento documento, DateTime dataNascimento,
+     string endereco, int telefone, List<DAO.Pet> pets)
     {
-        NomeTutor = nomeTutor;
-        DataNascimentoTutor = dataNascimentoTutor;
-        EnderecoTutor = enderecoTutor;
-        TelefoneTutor = telefoneTutor;
+        Nome = nome;
+        DataNascimento = dataNascimento;
+        Documento = new Documento(documento.Tipo, documento.Numero);
+        Endereco = endereco;
+        Telefone = telefone;
+        Pets = pets;
         
     }
 
-    public Tutor(ProjetoFinal.DAO.Tutor tutor): this(tutor.NomeTutor, tutor.DataNascimentoTutor, tutor.EnderecoTutor, tutor.TelefoneTutor) {
-        this.TipoDocumento = tutor.TipoDocumento; 
-        this.NumeroDocumento = tutor.NumeroDocumento;
+    public Tutor(Models.Tutor tutor, List<DAO.Pet> pets): this(tutor.Nome, tutor.Documento,
+     tutor.DataNascimento, tutor.Endereco, tutor.Telefone, pets) {
+        
     }
 
 }
