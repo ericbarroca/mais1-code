@@ -3,30 +3,27 @@
 using ProjetoFinal.Models;
 using ProjetoFinal.Repository;
 
-Pet p1 = new Pet("alberto", DateTime.Now, Especie.cachorro, "");
-Pet p2 = new Pet("joao", DateTime.Now, Especie.cachorro, "");
+TutorRepository tutorRepository = new TutorRepository();
+PetRepository petRepository = new PetRepository(tutorRepository);
 
-PetRepository repo = new PetRepository();
-repo.Upsert(p1);
-repo.Upsert(p2);
+Tutor tutoraAlberta = new Tutor("alberta", new Documento(TipoDocumento.RG, 123456789),
+ DateTime.Now, "rua uranos", 216365698);
+
+tutorRepository.Upsert(tutoraAlberta);
+
+Pet p1 = new Pet("alberto", DateTime.Now, Especie.cachorro,"", tutoraAlberta.Documento);
+Pet p2 = new Pet("joao", DateTime.Now, Especie.cachorro,"", tutoraAlberta.Documento);
+
+
+tutoraAlberta.UpsertPet(petRepository,p1);
+tutoraAlberta.UpsertPet(petRepository,p2);
 
 p2.Nome = "paulo";
 
-repo.Upsert(p2);
+tutoraAlberta.UpsertPet(petRepository,p2);
 
-repo.Remove(p1.ID);
+tutoraAlberta.Remove(petRepository,p1.ID);
 
-List<Pet> pets = repo.List();
-
-
-
-Tutor tutoraAlberta = new Tutor(repo,"alberta", new Documento(TipoDocumento.RG, 123456789),
- DateTime.Now, "rua uranos", 216365698, new List<int>());
-
-TutorRepository tutorRepository = new TutorRepository(repo);
-tutorRepository.Upsert(tutoraAlberta);
-
-tutoraAlberta.AddPet(p1.ID);
-tutorRepository.Upsert(tutoraAlberta);
+List<Pet> pets = tutoraAlberta.Pets(petRepository);
 
 Console.ReadLine();

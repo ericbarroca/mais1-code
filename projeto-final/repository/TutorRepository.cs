@@ -4,11 +4,6 @@ namespace ProjetoFinal.Repository
 
     public class TutorRepository : Repository<DAO.Tutor>, IRepository<Tutor>
     {
-        private PetRepository petRepository;
-        public TutorRepository(PetRepository petRepo) {
-            petRepository = petRepo;
-        }
-
         public Tutor Get(int id)
         {
             DAO.Tutor tutor = items.SingleOrDefault(t => t.Documento.Numero == id);
@@ -18,7 +13,7 @@ namespace ProjetoFinal.Repository
                 return null;
             }
 
-            return new Tutor(petRepository,tutor, tutor.Pets.Select(p=>p.ID).ToList());
+            return new Tutor(tutor);
         }
 
         public bool Upsert(Tutor entidade)
@@ -26,7 +21,7 @@ namespace ProjetoFinal.Repository
             DAO.Tutor tutor = items.SingleOrDefault(t=>t.Documento.Numero == entidade.Documento.Numero);
 
             if(tutor is null) {
-                tutor = new DAO.Tutor(entidade, entidade.ListPets().Select(p=>new DAO.Pet(p)).ToList());
+                tutor = new DAO.Tutor(entidade);
                 items.Add(tutor);
                 return true;
             }
@@ -37,7 +32,6 @@ namespace ProjetoFinal.Repository
             tutor.Endereco = entidade.Endereco;
             tutor.Nome = entidade.Nome;
             tutor.Telefone = entidade.Telefone;
-            tutor.Pets = entidade.ListPets().Select(p=>new DAO.Pet(p)).ToList();
 
             return true;
         }
@@ -59,7 +53,7 @@ namespace ProjetoFinal.Repository
             List<Tutor> tutores = new List<Tutor>();
             foreach (DAO.Tutor tutor in items)
             {
-                tutores.Add(new Tutor(petRepository,tutor, tutor.Pets.Select(p=>p.ID).ToList()));
+                tutores.Add(new Tutor(tutor));
             }
 
             return tutores;

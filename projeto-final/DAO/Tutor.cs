@@ -15,22 +15,19 @@ public class Tutor {
 
     public Documento Documento {get; set;}
 
-    public List<DAO.Pet> Pets {get;set;}
-
     public Tutor(string nome, Documento documento, DateTime dataNascimento,
-     string endereco, int telefone, List<DAO.Pet> pets)
+     string endereco, int telefone)
     {
         Nome = nome;
         DataNascimento = dataNascimento;
         Documento = new Documento(documento.Tipo, documento.Numero);
         Endereco = endereco;
         Telefone = telefone;
-        Pets = pets;
         
     }
 
-    public Tutor(Models.Tutor tutor, List<DAO.Pet> pets): this(tutor.Nome, tutor.Documento,
-     tutor.DataNascimento, tutor.Endereco, tutor.Telefone, pets) {
+    public Tutor(Models.Tutor tutor): this(tutor.Nome, tutor.Documento,
+     tutor.DataNascimento, tutor.Endereco, tutor.Telefone) {
         
     }
 

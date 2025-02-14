@@ -4,6 +4,10 @@ namespace ProjetoFinal.Repository;
 
 public class PetRepository : Repository<DAO.Pet>, IRepository<Pet>
 {
+    private TutorRepository tutorRepository;
+    public PetRepository(TutorRepository tutorRepository) {
+        this.tutorRepository = tutorRepository;
+    }
 
     public Pet Get(int id)
     {
@@ -19,6 +23,13 @@ public class PetRepository : Repository<DAO.Pet>, IRepository<Pet>
 
     public bool Upsert(Pet entidade)
     {
+        if(entidade.TutorID == null) {
+            throw new NullReferenceException("Um pet precisa ter tutor");
+        }
+
+        if(tutorRepository.Get(entidade.TutorID.Numero) is null) {
+            throw new Exception("Tutor não encontrado na base");
+        }
 
         if (entidade.ID == 0)
         {

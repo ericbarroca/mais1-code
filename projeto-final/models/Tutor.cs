@@ -53,9 +53,6 @@ public class Documento
 }
 public class Tutor
 {
-
-    private PetRepository petRepository;
-
     public string Nome { get; set; }
 
     public DateTime DataNascimento { get; set; }
@@ -82,65 +79,37 @@ public class Tutor
         }
     }
 
-    private List<Pet> Pets { get; set; }
-
-    public Tutor(PetRepository petRepo)
-    {
-        petRepository = petRepo;
-    }
-
-    public Tutor(PetRepository petRepo, string nome, Documento documento,
-     DateTime dataNascimento, string endereco, int telefone,
-     List<int> pets) : this(petRepo)
+    public Tutor(string nome, Documento documento,
+     DateTime dataNascimento, string endereco, int telefone)
     {
         Nome = nome;
         DataNascimento = dataNascimento;
         Endereco = endereco;
         Telefone = telefone;
         Documento = documento;
-        Pets = LoadPets(pets);
 
     }
 
-    public Tutor(PetRepository petRepo, DAO.Tutor tutor, List<int> pets) : this(
-        petRepo, tutor.Nome,
+    public Tutor(DAO.Tutor tutor) : this(tutor.Nome,
      tutor.Documento, tutor.DataNascimento, tutor.Endereco,
-      tutor.Telefone, pets)
+      tutor.Telefone)
     {
     }
 
-    public List<Pet> ListPets()
-    {
-        return Pets.ToList();
-    }
-
-    private List<Pet> LoadPets(List<int> petIDs)
+    public List<Pet> Pets(PetRepository petRepository)
     {
         List<Pet> pets = petRepository.List();
-        List<Pet> meusPets = new List<Pet>();
-
-
-        foreach (Pet pet in pets)
-        {
-            if (petIDs.Any(id => id == pet.ID))
-            {
-                meusPets.Add(pet);
-            }
-        }
-
-        return meusPets;
+        return pets.FindAll(p => p.TutorID.Numero == Documento.Numero)
+        .ToList();
     }
 
-    public bool AddPet(int petID) {
+    public bool UpsertPet(PetRepository petRepository, Pet pet)
+    {
+        return petRepository.Upsert(pet);
+    }
 
-        Pet existingPet = petRepository.Get(petID);
-        if(existingPet is null) {
-            return false;
-        }
-
-        Pets.Add(existingPet);
-        return true;
-
+    public bool Remove(PetRepository petRepository, int petID) {
+        return petRepository.Remove(petID);
     }
 
 }
