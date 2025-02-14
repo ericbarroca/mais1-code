@@ -108,7 +108,7 @@ public class Tutor
         return petRepository.Upsert(pet);
     }
 
-    public bool Remove(PetRepository petRepository, int petID) {
+    public bool RemovePet(PetRepository petRepository, int petID) {
         return petRepository.Remove(petID);
     }
 

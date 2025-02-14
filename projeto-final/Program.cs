@@ -22,7 +22,7 @@ p2.Nome = "paulo";
 
 tutoraAlberta.UpsertPet(petRepository,p2);
 
-tutoraAlberta.Remove(petRepository,p1.ID);
+tutoraAlberta.RemovePet(petRepository,p1.ID);
 
 List<Pet> pets = tutoraAlberta.Pets(petRepository);
 
