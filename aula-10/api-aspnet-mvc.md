@@ -39,11 +39,11 @@ public class Livro {
         Editora = editora;
     }
 
-    public string Nome {get;private set;}
+    public string Nome {get; set;}
 
-    public string Autor {get;private set;}
+    public string Autor {get; set;}
 
-    public string Editora {get;private set;}
+    public string Editora {get; set;}
 }
 
 public class Biblioteca {
@@ -117,8 +117,113 @@ Para chamar os endpoints no browser digite na barra de endereço:
 http://localhost:5113/livros
 http://localhost:5113/livros/A%20jornada%20para%20o%20oeste
 ```
+Agora vamos criar os endpoints para adicionarmos novos livros e atualizarmos livros. No arquivo `Program.cs` adicionaremos o conteúdo abaixo antes da linha `app.Run();`:
 
+```csharp
+app.MapPost("/livros", (Biblioteca biblioteca, Livro livro) =>
+{
+    var livroExistente = biblioteca.BuscarLivro(livro.Nome);
 
+    if (!(livroExistente is null)) {
+        return Results.BadRequest("Livro ja existe");
+    }
+
+    biblioteca.Upsert(livro);
+
+    return Results.Created();
+});
+
+app.MapPut("/livros", (Biblioteca biblioteca, Livro livro) =>
+{
+    var livroExistente = biblioteca.BuscarLivro(livro.Nome);
+
+    if (livroExistente is null) {
+        return Results.BadRequest("Livro não existe");
+    }
+
+    biblioteca.Upsert(livro);
+
+    return Results.Accepted();
+});
+```
+E na classe `Biblioteca` adicionaremos a função de `Upsert`:
+
+```csharp
+public void Upsert(Livro livro) {
+
+    var livroExistente = BuscarLivro(livro.Nome);
+
+    if (livroExistente is null) {
+        livros.Add(livro);
+        return;
+    }
+
+    livroExistente.Autor = livro.Autor;
+    livroExistente.Editora = livro.Editora;
+    livroExistente.Nome = livro.Nome;
+
+    }
+```
+
+Estes códigos realizam a operação de adicionar ou atualizar um livro a nossa biblioteca. Na nossa API temos 2 endpoints distintos, 1 para adicionar (`POST`) e 1 para atualizar (`PUT`). Porém, ambos chamam o mesmo código na biblioteca, a função de Upssert.
+
+Fazemos isso pois podemos dar tratamentos diferentes a criação e a atualização na camada da API, como por exemplo o erro a ser retornado.
+
+Para testarmos estes novos `endpoints` precisamos conseguir fazer `PUTs` ou `POSTs`, o que não é possível diretamente pela barra de endereço do navegador, que só realiza `GETs`. Para isso vamos usar uma linha de comando em nosso terminal, mas especificamente o `curl`.
+
+O `curl` nos permite fazer todos os tipos de requests HTTP, abaixo segue um exemplo de `POST` e outro de `PUT`.
+
+```bash
+curl -d "{\"Autor\":\"Eric\", \"Nome\":\"Livro\", \"Editora\": \"A\"}" -H "Content-Type: application/json" -X POST http://localhost:5054/livros 
+```
+
+```bash
+curl -d "{\"Autor\":\"Eric\", \"Nome\":\"Livro\", \"Editora\": \"B\"}" -H "Content-Type: application/json" -X PUT http://localhost:5054/livros 
+```
+
+Nestes comandos reparem que o `-d` é o parametro que premite passarmos o `JSON` que representa o nosso objeto a ser recebido pelo endpoint, no caso o objeto da classe `Livro`. O `JSON` nada mais é que a representação em texto do conteúdo de um objeto, respeitando as propriedades definidas na classe e especificando valores para cada uma. Neste caso um `Livro` tem as propriedades `Nome`, `Autor` e `Editora`, então o `JSON` vai especificar e dar valor a cada uma delas. Além disso, em JSON as `{}` representam um objeto.
+
+Depois disso precisamos especificar no `curl` que a requisição vai passar um objeto `JSON`, fazemos isso pelo argumento `-H` especificando o `Content-Type`. Finalmente usamos o `-X POST` para especificar o verbo HTTP a ser usado seguido do caminho do nosso `endpoint`.
+
+## Desafio - Implementação DELETE
+
+<details>
+<summary><b>Implementem um endpoint em que seja possível deletar um Livro da biblioteca, esse endpoint deve somente receber o nome do Livro</b></summary>
+
+Na classe `Program.cs` adicione o endpoint de delete.
+
+```csharp
+app.MapDelete("livros/{nome}", (Biblioteca biblioteca, string nome) => {
+    var livroExistente = biblioteca.BuscarLivro(nome);
+
+    if (!biblioteca.Delete(nome)) {
+        return Results.BadRequest("Livro não existe");
+    }
+
+    return Results.Ok();
+});
+```
+
+Na classe da `Biblioteca` adicione a função de `Delete`:
+
+```csharp
+public bool Delete(string nome) {
+    var livroExistente = BuscarLivro(nome);
+
+    if (livroExistente is null) {
+        return false;
+    }
+
+    return livros.Remove(livroExistente);
+}
+```
+
+Para testar o `DELETE` podemos usar o comando `curl` abaixo:
+
+```bash
+curl -X DELETE http://localhost:5054/livros/Livro
+```
+</details>
 ## Referências
 
 - [Tutorial: Criar uma API mínima com o ASP.NET Core, Microsoft](https://learn.microsoft.com/pt-br/aspnet/core/tutorials/min-web-api?view=aspnetcore-9.0&tabs=visual-studio)
