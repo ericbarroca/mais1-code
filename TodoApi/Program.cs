@@ -1,4 +1,5 @@
 var builder = WebApplication.CreateBuilder(args);
+<<<<<<< HEAD
 builder.Services.AddSingleton<Biblioteca>();
 
 var app = builder.Build();
@@ -50,5 +51,10 @@ app.MapDelete("/livros/{nome}", (Biblioteca biblioteca, string nome)=>{
     }
     return Results.NotFound();
 });
+=======
+var app = builder.Build();
+
+app.MapGet("/", () => "Hello World!");
+>>>>>>> ebf331e7209f3f1338a0c05da814563eded71451
 
 app.Run();
