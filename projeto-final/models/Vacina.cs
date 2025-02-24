@@ -1,3 +1,4 @@
+namespace ProjetoFinal.Models;
 using ProjetoFinal.DAO;
 
 
@@ -15,4 +16,5 @@ public class Vacina
             Vacina = vacina;
             DataDeAplicacao = dataDeAplicacao;
             DataDeValidade = dataDeAplicacao.Add(vacinaDurabilidade);
-
+        }
+}
