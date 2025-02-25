@@ -1,9 +1,18 @@
-namespace ProjetoFinal.Repository
+namespace Libs.Repository
 {
-    using ProjetoFinal.Models;
+    using Libs.Models;
 
     public class TutorRepository : Repository<DAO.Tutor>, IRepository<Tutor>
     {
+        public TutorRepository():base() {
+            items.Add(new DAO.Tutor {
+                DataNascimento = new DateTime(1992,01,02),
+                Documento = new Documento(TipoDocumento.RG, 123456789),
+                Endereco = "Rua A, 43",
+                Nome = "Jubileu",
+                Telefone = 23234342
+            });
+        }
         public Tutor Get(int id)
         {
             DAO.Tutor tutor = items.SingleOrDefault(t => t.Documento.Numero == id);

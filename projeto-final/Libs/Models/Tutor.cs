@@ -1,8 +1,8 @@
 
 using System.Data;
-using ProjetoFinal.Repository;
+using Libs.Repository;
 
-namespace ProjetoFinal.Models;
+namespace Libs.Models;
 
 
 public enum TipoDocumento

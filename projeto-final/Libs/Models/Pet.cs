@@ -1,8 +1,9 @@
-using System.Reflection.Metadata;
-using ProjetoFinal.Models;
+namespace Libs.Models;
 
-namespace ProjetoFinal.DAO;
-
+public enum Especie {
+    cachorro,
+    gato
+}
 
 public class Pet {
     public int ID {get; set;}
@@ -11,14 +12,18 @@ public class Pet {
 
     public DateTime DataNascimento {get;set;}
 
-    public int Especie {get;set;}
+    public Especie Especie {get;set;}
 
     public string Raca {get;set;}
 
     public Documento TutorID {get;set;}
 
+    public Pet() {
+        
+    }
+
     public Pet(string nome, DateTime dataNascimento,
-    int especie, string raca, Documento tutorID) {
+    Especie especie, string raca, Documento tutorID) {
 
         this.Nome = nome;
         this.DataNascimento = dataNascimento;
@@ -27,8 +32,8 @@ public class Pet {
         this.TutorID = new Documento(tutorID.Tipo, tutorID.Numero);
     }
 
-    public Pet(ProjetoFinal.Models.Pet pet):this(pet.Nome,
-    pet.DataNascimento,(int)pet.Especie,pet.Raca, pet.TutorID) {
+    public Pet(DAO.Pet pet): this(pet.Nome,
+    pet.DataNascimento, (Especie)pet.Especie, pet.Raca, pet.TutorID) {
         this.ID = pet.ID;
     }
 }

@@ -1,6 +1,6 @@
-using ProjetoFinal.Models;
+using Libs.Models;
 
-namespace ProjetoFinal.Repository;
+namespace Libs.Repository;
 
 public class PetRepository : Repository<DAO.Pet>, IRepository<Pet>
 {

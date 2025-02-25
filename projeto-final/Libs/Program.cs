@@ -1,7 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
-using ProjetoFinal.Models;
-using ProjetoFinal.Repository;
+using Libs.Models;
+using Libs.Repository;
 
 TutorRepository tutorRepository = new TutorRepository();
 PetRepository petRepository = new PetRepository(tutorRepository);

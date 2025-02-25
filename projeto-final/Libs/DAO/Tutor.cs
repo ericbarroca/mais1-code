@@ -1,7 +1,7 @@
-namespace ProjetoFinal.DAO;
+namespace Libs.DAO;
 
-using ProjetoFinal.Models;
-using ProjetoFinal.Repository;
+using Libs.Models;
+using Libs.Repository;
 
 public class Tutor {
 
@@ -14,6 +14,10 @@ public class Tutor {
     public int Telefone {get; set;}
 
     public Documento Documento {get; set;}
+
+    public Tutor() {
+        
+    }
 
     public Tutor(string nome, Documento documento, DateTime dataNascimento,
      string endereco, int telefone)
