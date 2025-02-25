@@ -1,7 +1,6 @@
 namespace Libs.Models;
 using Libs.DAO;
 
-
 public class Vacina
 {
     public int Id { get; set; }
@@ -10,12 +9,17 @@ public class Vacina
     public DateTime DataDeValidade { get; set; }
     public TimeSpan Durabilidade { get; set; }
 
-    public Vacina(DAO.Vacina vacina)
+    public Vacina(Models.Vacina vacina) : this(vacina.Nome, vacina.DataDeAplicacao, vacina.DataDeValidade, vacina.Id, vacina.Durabilidade)
     {
-        this.DataDeAplicacao = vacina.DataDeAplicacao;
-        this.DataDeValidade = vacina.DataDeValidade;
-        this.Id = vacina.Id;
-        this.Nome = vacina.Nome;
-        this.Durabilidade = vacina.Durabilidade;
+
+    }
+
+    public Vacina(string nome, DateTime dataDeAplicacao, DateTime dataDeValidade, int id, TimeSpan durabilidade)
+    {
+        Nome = nome;
+        DataDeAplicacao = dataDeAplicacao;
+        DataDeValidade = dataDeValidade;
+        Id = id;
+        Durabilidade = durabilidade;
     }
 }
