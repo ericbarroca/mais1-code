@@ -4,8 +4,8 @@ using Libs.Models;
 using Libs.Repository;
 
 public class Tutor {
-
-    public string Nome {get; set;}
+ public string Nome {get; set;} 
+ 
 
     public DateTime DataNascimento {get; set;}
 
@@ -14,7 +14,6 @@ public class Tutor {
     public int Telefone {get; set;}
 
     public Documento Documento {get; set;}
-
     public Tutor() {
         
     }
