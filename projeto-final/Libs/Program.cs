@@ -17,6 +17,7 @@ Pet p2 = new Pet("joao", DateTime.Now, Especie.cachorro,"", tutoraAlberta.Docume
 
 tutoraAlberta.UpsertPet(petRepository,p1);
 tutoraAlberta.UpsertPet(petRepository,p2);
+Vacina vacina1 = new Vacina("raiva", DateTime.Now, DateTime.Now, 20, TimeSpan.FromDays(90));
 
 p2.Nome = "paulo";
 
@@ -24,6 +25,11 @@ tutoraAlberta.UpsertPet(petRepository,p2);
 
 tutoraAlberta.RemovePet(petRepository,p1.ID);
 
+
+
 List<Pet> pets = tutoraAlberta.Pets(petRepository);
+
+
+
 
 Console.ReadLine();

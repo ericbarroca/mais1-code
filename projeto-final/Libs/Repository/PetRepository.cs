@@ -86,4 +86,9 @@ public class PetRepository : Repository<DAO.Pet>, IRepository<Pet>
 
         return pets;
     }
+
+    internal object Get(object value)
+    {
+        throw new NotImplementedException();
+    }
 }
