@@ -30,8 +30,4 @@ public class Vacina
     {
         this.vacina = vacina;
     }
-
-    public Vacina()
-    {
-    }
 }

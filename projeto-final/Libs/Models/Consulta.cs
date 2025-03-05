@@ -1,4 +1,4 @@
-namespace Libs.DAO;
+namespace Libs.Models;
 
 public class Consulta
 {
@@ -18,7 +18,7 @@ public class Consulta
         Telefone = telefone;
     }
 
-    public Consulta(Models.Consulta Consulta) : this(Consulta.NomeDoutor, Consulta.DataConsulta, Consulta.Diagnostico, Consulta.Telefone) 
+    public Consulta(DAO.Consulta Consulta) : this(Consulta.NomeDoutor, Consulta.DataConsulta, Consulta.Diagnostico, Consulta.Telefone) 
     {
 
     }
