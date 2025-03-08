@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo Javascript</title>
+</head>
+<body>
+    <h1>Dados da API</h1>
+    <div id="dados"></div>
+
+    <script>
+        // URL da API
+        const url = "http://localhost:5115/dados";
+
+        // Função para realizar uma requisição GET
+        async function obterDados() {
+            try {
+                const response = await fetch(url);
+                const dados = await response.json();
+                document.getElementById("dados").textContent = JSON.stringify(dados, null, 2);
+            } catch (error) {
+                console.error("Erro ao obter dados:", error);
+            }
+        }
+
+        // Chama a função ao carregar a página
+        window.onload = obterDados;
+    </script>
+</body>
+</html>
