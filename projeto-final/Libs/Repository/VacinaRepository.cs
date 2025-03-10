@@ -11,7 +11,7 @@ namespace Libs.Repository
             this.petRepository = petRepository;
         }
 
-        
+
         public Vacina Get(int id)
         {
             DAO.Vacina vacina = items.SingleOrDefault(v => v.ID == id);
@@ -21,47 +21,47 @@ namespace Libs.Repository
                 return null;
             }
 
-            return new Vacina(vacina);  
+            return new Vacina(vacina);
         }
 
-        
+
         public bool Upsert(Vacina entidade)
-{
-    
-    if (entidade.PetID == null)
-    {
-        throw new NullReferenceException("A vacina precisa estar associada a um pet.");
-    }
-
-    
-    if (petRepository.Get(entidade.PetID) is null)
-    {
-        throw new Exception("Pet não encontrado na base.");
-    }
-
-    
-    if (entidade.ID == 0)
-    {
-        int maxID = 0;
-        if (items.Count > 0)
         {
-            maxID = items.Max(v => v.ID);  
-        }
 
-        entidade.ID = maxID + 1;  
-        items.Add(new DAO.Vacina(entidade));  
-        return true;
-    }
+            if (entidade.PetID == null)
+            {
+                throw new NullReferenceException("A vacina precisa estar associada a um pet.");
+            }
 
-    
-    DAO.Vacina vacina = items.SingleOrDefault(v => v.ID == entidade.ID);
 
-    if (vacina is null)
-    {
-        return false;
-    }
+            if (petRepository.Get(entidade.PetID) is null)
+            {
+                throw new Exception("Pet não encontrado na base.");
+            }
 
-            
+
+            if (entidade.ID == 0)
+            {
+                int maxID = 0;
+                if (items.Count > 0)
+                {
+                    maxID = items.Max(v => v.ID);
+                }
+
+                entidade.ID = maxID + 1;
+                items.Add(new DAO.Vacina(entidade));
+                return true;
+            }
+
+
+            DAO.Vacina vacina = items.SingleOrDefault(v => v.ID == entidade.ID);
+
+            if (vacina is null)
+            {
+                return false;
+            }
+
+
             vacina.Nome = entidade.Nome;
             vacina.DataDeAplicacao = entidade.DataDeAplicacao;
             vacina.DataDeValidade = entidade.DataDeValidade;
@@ -69,7 +69,7 @@ namespace Libs.Repository
 
             return true;
         }
-        
+
         public List<Vacina> List()
         {
             List<Vacina> vacinas = new List<Vacina>();

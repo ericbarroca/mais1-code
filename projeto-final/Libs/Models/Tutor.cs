@@ -105,6 +105,7 @@ public class Tutor
 
     public bool UpsertPet(PetRepository petRepository, Pet pet)
     {
+        pet.TutorID = Documento;
         return petRepository.Upsert(pet);
     }
 

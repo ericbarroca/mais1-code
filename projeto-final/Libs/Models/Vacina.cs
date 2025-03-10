@@ -3,31 +3,24 @@ using Libs.DAO;
 
 public class Vacina
 {
-    private DAO.Vacina vacina;
-
     public int ID { get; set; }
     public string Nome { get; set; }
     public DateTime DataDeAplicacao { get; set; }
     public DateTime DataDeValidade { get; set; }
     public TimeSpan Durabilidade { get; set; }
-    public object PetID { get; internal set; }
+    public int PetID { get; set; }
 
-    public Vacina(Models.Vacina vacina) : this(vacina.Nome, vacina.DataDeAplicacao, vacina.DataDeValidade, vacina.ID, vacina.Durabilidade)
-    {
-
-    }
-
-    public Vacina(string nome, DateTime dataDeAplicacao, DateTime dataDeValidade, int id, TimeSpan durabilidade)
+    public Vacina(string nome, DateTime dataDeAplicacao, DateTime dataDeValidade, TimeSpan durabilidade, int petID)
     {
         Nome = nome;
         DataDeAplicacao = dataDeAplicacao;
         DataDeValidade = dataDeValidade;
-        ID = id;
         Durabilidade = durabilidade;
+        PetID = petID;
     }
 
-    public Vacina(DAO.Vacina vacina)
+    public Vacina(DAO.Vacina vacina) : this(vacina.Nome, vacina.DataDeAplicacao, vacina.DataDeValidade, vacina.Durabilidade, vacina.PetID)
     {
-        this.vacina = vacina;
+        ID = vacina.ID;
     }
 }

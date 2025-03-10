@@ -23,17 +23,17 @@ public class Pet {
     }
 
     public Pet(string nome, DateTime dataNascimento,
-    Especie especie, string raca, Documento tutorID) {
+    Especie especie, string raca) {
 
         this.Nome = nome;
         this.DataNascimento = dataNascimento;
         this.Especie = especie;
         this.Raca = raca;
-        this.TutorID = new Documento(tutorID.Tipo, tutorID.Numero);
     }
 
     public Pet(DAO.Pet pet): this(pet.Nome,
-    pet.DataNascimento, (Especie)pet.Especie, pet.Raca, pet.TutorID) {
+    pet.DataNascimento, (Especie)pet.Especie, pet.Raca) {
         this.ID = pet.ID;
+        this.TutorID = pet.TutorID;
     }
 }

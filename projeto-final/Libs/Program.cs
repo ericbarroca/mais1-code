@@ -11,13 +11,12 @@ Tutor tutoraAlberta = new Tutor("alberta", new Documento(TipoDocumento.RG, 12345
 
 tutorRepository.Upsert(tutoraAlberta);
 
-Pet p1 = new Pet("alberto", DateTime.Now, Especie.cachorro,"", tutoraAlberta.Documento);
-Pet p2 = new Pet("joao", DateTime.Now, Especie.cachorro,"", tutoraAlberta.Documento);
+Pet p1 = new Pet("alberto", DateTime.Now, Especie.cachorro,"");
+Pet p2 = new Pet("joao", DateTime.Now, Especie.cachorro,"");
 
 
 tutoraAlberta.UpsertPet(petRepository,p1);
 tutoraAlberta.UpsertPet(petRepository,p2);
-Vacina vacina1 = new Vacina("raiva", DateTime.Now, DateTime.Now, 20, TimeSpan.FromDays(90));
 
 p2.Nome = "paulo";
 
@@ -29,7 +28,8 @@ tutoraAlberta.RemovePet(petRepository,p1.ID);
 
 List<Pet> pets = tutoraAlberta.Pets(petRepository);
 
-
-
+VacinaRepository vacinaRepo = new VacinaRepository(petRepository);
+Vacina vacina1 = new Vacina("raiva", DateTime.Now, DateTime.Now, TimeSpan.FromDays(90), p2.ID);
+vacinaRepo.Upsert(vacina1);
 
 Console.ReadLine();
