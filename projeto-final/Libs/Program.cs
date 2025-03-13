@@ -28,7 +28,7 @@ tutoraAlberta.RemovePet(petRepository,p1.ID);
 List<Pet> pets = tutoraAlberta.Pets(petRepository);
 
 VacinaRepository vacinaRepo = new VacinaRepository(petRepository);
-Vacina vacina1 = new Vacina("raiva", DateTime.Now, DateTime.Now, TimeSpan.FromDays(90), 2);
+Vacina vacina1 = new Vacina("raiva", DateTime.Now, DateTime.Now, TimeSpan.FromDays(90), p2.ID);
 vacinaRepo.Upsert(vacina1);
 
 Console.ReadLine();
