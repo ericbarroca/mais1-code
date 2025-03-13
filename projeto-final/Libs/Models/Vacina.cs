@@ -10,6 +10,7 @@ public class Vacina
     public TimeSpan Durabilidade { get; set; }
     public int PetID { get; set; }
 
+
     public Vacina(string nome, DateTime dataDeAplicacao, DateTime dataDeValidade, TimeSpan durabilidade, int petID)
     {
         Nome = nome;
@@ -19,7 +20,7 @@ public class Vacina
         PetID = petID;
     }
 
-    public Vacina(DAO.Vacina vacina) : this(vacina.Nome, vacina.DataDeAplicacao, vacina.DataDeValidade, vacina.Durabilidade, vacina.PetID)
+    public Vacina(Models.Vacina vacina) : this(vacina.Nome, vacina.DataDeAplicacao, vacina.DataDeValidade, vacina.Durabilidade, vacina.PetID)
     {
         ID = vacina.ID;
     }

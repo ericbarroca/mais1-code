@@ -6,8 +6,7 @@ using Libs.Repository;
 TutorRepository tutorRepository = new TutorRepository();
 PetRepository petRepository = new PetRepository(tutorRepository);
 
-Tutor tutoraAlberta = new Tutor("alberta", new Documento(TipoDocumento.RG, 123456789),
- DateTime.Now, "rua uranos", 216365698);
+Tutor tutoraAlberta = new Tutor("alberta", DateTime.Now, "rua uranos", 216365698);
 
 tutorRepository.Upsert(tutoraAlberta);
 
@@ -29,7 +28,7 @@ tutoraAlberta.RemovePet(petRepository,p1.ID);
 List<Pet> pets = tutoraAlberta.Pets(petRepository);
 
 VacinaRepository vacinaRepo = new VacinaRepository(petRepository);
-Vacina vacina1 = new Vacina("raiva", DateTime.Now, DateTime.Now, TimeSpan.FromDays(90), p2.ID);
+Vacina vacina1 = new Vacina("raiva", DateTime.Now, DateTime.Now, TimeSpan.FromDays(90), 2);
 vacinaRepo.Upsert(vacina1);
 
 Console.ReadLine();

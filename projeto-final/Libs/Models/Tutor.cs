@@ -79,21 +79,18 @@ public class Tutor
         }
     }
 
-    public Tutor(string nome, Documento documento,
-     DateTime dataNascimento, string endereco, int telefone)
+    public Tutor(string nome, DateTime dataNascimento, string endereco, int telefone)
     {
         Nome = nome;
         DataNascimento = dataNascimento;
         Endereco = endereco;
         Telefone = telefone;
-        Documento = documento;
-
     }
 
-    public Tutor(DAO.Tutor tutor) : this(tutor.Nome,
-     tutor.Documento, tutor.DataNascimento, tutor.Endereco,
+    public Tutor(DAO.Tutor tutor) : this(tutor.Nome, tutor.DataNascimento, tutor.Endereco,
       tutor.Telefone)
     {
+        Documento = tutor.Documento;
     }
 
     public List<Pet> Pets(PetRepository petRepository)

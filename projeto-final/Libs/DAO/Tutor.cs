@@ -18,22 +18,18 @@ public class Tutor
     {
 
     }
-
-    public Tutor(string nome, Documento documento, DateTime dataNascimento,
-     string endereco, int telefone)
+    public Tutor(string nome, DateTime dataNascimento, string endereco, int telefone)
     {
         Nome = nome;
         DataNascimento = dataNascimento;
-        Documento = new Documento(documento.Tipo, documento.Numero);
         Endereco = endereco;
         Telefone = telefone;
-
     }
 
-    public Tutor(Models.Tutor tutor) : this(tutor.Nome, tutor.Documento,
-     tutor.DataNascimento, tutor.Endereco, tutor.Telefone)
+    public Tutor(DAO.Tutor tutor) : this(tutor.Nome, tutor.DataNascimento, tutor.Endereco,
+      tutor.Telefone)
     {
-
+        Documento = tutor.Documento;
     }
 
 }

@@ -6,6 +6,8 @@ builder.Services.AddSingleton<TutorRepository>();
 builder.Services.AddSingleton<PetRepository>();
 var app = builder.Build();
 
+app.MapGet("/", () => "Cadrasto de Pet");
+
 app.MapGet("/tutor/{id}", (TutorRepository repo, int id) =>
 {
     var tutor = repo.Get(id);
@@ -59,47 +61,71 @@ app.MapPost("/tutor/{id}/pets", (TutorRepository repo, PetRepository petRepo, in
 });
 
 
-app.MapDelete("/pet/{id}", (PetRepository repo, int id)=>{
+app.MapDelete("/pet/{id}", (PetRepository repo, int id) =>
+{
 
     var pet = repo.Get(id);
 
-    if(pet is null){
+    if (pet is null)
+    {
         return Results.NotFound();
     }
 
-    if(!repo.Remove(id)) {
+    if (!repo.Remove(id))
+    {
         return Results.BadRequest();
     }
 
     return Results.Accepted();
 });
 
-app.MapPut("/pet/{id}", (PetRepository repo, int id, Pet pet)=>{
+app.MapPut("/pet/{id}", (PetRepository repo, int id, Pet pet) =>
+{
 
-    if(pet.ID != id) {
+    if (pet.ID != id)
+    {
         return Results.BadRequest("Pet ID diferente de id da rota");
     }
 
-    if(id == 0) {
+    if (id == 0)
+    {
         return Results.BadRequest("O pet não pode ter ID 0");
     }
 
-    if(pet.TutorID is null) {
+    if (pet.TutorID is null)
+    {
         return Results.BadRequest("Tutor não preenchido");
     }
 
     var pet_found = repo.Get(id);
 
-    if(pet_found is null) {
+    if (pet_found is null)
+    {
         return Results.NotFound();
     }
 
-    if(repo.Upsert(pet)) {
+    if (repo.Upsert(pet))
+    {
         return Results.BadRequest();
     }
 
     return Results.Accepted("/tutor/{id}/pets", pet);
 
+});
+
+app.MapGet("/pets/{id}/vacinas", (PetRepository petRepo, VacinaRepository vacRepo, int id) =>
+{
+
+    var pet = petRepo.Get(id);
+
+    if (pet is null)
+    {
+        return Results.NotFound();
+    }
+
+    var pets = vacRepo.List();
+
+    return Results.Ok(vacRepo);
 });
 
 app.Run();
