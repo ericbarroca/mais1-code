@@ -4,6 +4,7 @@ using Libs.Repository;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddSingleton<TutorRepository>();
 builder.Services.AddSingleton<PetRepository>();
+builder.Services.AddSingleton<VacinaRepository>();
 var app = builder.Build();
 
 app.MapGet("/", () => "Cadrasto de Pet");
