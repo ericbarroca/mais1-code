@@ -26,7 +26,7 @@ public class Tutor
         Telefone = telefone;
     }
 
-    public Tutor(DAO.Tutor tutor) : this(tutor.Nome, tutor.DataNascimento, tutor.Endereco,
+    public Tutor(Models.Tutor tutor) : this(tutor.Nome, tutor.DataNascimento, tutor.Endereco,
       tutor.Telefone)
     {
         Documento = tutor.Documento;
