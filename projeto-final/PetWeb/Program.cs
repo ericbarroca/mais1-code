@@ -145,7 +145,7 @@ app.MapPost("/pets/{id}/vacinas", (PetRepository petRepo, VacinaRepository vacRe
         return Results.BadRequest()
     }
     
-    return Results.Created($"/pets/{id}/vacinas", vacina);
+    return Results.Created("/pets/{id}/vacinas", vacina);
 });
 
 app.Run();
