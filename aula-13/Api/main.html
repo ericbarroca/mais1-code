@@ -6,26 +6,39 @@
     <title>Exemplo Javascript</title>
 </head>
 <body>
-    <h1>Dados da API</h1>
-    <div id="dados"></div>
+    <h1>Enviar Dados para a API</h1>
+    <button onclick="enviarDados()">Enviar Dados</button>
 
     <script>
         // URL da API
         const url = "http://localhost:5115/dados";
 
-        // Função para realizar uma requisição GET
-        async function obterDados() {
+        // Função para realizar uma requisição POST
+        async function enviarDados() {
+            const dados = {
+                nome: "João"
+            };
+
             try {
-                const response = await fetch(url);
-                const dados = await response.json();
-                document.getElementById("dados").textContent = JSON.stringify(dados, null, 2);
+                const response = await fetch(url, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(dados)
+                });
+
+                const resultado = await response.json();
+
+                const idSpan = document.createElement("div");
+                idSpan.textContent = "ID:" + resultado.id
+
+                document.body.appendChild(idSpan)
+                console.log("Dados enviados:", resultado);
             } catch (error) {
-                console.error("Erro ao obter dados:", error);
+                console.error("Erro ao enviar dados:", error);
             }
         }
-
-        // Chama a função ao carregar a página
-        window.onload = obterDados;
     </script>
 </body>
 </html>
