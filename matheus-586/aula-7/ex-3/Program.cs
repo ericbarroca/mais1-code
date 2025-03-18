@@ -1,2 +1,1 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿// Crie uma interface IMensagem com um método Enviar. Em seguida, crie duas classes, Email e SMS, que implementam a interface IMensagem. Cada classe deve fornecer uma implementação do método Enviar para enviar uma mensagem de e-mail e uma mensagem de texto, respectivamente. Crie uma lista de IMensagem e adicione instâncias de Email e SMS à lista. Percorra a lista e chame o método Enviar para cada mensagem.

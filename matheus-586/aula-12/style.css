@@ -1,0 +1,36 @@
+/* 2 - Crie um arquivo CSS separado chamado estilos.css e aplique estilos para:
+
+Alterar a cor e o fundo do corpo da página.
+Estilizar os cabeçalhos e parágrafos com cores e tamanhos de fonte diferentes.
+Adicionar margem e preenchimento aos elementos.
+
+
+3 - Vincule o arquivo CSS ao documento HTML utilizando a tag <link>.  */
+
+body{
+    background: black;
+    color: silver;
+}
+
+#primeiro-p{
+    color: rgb(34, 214, 214);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+#segundo-p{
+    color: rgb(180, 21, 21);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+p{
+    color: rgb(235, 202, 154);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+ul{
+    color: rgb(42, 221, 156);
+}
+
+.superclass{
+    margin: 20px;
+    padding: 5px;
+}

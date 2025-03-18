@@ -1,2 +1,1 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿// Monte uma fila que ao invés de ser FIFO, ela seja FILO (primeiro a entrar, último a sair).
