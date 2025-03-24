@@ -17,7 +17,7 @@ public class Consulta
         Telefone = telefone;
     }
 
-    public Consulta(DAO.Consulta Consulta) : this(Consulta.NomeDoutor, Consulta.DataConsulta, Consulta.Telefone)
+    public Consulta(Models.Consulta Consulta) : this(Consulta.NomeDoutor, Consulta.DataConsulta, Consulta.Telefone)
     {
         Diagnostico = Consulta.Diagnostico;
     }
