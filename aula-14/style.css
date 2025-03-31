@@ -4,5 +4,13 @@
 }
 
 .card {
+    border-radius: .5rem;
+}
+
+.card.dark {
     background-color: whitesmoke;
+}
+
+.table td,.table th {
+    padding: 1rem 1.5rem;
 }
