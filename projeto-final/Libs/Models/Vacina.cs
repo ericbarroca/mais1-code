@@ -10,7 +10,10 @@ public class Vacina
     public TimeSpan Durabilidade { get; set; }
     public int PetID { get; set; }
 
+    public Vacina() {
 
+    }
+    
     public Vacina(string nome, DateTime dataDeAplicacao, DateTime dataDeValidade, TimeSpan durabilidade, int petID)
     {
         Nome = nome;

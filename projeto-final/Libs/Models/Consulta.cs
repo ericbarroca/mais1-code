@@ -10,15 +10,19 @@ public class Consulta
 
     public int Telefone { get; set; }
 
-    public Consulta(string nomeDoutor, DateTime dataConsulta, int telefone)
+    public int PetID {get;set;}
+
+    public Consulta(string nomeDoutor, DateTime dataConsulta, int telefone, string diagnostico, int petID)
     {
         NomeDoutor = nomeDoutor;
         DataConsulta = dataConsulta;
         Telefone = telefone;
+        Diagnostico = diagnostico;
+        PetID = petID;
     }
 
-    public Consulta(DAO.Consulta Consulta) : this(Consulta.NomeDoutor, Consulta.DataConsulta, Consulta.Telefone)
+    public Consulta(DAO.Consulta consulta) : this(consulta.NomeDoutor, consulta.DataConsulta, consulta.Telefone, consulta.Diagnostico, consulta.PetID)
     {
-        Diagnostico = Consulta.Diagnostico;
+        
     }
 }

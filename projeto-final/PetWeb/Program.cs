@@ -124,25 +124,24 @@ app.MapGet("/pets/{id}/vacinas", (PetRepository petRepo, VacinaRepository vacRep
         return Results.NotFound();
     }
 
-    var pets = vacRepo.List();
+    var vacinas = pet.Vacinas(vacRepo);
 
-    return Results.Ok(vacRepo);
+    return Results.Ok(vacinas);
 });
 
-app.MapPost("/pets/{id}/vacinas", (PetRepository petRepo, VacinaRepository vacRepo, int id) => {
+app.MapPost("/pets/{id}/vacinas", (PetRepository petRepo, VacinaRepository vacRepo, int id, Vacina vacina) => {
     var pet = petRepo.Get(id);
     if (pet is null) {
         return Results.NotFound();
     }
 
-    if(vacina.ID != 0) {
-        return Results.BadRequest("A vacina não pode ter ID diferente de 0.");
+    if (vacina.ID != 0)
+    {
+        return Results.BadRequest("A vacina não pode ter ID diferente de 0");
     }
 
-    vacina.PetID = pet.ID;
-
-    if (!vacRepo.Upsert(vacina)) {
-        return Results.BadRequest()
+    if(!pet.UpsertVacina(vacRepo, vacina)) {
+        return Results.BadRequest();
     }
     
     return Results.Created("/pets/{id}/vacinas", vacina);

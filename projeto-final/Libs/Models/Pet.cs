@@ -44,13 +44,13 @@ public class Pet
         this.TutorID = pet.TutorID;
     }
 
-    public List<Vacina> Pets(VacinaRepository vacinaRepository)
+    public List<Vacina> Vacinas(VacinaRepository vacinaRepository)
     {
         List<Vacina> vacinas = vacinaRepository.List();
         return vacinas.FindAll(t => t.PetID == ID).ToList();
     }
 
-    public bool UpsertPet(VacinaRepository vacinaRepository, Vacina vacina)
+    public bool UpsertVacina(VacinaRepository vacinaRepository, Vacina vacina)
     {
         vacina.PetID = ID;
         return vacinaRepository.Upsert(vacina);
