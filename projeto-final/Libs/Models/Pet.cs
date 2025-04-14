@@ -1,4 +1,5 @@
 using Libs.Repository;
+using System.Data;
 
 namespace Libs.Models;
 
@@ -59,14 +60,14 @@ public class Pet
     public List<Consulta> Consultas(ConsultaRepository consultaRepository)
     {
         List<Consulta> consultas = consultaRepository.List();
-        return consultas.FindAll(p => p.petID == consulta.petID)
-        .ToList();
+        return consultas.FindAll(p => p.ID == ID).ToList();
+         
     }
 
-    public bool UpsertConsulta(ConsultaRepository consultatRepository, Consulta consulta)
+    public bool UpsertConsulta(ConsultaRepository consultaRepository, Consulta consulta)
     {
-        consulta.PetID = PetID;
-        return petRepository.Upsert(consulta);
+        consulta.PetID = ID;
+        return consultaRepository.Upsert(consulta);
     }
 
     public bool RemoveConsulta(ConsultaRepository consultaRepository, int consultaID) {
