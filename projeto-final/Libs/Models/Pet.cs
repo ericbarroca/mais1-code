@@ -55,4 +55,21 @@ public class Pet
         vacina.PetID = ID;
         return vacinaRepository.Upsert(vacina);
     }
+
+    public List<Consulta> Consultas(ConsultaRepository consultaRepository)
+    {
+        List<Consulta> consultas = consultaRepository.List();
+        return consultas.FindAll(p => p.petID == consulta.petID)
+        .ToList();
+    }
+
+    public bool UpsertConsulta(ConsultaRepository consultatRepository, Consulta consulta)
+    {
+        consulta.PetID = PetID;
+        return petRepository.Upsert(consulta);
+    }
+
+    public bool RemoveConsulta(ConsultaRepository consultaRepository, int consultaID) {
+        return consultaRepository.Remove(consultaID);
+    }
 }
