@@ -31,4 +31,9 @@ VacinaRepository vacinaRepo = new VacinaRepository(petRepository);
 Vacina vacina1 = new Vacina("raiva", DateTime.Now, DateTime.Now, TimeSpan.FromDays(90), p2.ID);
 vacinaRepo.Upsert(vacina1);
 
+ConsultaRepository consultaRepo = new ConsultaRepository();
+Consulta consulta1 = new Consulta("Solicitada", DateTime.Now, 1, "febre", 2);
+
+
+
 Console.ReadLine();
