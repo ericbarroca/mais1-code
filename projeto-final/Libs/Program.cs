@@ -18,6 +18,8 @@ tutoraAlberta.UpsertPet(petRepository,p1);
 tutoraAlberta.UpsertPet(petRepository,p2);
 
 p2.Nome = "paulo";
+p2.Raca = "bulldog";
+Console.WriteLine(p2.Raca);
 
 tutoraAlberta.UpsertPet(petRepository,p2);
 
@@ -31,8 +33,10 @@ VacinaRepository vacinaRepo = new VacinaRepository(petRepository);
 Vacina vacina1 = new Vacina("raiva", DateTime.Now, DateTime.Now, TimeSpan.FromDays(90), p2.ID);
 vacinaRepo.Upsert(vacina1);
 
+
 ConsultaRepository consultaRepo = new ConsultaRepository();
 Consulta consulta1 = new Consulta("Solicitada", DateTime.Now, 1, "febre", 2);
+consultaRepo.Upsert(consulta1);
 
 
 
