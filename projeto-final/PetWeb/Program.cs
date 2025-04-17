@@ -5,7 +5,18 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddSingleton<TutorRepository>();
 builder.Services.AddSingleton<PetRepository>();
 builder.Services.AddSingleton<VacinaRepository>();
+
+builder.Services.AddCors(options=>{
+    options.AddDefaultPolicy(policy=>{
+        policy.AllowAnyOrigin();
+        policy.AllowAnyHeader();
+        policy.AllowAnyMethod();
+
+    });
+});
+
 var app = builder.Build();
+app.UseCors();
 
 app.MapGet("/", () => "Cadrasto de Pet");
 
