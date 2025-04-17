@@ -7,6 +7,22 @@ public class PetRepository : Repository<DAO.Pet>, IRepository<Pet>
     private TutorRepository tutorRepository;
     public PetRepository(TutorRepository tutorRepository) {
         this.tutorRepository = tutorRepository;
+
+        items.Add(new DAO.Pet() {
+            DataNascimento = new DateTime(1990,01,01),
+            Especie = 1,
+            Nome = "Bere",
+            ID = 1,
+            TutorID = tutorRepository.Get(123456789).Documento,
+        });
+        
+        items.Add(new DAO.Pet() {
+            DataNascimento = new DateTime(1993,02,01),
+            Especie = 1,
+            Nome = "Anita",
+            ID = 2,
+            TutorID = tutorRepository.Get(123456789).Documento,
+        });
     }
 
     public Pet Get(int id)

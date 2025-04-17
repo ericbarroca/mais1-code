@@ -15,6 +15,18 @@
 </head>
 
 <body>
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <img src="..." class="rounded me-2" alt="...">
+                <strong id="toastTitle" class="me-auto"></strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                
+            </div>
+        </div>
+    </div>
     <nav class="navbar petpass-nav bg-primary">
         <div class="container-fluid">
             <div class="l-flex">
@@ -25,7 +37,7 @@
             <div class="d-flex">
                 <div class="container">
                     <div class="row">
-                        <div class="col">José</div>
+                        <div id="userName" class="col"></div>
                         <div class="col">
                             <img src="https://getbootstrap.com/docs/5.2/assets/brand/bootstrap-logo.svg" alt="Logo"
                                 width="30" height="24" class="d-inline-block align-text-center">
@@ -39,20 +51,16 @@
     <div class="container">
         <div class="row">
             <div class="col-3 text-end">
-                <div class="list-group text-start">
-                    <button type="button" class="list-group-item list-group-item-action " aria-current="true">
-                      Berenice
-                    </button>
-                    <button type="button" class="list-group-item list-group-item-action active">Zeus</button>
-                  </div>
-                  <button type="button" class="btn btn-secondary mt-1 fw-bold">+</button>
+                <div id="petList" class="list-group text-start">
+                </div>
+                <button type="button" class="btn btn-secondary mt-1 fw-bold">+</button>
             </div>
             <div class="col-9">
                 <div class="card">
                     <div class="card-body">
-                     Consultas; Vacinas; Medicametos
+                        Consultas; Vacinas; Medicametos
                     </div>
-                  </div>
+                </div>
             </div>
         </div>
     </div>
@@ -62,6 +70,7 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
 
+    <script src="scripts.js"></script>
 
 </body>
 

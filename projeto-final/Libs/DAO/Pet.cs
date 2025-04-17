@@ -17,6 +17,10 @@ public class Pet {
 
     public Documento TutorID {get;set;}
 
+    public Pet() {
+        
+    }
+
     public Pet(string nome, DateTime dataNascimento,
     int especie, string raca, Documento tutorID) {
 
