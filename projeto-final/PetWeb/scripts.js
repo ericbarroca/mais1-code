@@ -2,7 +2,7 @@ const baseUrl = "http://localhost:5118";
 const getTutorEndpoint = "tutor";
 const getPetsEndpoint = "tutor/{id}/pets";
 
-const petItem = '<button key="{id}" type="button" class="list-group-item list-group-item-action " aria-current="true">{name}</button>';
+const petItem = '<button key="{id}" type="button" class="list-group-item list-group-item-action " aria-current="true" data-bs-toggle="list" >{name}</button>';
 
 (async () => {
 
