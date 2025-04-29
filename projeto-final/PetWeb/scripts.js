@@ -1,24 +1,11 @@
 const baseUrl = "http://localhost:5118";
 const getTutorEndpoint = "tutor";
 const getPetsEndpoint = "tutor/{id}/pets";
+const createPetEndpoint = "tutor/{id}/pets"
 
 const petItem = '<button id="pet-{id}" key="{id}" type="button" class="list-group-item list-group-item-action" aria-current="true" data-bs-toggle="list">{name}</button>';
 
 (async () => {
-
-    const forms = document.querySelectorAll('.needs-validation')
-
-    // Loop over them and prevent submission
-    Array.from(forms).forEach(form => {
-      form.addEventListener('submit', event => {
-        if (!form.checkValidity()) {
-          event.preventDefault()
-          event.stopPropagation()
-        }
-  
-        form.classList.add('was-validated')
-      }, false)
-    })
 
     const notification = document.getElementById('liveToast')
     const toast = new bootstrap.Toast(notification)
@@ -26,24 +13,76 @@ const petItem = '<button id="pet-{id}" key="{id}" type="button" class="list-grou
     const tutor = await loadTutor(notification)
     let pets = []
 
-    if(tutor) {
+    if (tutor) {
         pets = await renderizaPet(notification, tutor)
 
         const btnNewPet = document.getElementById('btnNewPet')
-        btnNewPet.addEventListener('click', (e)=> {
+        btnNewPet.addEventListener('click', (e) => {
             const frmNewPet = document.getElementById('frmNewPet')
             frmNewPet.hidden = false
 
             const petList = document.getElementById("petList")
-            Array.from(petList.children).forEach(i=>{
+            Array.from(petList.children).forEach(i => {
                 i.className = 'list-group-item list-group-item-action'
             })
+        })
+
+        const petForm = document.querySelector("#frmNewPet")
+
+        petForm.addEventListener("submit", async e => {
+            e.preventDefault()
+            e.stopPropagation()
+
+            if (petForm.checkValidity()) {
+                const data = submitPet(notification, petForm, tutor)
+            }
+
+            petForm.classList.add('was-validated')
+
         })
     }
 
 
 
 })()
+
+async function submitPet(notification, form, tutor) {
+    const data = formDataToJson(form);
+    const response = await upsertPet(tutor.documento.numero, data);
+
+    error = hasError(notification, response)
+
+    if (error) {
+        return
+    }
+
+    const parser = new DOMParser();
+    const petList = document.getElementById("petList")
+
+    const el = petItem.replace("{name}", response.nome).replaceAll("{id}", response.id);
+    const doc = parser.parseFromString(el, 'text/html');
+    petList.appendChild(doc.body.firstChild)
+    petList.lastElementChild.className = `${petList.lastElementChild.className} active`;
+    
+    form.hidden = true
+    form.reset()
+    form.classList.remove('was-validated')
+
+}
+
+function formDataToJson(form) {
+    const jsonData = {}
+    for (const pair of new FormData(form)) {
+
+        if (pair[0] === "especie") {
+            jsonData[pair[0]] = Number(pair[1])
+        } else {
+            jsonData[pair[0]] = pair[1];
+        }
+    }
+
+    return jsonData
+}
 
 async function loadTutor(notification) {
     tutor = await getTutor(123456789);
@@ -59,14 +98,7 @@ async function loadTutor(notification) {
     return tutor
 }
 
-async function renderizaPet(notification, tutor) {
-    pets = await getPets(tutor.documento.numero)
-    error = hasError(notification, pets)
-
-    if (error) {
-        return false
-    }
-
+function renderPetList(pets) {
     const parser = new DOMParser();
     const petList = document.getElementById("petList")
 
@@ -75,6 +107,19 @@ async function renderizaPet(notification, tutor) {
         const doc = parser.parseFromString(el, 'text/html');
         petList.appendChild(doc.body.firstChild)
     })
+
+    return petList
+}
+
+async function renderizaPet(notification, tutor) {
+    pets = await getPets(tutor.documento.numero)
+    error = hasError(notification, pets)
+
+    if (error) {
+        return false
+    }
+
+    const petList = renderPetList(pets)
 
     petList.firstElementChild.className = `${petList.firstElementChild.className} active`;
 
@@ -89,7 +134,11 @@ function hasError(notification, data) {
         toastTitle.textContent = "Erro"
         toastBody.textContent = data.error
         toast.show()
+
+        return true
     }
+
+    return false
 }
 
 async function getTutor(id) {
@@ -125,6 +174,27 @@ async function getPets(tutorID) {
 
     }).then(response => {
         if (response.status === 200) {
+            return response.json();
+        } else {
+            return { status: response.status, error: response.statusText }
+        }
+    }).catch(error => {
+        return { error: error }
+    });
+}
+async function upsertPet(tutorID, pet) {
+
+    const url = `${baseUrl}/${createPetEndpoint}`.replace("{id}", tutorID);
+
+    return await fetch(url, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(pet)
+
+    }).then(response => {
+        if (response.status === 201) {
             return response.json();
         } else {
             return { status: response.status, error: response.statusText }

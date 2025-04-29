@@ -62,11 +62,11 @@
                         <form id="frmNewPet" hidden="true" class="row g-3 needs-validation" novalidate>
                             <div class="col-md-4">
                                 <label for="name" class="form-label">Nome</label>
-                                <input type="text" class="form-control" id="name" required>
+                                <input type="text" class="form-control" id="name" name="nome" required>
                             </div>
                             <div class="col-md-4">
                                 <label for="especie" class="form-label">Especie</label>
-                                <select class="form-select" id="especie" required>
+                                <select class="form-select" id="especie" name="especie" required>
                                     <option selected disabled value="">Escolha...</option>
                                     <option value="0">Cachorro</option>
                                     <option value="1">Gato</option>
@@ -77,11 +77,11 @@
                             </div>
                             <div class="col-md-3">
                                 <label for="raca" class="form-label">Raça</label>
-                                <input type="text" class="form-control" id="raca">
+                                <input type="text" class="form-control" id="raca" name="raca">
                             </div>
                             <div class="col-md-3">
                                 <label for="dataNascimento" class="form-label">Data de Nascimento</label>
-                                <input type="text" class="form-control" id="dataNascimento">
+                                <input type="text" class="form-control" id="dataNascimento" name="dataNascimento" required>
                             </div>
                             <div class="col-12">
                                 <button class="btn btn-primary" type="submit">Submit form</button>
