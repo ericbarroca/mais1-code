@@ -5,6 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddSingleton<TutorRepository>();
 builder.Services.AddSingleton<PetRepository>();
 builder.Services.AddSingleton<VacinaRepository>();
+builder.Services.AddSingleton<ConsultaRepository>();
 
 builder.Services.AddCors(options=>{
     options.AddDefaultPolicy(policy=>{
@@ -156,6 +157,58 @@ app.MapPost("/pets/{id}/vacinas", (PetRepository petRepo, VacinaRepository vacRe
     }
     
     return Results.Created("/pets/{id}/vacinas", vacina);
+});
+
+
+app.MapGet("/pets/{id}/consultas", (PetRepository petRepo, ConsultaRepository consultaRepo, int id) =>
+{
+
+    var pet = petRepo.Get(id);
+
+    if (pet is null)
+    {
+        return Results.NotFound();
+    }
+
+    var consultas = pet.Consultas(consultaRepo);
+
+    return Results.Ok(consultas);
+});
+
+app.MapPost("/pets/{id}/consultas", (PetRepository petRepo, ConsultaRepository consultaRepo, int id, Consulta consulta) => {
+    var pet = petRepo.Get(id);
+    if (pet is null) {
+        return Results.NotFound();
+    }
+
+    if (consulta.ID != 0)
+    {
+        return Results.BadRequest("A vacina não pode ter ID diferente de 0");
+    }
+
+    if(!pet.UpsertConsulta(consultaRepo, consulta)) {
+        return Results.BadRequest();
+    }
+    
+    return Results.Created("/pets/{id}/consultas/{id}", consulta);
+});
+
+app.MapDelete("/consultas/{id}", (ConsultaRepository consultaRepo, int id) =>
+{
+
+    var consulta = consultaRepo.Get(id);
+
+    if (consulta is null)
+    {
+        return Results.NotFound();
+    }
+
+    if (!consultaRepo.Remove(id))
+    {
+        return Results.BadRequest();
+    }
+
+    return Results.Accepted();
 });
 
 app.Run();

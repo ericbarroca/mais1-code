@@ -70,7 +70,8 @@ public class Pet
         return consultaRepository.Upsert(consulta);
     }
 
-    public bool RemoveConsulta(ConsultaRepository consultaRepository, int consultaID) {
+    public bool RemoveConsulta(ConsultaRepository consultaRepository, int consultaID) 
+    {
         return consultaRepository.Remove(consultaID);
     }
 }
