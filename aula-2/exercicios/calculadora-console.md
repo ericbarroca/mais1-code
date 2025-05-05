@@ -13,7 +13,7 @@ Console.WriteLine(num);
 
 ```
 
-Ao executar esta aplicação será escrito `3` no Prompt de Comandos.
+Ao executar esta aplicação será escrito `3` no Procdmpt de Comandos.
 
 ## Exercícios
 
