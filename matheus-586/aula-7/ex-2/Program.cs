@@ -1,0 +1,1 @@
+﻿// Crie uma fila para gerenciar um sistema de atendimento em um banco. Adicione cinco clientes à fila e simule o atendimento dos três primeiros clientes, removendo-os da fila e exibindo o nome do cliente atendido. Exiba a fila antes e depois dos atendimentos.

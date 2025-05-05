@@ -1,0 +1,1 @@
+﻿// Crie uma lista de strings chamada nomes e adicione cinco nomes a ela. Em seguida, remova o terceiro nome da lista, insira um novo nome na segunda posição e verifique se um nome específico está na lista. Exiba o conteúdo da lista antes e depois das operações.
