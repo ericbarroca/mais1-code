@@ -8,7 +8,7 @@ namespace Libs.Repository
     {
         private PetRepository petRepository;
         
-        public void VacinaRepository(PetRepository petRepository) 
+        public ConsultaRepository(PetRepository petRepository)
         {
             this.petRepository = petRepository;
         }

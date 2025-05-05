@@ -28,7 +28,7 @@ namespace Libs.Repository
         public bool Upsert(Vacina entidade)
         {
 
-            if (entidade.PetID == null)
+            if (entidade.PetID == 0)
             {
                 throw new NullReferenceException("A vacina precisa estar associada a um pet.");
             }

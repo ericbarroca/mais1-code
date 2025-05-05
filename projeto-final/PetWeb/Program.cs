@@ -89,7 +89,7 @@ app.MapDelete("/pet/{id}", (PetRepository repo, int id) =>
         return Results.BadRequest();
     }
 
-    return Results.Accepted();
+    return Results.NoContent();
 });
 
 app.MapPut("/pet/{id}", (PetRepository repo, int id, Pet pet) =>
@@ -208,7 +208,7 @@ app.MapDelete("/consultas/{id}", (ConsultaRepository consultaRepo, int id) =>
         return Results.BadRequest();
     }
 
-    return Results.Accepted();
+    return Results.NoContent();
 });
 
 app.Run();

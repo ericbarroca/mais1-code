@@ -10,11 +10,11 @@ public class Consulta
 
     public string Diagnostico { get; set; }
 
-    public int Telefone { get; set; }
+    public long Telefone { get; set; }
 
     public int PetID {get;set;}
 
-    public Consulta(string nomeDoutor, DateTime dataConsulta, int telefone, string diagnostico, int petID)
+    public Consulta(string nomeDoutor, DateTime dataConsulta, long telefone, string diagnostico, int petID)
     {
         NomeDoutor = nomeDoutor;
         DataConsulta = dataConsulta;
