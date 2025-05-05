@@ -183,14 +183,14 @@ app.MapPost("/pets/{id}/consultas", (PetRepository petRepo, ConsultaRepository c
 
     if (consulta.ID != 0)
     {
-        return Results.BadRequest("A vacina não pode ter ID diferente de 0");
+        return Results.BadRequest("A consulta não pode ter ID diferente de 0");
     }
 
     if(!pet.UpsertConsulta(consultaRepo, consulta)) {
         return Results.BadRequest();
     }
     
-    return Results.Created("/pets/{id}/consultas/{id}", consulta);
+    return Results.Created("/pets/{id}/consultas", consulta);
 });
 
 app.MapDelete("/consultas/{id}", (ConsultaRepository consultaRepo, int id) =>
