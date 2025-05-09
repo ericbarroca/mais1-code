@@ -2,6 +2,9 @@ const baseUrl = "http://localhost:5118";
 const getTutorEndpoint = "tutor";
 const getPetsEndpoint = "tutor/{id}/pets";
 const createPetEndpoint = "tutor/{id}/pets"
+const getVacinasEndpoint = "/pets/{id}/vacinas";
+const getConsultasEndpoint = "/pets/{id}/consultas";
+
 
 const petItem = '<button id="pet-{id}" key="{id}" type="button" class="list-group-item list-group-item-action" aria-current="true" data-bs-toggle="list">{name}</button>';
 
@@ -195,6 +198,47 @@ async function upsertPet(tutorID, pet) {
 
     }).then(response => {
         if (response.status === 201) {
+            return response.json();
+        } else {
+            return { status: response.status, error: response.statusText }
+        }
+    }).catch(error => {
+        return { error: error }
+    });
+}
+async function getVacinas(tutorID) {
+
+    const url = `${baseUrl}/${getVacinasEndpoint}`.replace("{id}", PetID);
+
+    return await fetch(url, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json"
+        },
+
+    }).then(response => {
+        if (response.status === 200) {
+            return response.json();
+        } else {
+            return { status: response.status, error: response.statusText }
+        }
+    }).catch(error => {
+        return { error: error }
+    });
+}
+
+async function getConsultas(PetID) {
+
+    const url = `${baseUrl}/${getConsultasEndpoint}`.replace("{id}", PetID);
+
+    return await fetch(url, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json"
+        },
+
+    }).then(response => {
+        if (response.status === 200) {
             return response.json();
         } else {
             return { status: response.status, error: response.statusText }
