@@ -50,7 +50,7 @@ Dadas essas informações, qual a relevancia delas para escrevermos um programa?
 
 ### Variáveis
 
-Variáveis são elementos do código responsáveis por armazenar valoes em memória (RAM) para que o programa possa trabalhar com eles imediatamente ou no futuro. Elas nos permitem 3 operações básicas:
+Variáveis são elementos do código responsáveis por armazenar valores em memória (RAM) para que o programa possa trabalhar com eles imediatamente ou no futuro. Elas nos permitem 3 operações básicas:
 
 - `Declaração`: Uma variável necessita ter um nome (e dependendo da linguagem um tipo) para que o programa possa a referenciar em outros trechos do código, logo a delcaração é quando criamos a variável e a damos um nome.
 - `Atribuição`: Uma variável tem a função de armazenar um dado, logo podemos atribuir valores a elas. Uma variável, como o nome diz, pode mudar de valor, ou seja, podemos armazenar um valor e depois o substituir pelo mesmo processo de atribuição.
