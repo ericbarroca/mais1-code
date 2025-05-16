@@ -247,3 +247,33 @@ async function getConsultas(PetID) {
         return { error: error }
     });
 }
+
+async function renderizaVacinas(notification, pet) {
+    Vacina = await getVacinas(PetID)
+    error = hasError(notification, Vacina)
+
+    if (error) {
+        return false
+    }
+
+    const tbvacina = document.getElementsById("tbvacina")
+    .getElementByTagname('tbody')[0]
+
+    Array.from(Vacina).forEach((Vac,i) => {
+        const linha = tbvacina.insertrow(i)
+
+        const colnome = linha.insertCell(0)
+        const colDtAplic = linha.insertCell(1)
+        const colDtVali = linha.insertCell(2)
+
+        colnome.textContent = vac.nome
+        colDtAplic.textContent = vac.dataDeAplicacao
+        colDtVali.textContent = vac.DataDeValidade
+
+    })
+    
+
+
+
+  
+}
