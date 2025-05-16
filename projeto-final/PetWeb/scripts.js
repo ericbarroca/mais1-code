@@ -2,8 +2,8 @@ const baseUrl = "http://localhost:5118";
 const getTutorEndpoint = "tutor";
 const getPetsEndpoint = "tutor/{id}/pets";
 const createPetEndpoint = "tutor/{id}/pets"
-const getVacinasEndpoint = "/pets/{id}/vacinas";
-const getConsultasEndpoint = "/pets/{id}/consultas";
+const getVacinasEndpoint = "pets/{id}/vacinas";
+const getConsultasEndpoint = "pets/{id}/consultas";
 
 
 const petItem = '<button id="pet-{id}" key="{id}" type="button" class="list-group-item list-group-item-action" aria-current="true" data-bs-toggle="list">{name}</button>';

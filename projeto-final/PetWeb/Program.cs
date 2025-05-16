@@ -66,6 +66,7 @@ app.MapPost("/tutor/{id}/pets", (TutorRepository repo, PetRepository petRepo, in
 
     if (!petRepo.Upsert(pet))
     {
+        
         return Results.BadRequest();
     }
 
@@ -152,7 +153,7 @@ app.MapPost("/pets/{id}/vacinas", (PetRepository petRepo, VacinaRepository vacRe
         return Results.BadRequest("A vacina não pode ter ID diferente de 0");
     }
 
-    if(!pet.UpsertVacina(vacRepo, vacina)) {
+    if(!pet.UpsertVacina(VacRepo, vacina)) {
         return Results.BadRequest();
     }
     
