@@ -20,6 +20,10 @@ const petItem = '<button id="pet-{id}" key="{id}" type="button" class="list-grou
     if (tutor) {
         pets = await renderizaPet(notification, tutor)
 
+        if(pets) {
+            vacinas = await renderizaVacinas(notification, pets[0])
+        }
+
         const btnNewPet = document.getElementById('btnNewPet')
         btnNewPet.addEventListener('click', (e) => {
             const frmNewPet = document.getElementById('frmNewPet')
@@ -102,13 +106,20 @@ async function loadTutor(notification) {
     return tutor
 }
 
-function renderPetList(pets) {
+function petAddEventoClick(notification, petButton, pet) {
+    petButton.addEventListener('click', (e) => {
+        renderizaVacinas(notification, pet)
+    })
+}
+
+function renderPetList(notification, pets) {
     const parser = new DOMParser();
     const petList = document.getElementById("petList")
 
     Array.from(pets).forEach(pet => {
         const el = petItem.replace("{name}", pet.nome).replaceAll("{id}", pet.id);
         const doc = parser.parseFromString(el, 'text/html');
+        petAddEventoClick(notification, doc.body.firstChild, pet)
         petList.appendChild(doc.body.firstChild)
     })
 
@@ -123,7 +134,7 @@ async function renderizaPet(notification, tutor) {
         return false
     }
 
-    const petList = renderPetList(pets)
+    const petList = renderPetList(notification, pets)
 
     petList.firstElementChild.className = `${petList.firstElementChild.className} active`;
 
@@ -229,9 +240,9 @@ async function getVacinas(PetID) {
     });
 }
 
-async function renderizaVacinas(notification, PetID) {
-    var Vacina = await getVacinas(PetID)
-    error = hasError(notification, Vacina)
+async function renderizaVacinas(notification, pet) {
+    var vacinas = await getVacinas(pet.id)
+    error = hasError(notification, vacinas)
 
     if (error) {
         return false
@@ -240,7 +251,9 @@ async function renderizaVacinas(notification, PetID) {
     const tbvacina = document.getElementById("tbVacina")
     .getElementsByTagName('tbody')[0]
 
-    Array.from(Vacina).forEach((vac,i) => {
+    tbvacina.innerHTML = ''
+
+    Array.from(vacinas).forEach((vac,i) => {
         const linha = tbvacina.insertRow(i)
 
         const colnome = linha.insertCell(0)
