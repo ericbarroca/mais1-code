@@ -1,0 +1,11 @@
+{
+    "ID":0,
+    "Nome":"Legolas",
+    "Especie":1,
+    "DataNascimento":"1989-01-01",
+    "Raca":"srd",
+    "TutorID":{
+        "tipo":0,
+        "numero":123456789
+    }
+}
