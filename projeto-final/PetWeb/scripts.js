@@ -1,8 +1,9 @@
 const baseUrl = "http://localhost:5118";
 const getTutorEndpoint = "tutor";
 const getPetsEndpoint = "tutor/{id}/pets";
-const createPetEndpoint = "tutor/{id}/pets"
+const createPetEndpoint = "tutor/{id}/pets";
 const getVacinasEndpoint = "pets/{id}/vacinas";
+const createVacinaEndpoint = "pets/{id}/vacinas";
 const getConsultasEndpoint = "pets/{id}/consultas";
 
 
@@ -206,7 +207,8 @@ async function upsertPet(tutorID, pet) {
         return { error: error }
     });
 }
-async function getVacinas(tutorID) {
+
+async function getVacinas(PetID) {
 
     const url = `${baseUrl}/${getVacinasEndpoint}`.replace("{id}", PetID);
 
@@ -227,6 +229,55 @@ async function getVacinas(tutorID) {
     });
 }
 
+async function renderizaVacinas(notification, PetID) {
+    var Vacina = await getVacinas(PetID)
+    error = hasError(notification, Vacina)
+
+    if (error) {
+        return false
+    }
+
+    const tbvacina = document.getElementById("tbVacina")
+    .getElementsByTagName('tbody')[0]
+
+    Array.from(Vacina).forEach((vac,i) => {
+        const linha = tbvacina.insertRow(i)
+
+        const colnome = linha.insertCell(0)
+        const colDtAplic = linha.insertCell(1)
+        const colDtVali = linha.insertCell(2)
+
+        colnome.textContent = vac.nome
+        colDtAplic.textContent = vac.dataDeAplicacao
+        colDtVali.textContent = vac.dataDeValidade
+
+    })
+}
+
+async function upsertVacina(PetId, vacina) {
+    const url = `${baseUrl}/${createVacinaEndpoint}`.replace("{id}", PetId);
+
+    return await fetch(url, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(vacina)
+
+    }).then(response => {
+        if (response.status === 201) {
+            return response.json();
+        } else {
+            return { status: response.status, error: response.statusText }
+        }
+    }).catch(error => {
+        return { error: error }
+    });
+}
+
+console.log(getVacinas)
+console.log(renderizaVacinas)
+
 async function getConsultas(PetID) {
 
     const url = `${baseUrl}/${getConsultasEndpoint}`.replace("{id}", PetID);
@@ -246,34 +297,4 @@ async function getConsultas(PetID) {
     }).catch(error => {
         return { error: error }
     });
-}
-
-async function renderizaVacinas(notification, pet) {
-    Vacina = await getVacinas(PetID)
-    error = hasError(notification, Vacina)
-
-    if (error) {
-        return false
-    }
-
-    const tbvacina = document.getElementsById("tbvacina")
-    .getElementByTagname('tbody')[0]
-
-    Array.from(Vacina).forEach((Vac,i) => {
-        const linha = tbvacina.insertrow(i)
-
-        const colnome = linha.insertCell(0)
-        const colDtAplic = linha.insertCell(1)
-        const colDtVali = linha.insertCell(2)
-
-        colnome.textContent = vac.nome
-        colDtAplic.textContent = vac.dataDeAplicacao
-        colDtVali.textContent = vac.DataDeValidade
-
-    })
-    
-
-
-
-  
 }

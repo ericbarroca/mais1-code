@@ -153,7 +153,7 @@ app.MapPost("/pets/{id}/vacinas", (PetRepository petRepo, VacinaRepository vacRe
         return Results.BadRequest("A vacina não pode ter ID diferente de 0");
     }
 
-    if(!pet.UpsertVacina(VacRepo, vacina)) {
+    if(!pet.UpsertVacina(vacRepo, vacina)) {
         return Results.BadRequest();
     }
     
@@ -178,6 +178,7 @@ app.MapGet("/pets/{id}/consultas", (PetRepository petRepo, ConsultaRepository co
 
 app.MapPost("/pets/{id}/consultas", (PetRepository petRepo, ConsultaRepository consultaRepo, int id, Consulta consulta) => {
     var pet = petRepo.Get(id);
+    
     if (pet is null) {
         return Results.NotFound();
     }
