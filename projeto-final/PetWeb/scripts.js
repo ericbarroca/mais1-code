@@ -10,7 +10,6 @@ const getConsultasEndpoint = "pets/{id}/consultas";
 const petItem = '<button id="pet-{id}" key="{id}" type="button" class="list-group-item list-group-item-action" aria-current="true" data-bs-toggle="list">{name}</button>';
 
 (async () => {
-
     const notification = document.getElementById('liveToast')
     const toast = new bootstrap.Toast(notification)
 
@@ -27,9 +26,13 @@ const petItem = '<button id="pet-{id}" key="{id}" type="button" class="list-grou
         const btnNewPet = document.getElementById('btnNewPet')
         btnNewPet.addEventListener('click', (e) => {
             const frmNewPet = document.getElementById('frmNewPet')
+            
             frmNewPet.hidden = false
-
             const petList = document.getElementById("petList")
+
+            const infoPet = document.getElementById("infoPet")
+            infoPet.innerHTML = ""
+
             Array.from(petList.children).forEach(i => {
                 i.className = 'list-group-item list-group-item-action'
             })
@@ -49,9 +52,6 @@ const petItem = '<button id="pet-{id}" key="{id}" type="button" class="list-grou
 
         })
     }
-
-
-
 })()
 
 async function submitPet(notification, form, tutor) {
@@ -75,7 +75,6 @@ async function submitPet(notification, form, tutor) {
     form.hidden = true
     form.reset()
     form.classList.remove('was-validated')
-
 }
 
 function formDataToJson(form) {
@@ -157,7 +156,6 @@ function hasError(notification, data) {
 }
 
 async function getTutor(id) {
-
     const url = `${baseUrl}/${getTutorEndpoint}/${id}`;
 
     return await fetch(url, {
@@ -178,7 +176,6 @@ async function getTutor(id) {
 }
 
 async function getPets(tutorID) {
-
     const url = `${baseUrl}/${getPetsEndpoint}`.replace("{id}", tutorID);
 
     return await fetch(url, {
@@ -197,8 +194,8 @@ async function getPets(tutorID) {
         return { error: error }
     });
 }
-async function upsertPet(tutorID, pet) {
 
+async function upsertPet(tutorID, pet) {
     const url = `${baseUrl}/${createPetEndpoint}`.replace("{id}", tutorID);
 
     return await fetch(url, {
@@ -220,7 +217,6 @@ async function upsertPet(tutorID, pet) {
 }
 
 async function getVacinas(PetID) {
-
     const url = `${baseUrl}/${getVacinasEndpoint}`.replace("{id}", PetID);
 
     return await fetch(url, {
@@ -288,11 +284,7 @@ async function upsertVacina(PetId, vacina) {
     });
 }
 
-console.log(getVacinas)
-console.log(renderizaVacinas)
-
 async function getConsultas(PetID) {
-
     const url = `${baseUrl}/${getConsultasEndpoint}`.replace("{id}", PetID);
 
     return await fetch(url, {

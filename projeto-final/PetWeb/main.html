@@ -58,18 +58,31 @@
             <div class="col-9">
                 <div class="card">
                     <div class="card-body">
-                        Consultas; Medicametos
-                        Vacinas
-                        <table class="table" id="tbVacina">
-                            <thead>
-                                <tr>
-                                    <th>Nome da Vacina</th>
-                                    <th>Data de Aplicação</th>
-                                    <th>Data de Validade</th>
-                                </tr>
-                            </thead>
-                            <tbody></tbody>
-                        </table>
+                        <div id="infoPet">
+                            <h2>Vacinas</h2>
+                            <table class="table" id="tbVacina">
+                                <thead>
+                                    <tr>
+                                        <th>Nome da Vacina</th>
+                                        <th>Data de Aplicação</th>
+                                        <th>Data de Validade</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                            
+                            <h2>Consultas</h2> 
+                            <table class="table" id="tbConsulta">
+                                <thead>
+                                    <tr>
+                                        <th>Doutor</th>
+                                        <th>Data da Consulta</th>
+                                        <th>Diagnóstico</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
 
                         <form id="frmNewPet" hidden="true" class="row g-3 needs-validation" novalidate>
                             <div class="col-md-4">
