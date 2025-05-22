@@ -31,7 +31,7 @@ const petItem = '<button id="pet-{id}" key="{id}" type="button" class="list-grou
             const petList = document.getElementById("petList")
 
             const infoPet = document.getElementById("infoPet")
-            infoPet.innerHTML = ""
+            infoPet.hidden = true
 
             Array.from(petList.children).forEach(i => {
                 i.className = 'list-group-item list-group-item-action'
