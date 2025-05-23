@@ -5,7 +5,7 @@ const createPetEndpoint = "tutor/{id}/pets";
 const getVacinasEndpoint = "pets/{id}/vacinas";
 const createVacinaEndpoint = "pets/{id}/vacinas";
 const getConsultasEndpoint = "pets/{id}/consultas";
-
+const createConsultaEndpoint = "pets/{id}/consultas";
 
 const petItem = '<button id="pet-{id}" key="{id}" type="button" class="list-group-item list-group-item-action" aria-current="true" data-bs-toggle="list">{name}</button>';
 
@@ -21,6 +21,8 @@ const petItem = '<button id="pet-{id}" key="{id}" type="button" class="list-grou
 
         if(pets) {
             vacinas = await renderizaVacinas(notification, pets[0])
+
+            consultas = await renderizaConsultas(notification, pets[0])
         }
 
         const btnNewPet = document.getElementById('btnNewPet')
@@ -108,6 +110,7 @@ async function loadTutor(notification) {
 function petAddEventoClick(notification, petButton, pet) {
     petButton.addEventListener('click', (e) => {
         renderizaVacinas(notification, pet)
+        renderizaConsultas(notification, pet)
     })
 }
 
@@ -295,6 +298,53 @@ async function getConsultas(PetID) {
 
     }).then(response => {
         if (response.status === 200) {
+            return response.json();
+        } else {
+            return { status: response.status, error: response.statusText }
+        }
+    }).catch(error => {
+        return { error: error }
+    });
+}
+
+async function renderizaConsultas(notification, pet) {
+    var consulta = await getConsultas(pet.id)
+    error = hasError(notification, consulta)
+
+    if (error) {
+        return false
+    }
+
+    const tbconsulta = document.getElementById("tbConsulta")
+    .getElementsByTagName('tbody')[0]
+
+    tbconsulta.innerHTML = ''
+
+    Array.from(consulta).forEach((consulta,i) => {
+        const linha = tbconsulta.insertRow(i)
+
+        const colnomeDoutor = linha.insertCell(0)
+        const colDtConsulta = linha.insertCell(1)
+        const colDiagnostico = linha.insertCell(2)
+
+        colnomeDoutor.textContent = consulta.nomeDoutor
+        colDtConsulta.textContent = consulta.dataConsulta
+        colDiagnostico.textContent = consulta.diagnostico
+    })
+}
+
+async function upsertConsulta(PetId, consulta) {
+    const url = `${baseUrl}/${createConsultaEndpoint}`.replace("{id}", PetId);
+
+    return await fetch(url, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(consulta)
+
+    }).then(response => {
+        if (response.status === 201) {
             return response.json();
         } else {
             return { status: response.status, error: response.statusText }

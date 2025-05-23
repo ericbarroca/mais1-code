@@ -53,13 +53,16 @@
             <div class="col-3 text-end">
                 <div id="petList" class="list-group text-start">
                 </div>
-                <button id="btnNewPet" type="button" class="btn btn-secondary mt-1 fw-bold">+</button>
+                <button id="btnNewPet" type="button" class="btn btn-primary mt-1 fw-boldbtn " data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">+</button>
             </div>
             <div class="col-9">
                 <div class="card">
                     <div class="card-body">
                         <div id="infoPet">
-                            <h2>Vacinas</h2>
+                            <div id="vacinas">
+                                <h2 class="posicao-nomes">Vacinas</h2>
+                                <button type="button" class="btn btn-primary">+</button>
+                            </div>
                             <table class="table" id="tbVacina">
                                 <thead>
                                     <tr>
@@ -69,9 +72,13 @@
                                     </tr>
                                 </thead>
                                 <tbody></tbody>
+
                             </table>
-                            
-                            <h2>Consultas</h2> 
+
+                            <div id="consultas">
+                            <h2  class="posicao-nomes">Consultas</h2>
+                            <button type="button" class="btn btn-primary">+</button>
+                            </div>
                             <table class="table" id="tbConsulta">
                                 <thead>
                                     <tr>
@@ -107,13 +114,14 @@
                             </div>
                             <div class="col-md-3">
                                 <label for="dataNascimento" class="form-label">Data de Nascimento</label>
-                                <input type="text" class="form-control" id="dataNascimento" name="dataNascimento" required>
+                                <input type="text" class="form-control" id="dataNascimento" name="dataNascimento"
+                                    required>
                             </div>
                             <div class="col-12">
                                 <button class="btn btn-primary" type="submit">Submit form</button>
                             </div>
                         </form>
-                        
+
                     </div>
                 </div>
             </div>
@@ -128,5 +136,5 @@
     <script src="scripts.js"></script>
 
 </body>
-
+<!-- id="btnNewVac" \type="button" class="btn btn-secondary mt-1 fw-bold" -->
 </html>
