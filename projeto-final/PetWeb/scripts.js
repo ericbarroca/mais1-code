@@ -99,12 +99,15 @@ const petItem = '<button id="pet-{id}" key="{id}" type="button" class="list-grou
         })
 
         const vacForm = document.querySelector("#frmNewVac")
+
         vacForm.addEventListener("submit", async e => {
             e.preventDefault()
             e.stopPropagation()
             vacForm.classList.add('was-validated')
+
+            const txtPetId = document.querySelector("#txtPetId")
             if (vacForm.checkValidity()) {
-                const data = await submitVac(notification, vacForm, pets)
+                const data = await submitVac(notification, vacForm, txtPetId.textContent)
 
                 frmNewVac.hidden = true
                 infoPet.hidden = false
@@ -139,26 +142,15 @@ const petItem = '<button id="pet-{id}" key="{id}" type="button" class="list-grou
 
 
 
-async function submitVac(notification, form, pet) {
+async function submitVac(notification, form, petId) {
     const data = formDataToJson(form);
-    const response = await upsertVacina(pet.ID, data);
+    const response = await upsertVacina(petId, data);
     error = hasError(notification, response)
     if (error) {
         return
     }
 
-    const parser = new DOMParser();
-    const tbvacina = document.getElementById("tbVacina")
-        .getElementsByTagName('tbody')[0]
-    const rowHtml = `
-    <tr>
-      <td>${response.nome}</td>
-      <td>${response.dataDeAplicacao}</td>
-      <td>${response.dataDeValidade}</td>
-    </tr>
-  `;
-    const doc = parser.parseFromString(rowHtml, 'text/html');
-    tbvacina.appendChild(doc.body.firstChild);
+    renderizaVacinas(notification, {id: petId})
 
     form.hidden = true
     form.reset()
@@ -373,6 +365,10 @@ async function getVacinas(PetID) {
 }
 
 async function renderizaVacinas(notification, pet) {
+
+    const txtPetId = document.querySelector("#txtPetId")
+    txtPetId.textContent = pet.id
+
     var vacinas = await getVacinas(pet.id)
     error = hasError(notification, vacinas)
 
@@ -383,7 +379,7 @@ async function renderizaVacinas(notification, pet) {
     const tbvacina = document.getElementById("tbVacina")
         .getElementsByTagName('tbody')[0]
 
-    tbvacina.hidden = true
+    tbvacina.innerHTML = ""
 
     Array.from(vacinas).forEach((vac, i) => {
         const linha = tbvacina.insertRow(i)
