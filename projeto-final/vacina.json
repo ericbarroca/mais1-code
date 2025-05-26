@@ -1,6 +1,0 @@
-HTTP/1.1 400 Bad Request
-Content-Type: text/plain; charset=utf-8
-Date: Tue, 20 May 2025 01:14:05 GMT
-Server: Kestrel
-Transfer-Encoding: chunked
-
