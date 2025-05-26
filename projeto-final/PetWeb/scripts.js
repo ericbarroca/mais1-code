@@ -213,6 +213,8 @@ async function loadTutor(notification) {
 
 function petAddEventoClick(notification, petButton, pet) {
     petButton.addEventListener('click', (e) => {
+        const infoPet = document.getElementById("infoPet")
+        infoPet.hidden = false
         renderizaVacinas(notification, pet)
         renderizaConsultas(notification, pet)
     })
@@ -378,6 +380,9 @@ async function renderizaVacinas(notification, pet) {
 
     const tbvacina = document.getElementById("tbVacina")
         .getElementsByTagName('tbody')[0]
+    
+    const frmVac = document.getElementById("frmNewVac")
+    frmVac.hidden = true
 
     tbvacina.innerHTML = ""
 
