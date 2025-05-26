@@ -19,7 +19,7 @@ const petItem = '<button id="pet-{id}" key="{id}" type="button" class="list-grou
     if (tutor) {
         pets = await renderizaPet(notification, tutor)
 
-        if(pets) {
+        if (pets) {
             vacinas = await renderizaVacinas(notification, pets[0])
 
             consultas = await renderizaConsultas(notification, pets[0])
@@ -28,20 +28,24 @@ const petItem = '<button id="pet-{id}" key="{id}" type="button" class="list-grou
         const btnNewPet = document.getElementById('btnNewPet')
         btnNewPet.addEventListener('click', (e) => {
             const frmNewPet = document.getElementById('frmNewPet')
-            
             frmNewPet.hidden = false
-            const petList = document.getElementById("petList")
+
+            const frmNewVac = document.getElementById('frmNewVac')
+            frmNewVac.hidden = true
+
+            const frmNewConsul = document.getElementById('frmNewConsul')
+            frmNewConsul.hidden = true
 
             const infoPet = document.getElementById("infoPet")
             infoPet.hidden = true
 
+            const petList = document.getElementById("petList")
             Array.from(petList.children).forEach(i => {
                 i.className = 'list-group-item list-group-item-action'
             })
         })
 
         const petForm = document.querySelector("#frmNewPet")
-
         petForm.addEventListener("submit", async e => {
             e.preventDefault()
             e.stopPropagation()
@@ -50,9 +54,36 @@ const petItem = '<button id="pet-{id}" key="{id}" type="button" class="list-grou
                 const data = submitPet(notification, petForm, tutor)
             }
 
+            frmNewPet.hidden = true
+            infoPet.hidden = false
             petForm.classList.add('was-validated')
 
         })
+
+        const btnNewVac = document.getElementById('btnNewVac')
+        btnNewVac.addEventListener('click', (e) => {
+            const frmNewVac = document.getElementById('frmNewVac')
+            frmNewVac.hidden = false
+            frmNewVac.classList.remove('was-validated')
+            
+            const infoPet = document.getElementById("infoPet")
+            infoPet.hidden = true
+            const tbVacina = document.getElementById("tbVacina")
+            Array.from(tbVacina.rows).forEach(row => {
+                row.classList.add('table-row-class');
+            });
+        })
+
+        const btnNewConsul = document.getElementById('btnNewConsul')
+        btnNewConsul.addEventListener('click', (e) => {
+            const frmNewConsul = document.getElementById('frmNewConsul')
+            frmNewConsul.hidden = false
+
+            const infoPet = document.getElementById("infoPet")
+            infoPet.hidden = true
+        })
+
+
     }
 })()
 
@@ -73,7 +104,59 @@ async function submitPet(notification, form, tutor) {
     const doc = parser.parseFromString(el, 'text/html');
     petList.appendChild(doc.body.firstChild)
     petList.lastElementChild.className = `${petList.lastElementChild.className} active`;
-    
+
+    form.hidden = true
+    form.reset()
+    form.classList.remove('was-validated')
+}
+
+async function submitVac(notification, form, pet) {
+    const data = formDataToJson(form);
+    const response = await upsertVacina(pet.ID, data);
+    error = hasError(notification, response)
+    if (error) {
+        return
+    }
+
+    const parser = new DOMParser();
+    const tbvacina = document.getElementById("tbVacina")
+        .getElementsByTagName('tbody')[0]
+    const rowHtml = `
+    <tr>
+      <td>${response.nome}</td>
+      <td>${response.dataDeAplicacao}</td>
+      <td>${response.dataDeValidade}</td>
+    </tr>
+  `;
+    const doc = parser.parseFromString(rowHtml, 'text/html');
+    tbvacina.appendChild(doc.body.firstChild);
+
+    form.hidden = true
+    form.reset()
+    form.classList.remove('was-validated')
+}
+
+async function submitConsul(notification, form, pet) {
+    const data = formDataToJson(form);
+    const response = await upsertConsulta(pet.ID, data);
+    error = hasError(notification, response)
+    if (error) {
+        return
+    }
+
+    const parser = new DOMParser();
+    const tbvacina = document.getElementById("tbConsulta").getElementsByTagName('tbody')[0]
+    const rowHtml = `
+    <tr>
+      <td>${response.nomeDoutor}</td>
+      <td>${response.dataConsulta}</td>
+      <td>${response.diagnostico}</td>
+    </tr>
+    `;
+
+    const doc = parser.parseFromString(rowHtml, 'text/html');
+    tbvacina.appendChild(doc.body.firstChild);
+
     form.hidden = true
     form.reset()
     form.classList.remove('was-validated')
@@ -248,11 +331,11 @@ async function renderizaVacinas(notification, pet) {
     }
 
     const tbvacina = document.getElementById("tbVacina")
-    .getElementsByTagName('tbody')[0]
+        .getElementsByTagName('tbody')[0]
 
-    tbvacina.innerHTML = ''
+    tbvacina.hidden = true
 
-    Array.from(vacinas).forEach((vac,i) => {
+    Array.from(vacinas).forEach((vac, i) => {
         const linha = tbvacina.insertRow(i)
 
         const colnome = linha.insertCell(0)
@@ -316,11 +399,11 @@ async function renderizaConsultas(notification, pet) {
     }
 
     const tbconsulta = document.getElementById("tbConsulta")
-    .getElementsByTagName('tbody')[0]
+        .getElementsByTagName('tbody')[0]
 
     tbconsulta.innerHTML = ''
 
-    Array.from(consulta).forEach((consulta,i) => {
+    Array.from(consulta).forEach((consulta, i) => {
         const linha = tbconsulta.insertRow(i)
 
         const colnomeDoutor = linha.insertCell(0)

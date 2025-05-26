@@ -53,7 +53,8 @@
             <div class="col-3 text-end">
                 <div id="petList" class="list-group text-start">
                 </div>
-                <button id="btnNewPet" type="button" class="btn btn-primary mt-1 fw-boldbtn " data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">+</button>
+                <button id="btnNewPet" type="button" class="btn btn-primary mt-1 fw-boldbtn " data-bs-toggle="modal"
+                    data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">+</button>
             </div>
             <div class="col-9">
                 <div class="card">
@@ -61,7 +62,7 @@
                         <div id="infoPet">
                             <div id="vacinas">
                                 <h2 class="posicao-nomes">Vacinas</h2>
-                                <button type="button" class="btn btn-primary">+</button>
+                                <button id="btnNewVac" type="button" class="btn btn-primary">+</button>
                             </div>
                             <table class="table" id="tbVacina">
                                 <thead>
@@ -76,8 +77,8 @@
                             </table>
 
                             <div id="consultas">
-                            <h2  class="posicao-nomes">Consultas</h2>
-                            <button type="button" class="btn btn-primary">+</button>
+                                <h2 class="posicao-nomes">Consultas</h2>
+                                <button id="btnNewConsul" type="button" class="btn btn-primary">+</button>
                             </div>
                             <table class="table" id="tbConsulta">
                                 <thead>
@@ -122,6 +123,52 @@
                             </div>
                         </form>
 
+                        <form id="frmNewVac" hidden="true" class="row g-3 needs-validation" novalidate>
+                            <h2>Crie Sua Vacina</h2>
+                            <div class="col-md-4">
+                                <label for="name" class="form-label">Nome</label>
+                                <input type="text" class="form-control" id="name" name="nome" required>
+                            </div>
+
+                            <div class="col-md-3">
+                                <label for="dataDeAplicacao" class="form-label">Data de Aplicação</label>
+                                <input type="text" class="form-control" id="dataDeAplicacao" name="dataDeAplicacao"
+                                    required>
+                            </div>
+
+                            <div class="col-md-3">
+                                <label for="dataDeValidade" class="form-label">Data de Validade</label>
+                                <input type="text" class="form-control" id="dataDeValidade" name="dataDeValidade"
+                                    required>
+                            </div>
+
+                            <div class="col-12">
+                                <button class="btn btn-primary" type="submit">Submit form</button>
+                            </div>
+                        </form>
+
+                        <form id="frmNewConsul" hidden="true" class="row g-3 needs-validation" novalidate>
+                            <h2>Crie Sua Consultas</h2>
+                            <div class="col-md-4">
+                                <label for="nomeDoutor" class="form-label">Doutor</label>
+                                <input type="text" class="form-control" id="nomeDoutor" name="nomeDoutor" required>
+                            </div>
+
+                            <div class="col-md-3">
+                                <label for="dataConsulta" class="form-label">Data da Consulta</label>
+                                <input type="text" class="form-control" id="dataConsulta" name="dataConsulta"
+                                    required>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="diagnostico" class="form-label">Diagnóstico</label>
+                                <input type="text" class="form-control" id="diagnostico" name="diagnostico" required>
+                            </div>
+
+                            <div class="col-12">
+                                <button class="btn btn-primary" type="submit">Submit form</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -137,4 +184,5 @@
 
 </body>
 <!-- id="btnNewVac" \type="button" class="btn btn-secondary mt-1 fw-bold" -->
+
 </html>
