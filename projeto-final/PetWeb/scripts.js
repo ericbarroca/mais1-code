@@ -6,6 +6,9 @@ const getVacinasEndpoint = "pets/{id}/vacinas";
 const createVacinaEndpoint = "pets/{id}/vacinas";
 const getConsultasEndpoint = "pets/{id}/consultas";
 const createConsultaEndpoint = "pets/{id}/consultas";
+const deletePetEndpoint = "tutor/{id}/pets/{petId}";
+const deleteVacinaEndpoint = "pets/{id}/vacinas/{vacinaId}";
+const deleteConsultaEndpoint = "pets/{id}/consultas/{consultaId}";
 
 const petItem = '<button id="pet-{id}" key="{id}" type="button" class="list-group-item list-group-item-action" aria-current="true" data-bs-toggle="list">{name}</button>';
 
@@ -301,6 +304,27 @@ async function upsertPet(tutorID, pet) {
         return { error: error }
     });
 }
+async function deletePet(tutorId, petId, notification) {
+        const url = `${baseUrl}/${getPetsEndpoint.replace("{id}", tutorId)}/${petId}`;
+ const response = await fetch(url, {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }).then(response => {
+        if (response.status === 204) {
+            return { success: true };
+        } else {
+            return { status: response.status, error: response.statusText };
+        }
+    }).catch(error => {
+        return { error: error };
+    });
+
+    const error = hasError(notification, response);
+    return !error;
+}
+
 
 async function getVacinas(PetID) {
     const url = `${baseUrl}/${getVacinasEndpoint}`.replace("{id}", PetID);
@@ -370,6 +394,28 @@ async function upsertVacina(PetId, vacina) {
     });
 }
 
+async function deleteVacina(petId, vacinaId, notification) {
+    const url = `${baseUrl}/${getVacinasEndpoint.replace("{id}", petId)}/${vacinaId}`;
+    
+    const response = await fetch(url, {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }).then(response => {
+        if (response.status === 204) {
+            return { success: true };
+        } else {
+            return { status: response.status, error: response.statusText };
+        }
+    }).catch(error => {
+        return { error: error };
+    });
+
+    const error = hasError(notification, response);
+    return !error;
+}
+
 async function getConsultas(PetID) {
     const url = `${baseUrl}/${getConsultasEndpoint}`.replace("{id}", PetID);
 
@@ -436,3 +482,27 @@ async function upsertConsulta(PetId, consulta) {
         return { error: error }
     });
 }
+async function deleteConsulta(petId, consultaId, notification) {
+    const url = `${baseUrl}/${getConsultasEndpoint.replace("{id}", petId)}/${consultaId}`;
+    
+    const response = await fetch(url, {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }).then(response => {
+        if (response.status === 204) {
+            return { success: true };
+        } else {
+            return { status: response.status, error: response.statusText };
+        }
+    }).catch(error => {
+        return { error: error };
+    });
+
+    const error = hasError(notification, response);
+    return !error;
+}
+
+
+
