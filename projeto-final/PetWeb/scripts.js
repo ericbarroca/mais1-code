@@ -67,7 +67,7 @@ const petItem = '<button id="pet-{id}" key="{id}" type="button" class="list-grou
             const frmNewVac = document.getElementById('frmNewVac')
             frmNewVac.hidden = false
             frmNewVac.classList.remove('was-validated')
-            
+
             const infoPet = document.getElementById("infoPet")
             infoPet.hidden = true
             const tbVacina = document.getElementById("tbVacina")
@@ -75,6 +75,23 @@ const petItem = '<button id="pet-{id}" key="{id}" type="button" class="list-grou
                 row.classList.add('table-row-class');
             });
         })
+
+        const deleteBtnVac = document.createElement('button');
+        deleteBtnVac.className = 'btn btn-sm btn-outline-danger';
+        deleteBtnVac.textContent = '×';
+        deleteBtnVac.setAttribute('data-vacina-id', vacinas.Id);
+        colActions.appendChild(deleteBtnVac);
+
+        deleteBtnVac.addEventListener('click', async (e) => {
+            e.stopPropagation();
+            const confirmed = confirm('Tem certeza que deseja excluir esta vacina?');
+            if (confirmed) {
+                const success = await deleteVacina(pet.id, vac.id, notification);
+                if (success) {
+                    linha.remove();
+                }
+            }
+        });
 
         const btnNewConsul = document.getElementById('btnNewConsul')
         btnNewConsul.addEventListener('click', (e) => {
@@ -85,7 +102,23 @@ const petItem = '<button id="pet-{id}" key="{id}" type="button" class="list-grou
             infoPet.hidden = true
         })
 
+        const deleteBtnConsul = document.createElement('button');
+        // deleteBtn.className = 'btn btn-sm btn-outline-danger';
+        // deleteBtn.textContent = '×';
+        // deleteBtn.setAttribute('data-consulta-id', consulta.id);
+        // colActions.appendChild(deleteBtn);
 
+
+        // deleteBtn.addEventListener('click', async (e) => {
+        //     e.stopPropagation();
+        //     const confirmed = confirm('Tem certeza que deseja excluir esta consulta?');
+        //     if (confirmed) {
+        //         const success = await deleteConsulta(pet.id, consulta.id, notification);
+        //         if (success) {
+        //             linha.remove();
+        //         }
+        //     }
+        // });
     }
 })()
 
@@ -304,8 +337,8 @@ async function upsertPet(tutorID, pet) {
     });
 }
 async function deletePet(tutorId, petId, notification) {
-        const url = `${baseUrl}/${getPetsEndpoint.replace("{id}", tutorId)}/${petId}`;
- const response = await fetch(url, {
+    const url = `${baseUrl}/${getPetsEndpoint.replace("{id}", tutorId)}/${petId}`;
+    const response = await fetch(url, {
         method: "DELETE",
         headers: {
             "Content-Type": "application/json"
@@ -395,7 +428,7 @@ async function upsertVacina(PetId, vacina) {
 
 async function deleteVacina(petId, vacinaId, notification) {
     const url = `${baseUrl}/${getVacinasEndpoint.replace("{id}", petId)}/${vacinaId}`;
-    
+
     const response = await fetch(url, {
         method: "DELETE",
         headers: {
@@ -415,22 +448,7 @@ async function deleteVacina(petId, vacinaId, notification) {
     return !error;
 }
 
-       const deleteBtn = document.createElement('button');
-        deleteBtn.className = 'btn btn-sm btn-outline-danger';
-        deleteBtn.textContent = '×';
-        deleteBtn.setAttribute('data-vacina-id', vac.id);
-        colActions.appendChild(deleteBtn);
-        
-        deleteBtn.addEventListener('click', async (e) => {
-            e.stopPropagation();
-            const confirmed = confirm('Tem certeza que deseja excluir esta vacina?');
-            if (confirmed) {
-                const success = await deleteVacina(pet.id, vac.id, notification);
-                if (success) {
-                    linha.remove();
-                }
-            }
-        });
+
 
 async function getConsultas(PetID) {
     const url = `${baseUrl}/${getConsultasEndpoint}`.replace("{id}", PetID);
@@ -500,7 +518,7 @@ async function upsertConsulta(PetId, consulta) {
 }
 async function deleteConsulta(petId, consultaId, notification) {
     const url = `${baseUrl}/${getConsultasEndpoint.replace("{id}", petId)}/${consultaId}`;
-    
+
     const response = await fetch(url, {
         method: "DELETE",
         headers: {
@@ -520,21 +538,5 @@ async function deleteConsulta(petId, consultaId, notification) {
     return !error;
 }
 
-       const deleteBtn = document.createElement('button');
-        deleteBtn.className = 'btn btn-sm btn-outline-danger';
-        deleteBtn.textContent = '×';
-        deleteBtn.setAttribute('data-consulta-id', consulta.id);
-        colActions.appendChild(deleteBtn);
-        
-    
-        deleteBtn.addEventListener('click', async (e) => {
-            e.stopPropagation();
-            const confirmed = confirm('Tem certeza que deseja excluir esta consulta?');
-            if (confirmed) {
-                const success = await deleteConsulta(pet.id, consulta.id, notification);
-                if (success) {
-                    linha.remove();
-                }
-            }
-        });
+
 
