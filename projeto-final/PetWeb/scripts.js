@@ -6,6 +6,7 @@ const getVacinasEndpoint = "pets/{id}/vacinas";
 const createVacinaEndpoint = "pets/{id}/vacinas";
 const getConsultasEndpoint = "pets/{id}/consultas";
 const createConsultaEndpoint = "pets/{id}/consultas";
+const deletePetEndpoint = "tutor/{id}/pets/{petId}";
 const deleteVacinaEndpoint = "pets/{id}/vacinas/{vacinaId}";
 const deleteConsultaEndpoint = "pets/{id}/consultas/{consultaId}";
 
@@ -18,6 +19,11 @@ const petItem = '<button id="pet-{id}" key="{id}" type="button" class="list-grou
     const tutor = await loadTutor(notification)
     let pets = []
 
+    const frmNewPet = document.getElementById('frmNewPet')
+    const frmNewVac = document.getElementById('frmNewVac')
+    const frmNewConsul = document.getElementById('frmNewConsul')
+    const infoPet = document.getElementById("infoPet")
+
     if (tutor) {
         pets = await renderizaPet(notification, tutor)
 
@@ -29,16 +35,10 @@ const petItem = '<button id="pet-{id}" key="{id}" type="button" class="list-grou
 
         const btnNewPet = document.getElementById('btnNewPet')
         btnNewPet.addEventListener('click', (e) => {
-            const frmNewPet = document.getElementById('frmNewPet')
+
             frmNewPet.hidden = false
-
-            const frmNewVac = document.getElementById('frmNewVac')
             frmNewVac.hidden = true
-
-            const frmNewConsul = document.getElementById('frmNewConsul')
             frmNewConsul.hidden = true
-
-            const infoPet = document.getElementById("infoPet")
             infoPet.hidden = true
 
             const petList = document.getElementById("petList")
@@ -59,34 +59,74 @@ const petItem = '<button id="pet-{id}" key="{id}" type="button" class="list-grou
             frmNewPet.hidden = true
             infoPet.hidden = false
             petForm.classList.add('was-validated')
-
         })
+
+        async function submitPet(notification, form, tutor) {
+            const data = formDataToJson(form);
+            const response = await upsertPet(tutor.documento.numero, data);
+
+            error = hasError(notification, response)
+
+            if (error) {
+                return
+            }
+
+            const parser = new DOMParser();
+            const petList = document.getElementById("petList")
+
+            const el = petItem.replace("{name}", response.nome).replaceAll("{id}", response.id);
+            const doc = parser.parseFromString(el, 'text/html');
+            petList.appendChild(doc.body.firstChild)
+            petList.lastElementChild.className = `${petList.lastElementChild.className} active`;
+
+            form.hidden = true
+            form.reset()
+            form.classList.remove('was-validated')
+        }
 
         const btnNewVac = document.getElementById('btnNewVac')
         btnNewVac.addEventListener('click', (e) => {
-            const frmNewVac = document.getElementById('frmNewVac')
+
             frmNewVac.hidden = false
             frmNewVac.classList.remove('was-validated')
 
-            const infoPet = document.getElementById("infoPet")
             infoPet.hidden = true
+
             const tbVacina = document.getElementById("tbVacina")
             Array.from(tbVacina.rows).forEach(row => {
                 row.classList.add('table-row-class');
             });
         })
 
+        const vacForm = document.querySelector("#frmNewVac")
+
+        vacForm.addEventListener("submit", async e => {
+            e.preventDefault()
+            e.stopPropagation()
+            vacForm.classList.add('was-validated')
+
+            const txtPetId = document.querySelector("#txtPetId")
+            if (vacForm.checkValidity()) {
+                const data = await submitVac(notification, vacForm, txtPetId.textContent)
+
+                frmNewVac.hidden = true
+                infoPet.hidden = false
+                vacForm.reset()
+            }
+        })
+
+        
         const deleteBtnVac = document.createElement('button');
-        deleteBtnVac.className = 'btn btn-sm btn-outline-danger';
-        deleteBtnVac.textContent = '×';
-        deleteBtnVac.setAttribute('data-vacina-id', vacinas.Id);
-        colActions.appendChild(deleteBtnVac);
+        deleteBtnVac.className = 'btn btn-sm btn-outline-danger'; deleteBtnVac.className = 'btn btn-sm btn-outline-danger';
+        deleteBtnVac.textContent = '×'; deleteBtnVac.textContent = '×';
+        deleteBtnVac.setAttribute('data-vacina-id', vac.id); deleteBtnVac.setAttribute('data-vacina-id', vac.id);
+        colActions.appendChild(deleteBtnVac); colActions.appendChild(deleteBtnVac);
 
         deleteBtnVac.addEventListener('click', async (e) => {
             e.stopPropagation();
             const confirmed = confirm('Tem certeza que deseja excluir esta vacina?');
             if (confirmed) {
-                const success = await deleteVacina(pet.id, vac.id, notification);
+                const success = await deleteVacina(pet.id, vac.id, notification); 
                 if (success) {
                     linha.remove();
                 }
@@ -95,76 +135,57 @@ const petItem = '<button id="pet-{id}" key="{id}" type="button" class="list-grou
 
         const btnNewConsul = document.getElementById('btnNewConsul')
         btnNewConsul.addEventListener('click', (e) => {
-            const frmNewConsul = document.getElementById('frmNewConsul')
-            frmNewConsul.hidden = false
 
-            const infoPet = document.getElementById("infoPet")
+            frmNewConsul.hidden = false
             infoPet.hidden = true
         })
 
-        const deleteBtnConsul = document.createElement('button');
-        // deleteBtn.className = 'btn btn-sm btn-outline-danger';
-        // deleteBtn.textContent = '×';
-        // deleteBtn.setAttribute('data-consulta-id', consulta.id);
-        // colActions.appendChild(deleteBtn);
+        const consulForm = document.querySelector("#frmNewConsul")
+        consulForm.addEventListener("submit", async e => {
+            e.preventDefault()
+            e.stopPropagation()
+
+            if (consulForm.checkValidity()) {
+                const data = submitConsul(notification, consulForm, pets)
+            }
+
+            frmNewConsul.hidden = true
+            infoPet.hidden = false
+            consulForm.classList.add('was-validated')
+
+        })
+        const deleteBtnConsult = document.createElement('button');
+        deleteBtnConsult.className = 'btn btn-sm btn-outline-danger'; deleteBtnConsult.className = 'btn btn-sm btn-outline-danger';
+        deleteBtnConsult.textContent = '×'; deleteBtnConsult.textContent = '×';
+        deleteBtnConsult.setAttribute('data-consulta-id', consulta.id); deleteBtnConsult.setAttribute('data-consulta-id', consulta.id);
+        colActions.appendChild(deleteBtnConsult); colActions.appendChild(deleteBtnConsult);
 
 
-        // deleteBtn.addEventListener('click', async (e) => {
-        //     e.stopPropagation();
-        //     const confirmed = confirm('Tem certeza que deseja excluir esta consulta?');
-        //     if (confirmed) {
-        //         const success = await deleteConsulta(pet.id, consulta.id, notification);
-        //         if (success) {
-        //             linha.remove();
-        //         }
-        //     }
-        // });
+        deleteBtn.addEventListener('click', async (e) => {
+            e.stopPropagation();
+            const confirmed = confirm('Tem certeza que deseja excluir esta consulta?');
+            if (confirmed) {
+                const success = await deleteConsulta(pet.id, consulta.id, notification); 
+                if (success) {
+                    linha.remove();
+                }
+            }
+        });
+
     }
 })()
 
-async function submitPet(notification, form, tutor) {
+
+
+async function submitVac(notification, form, petId) {
     const data = formDataToJson(form);
-    const response = await upsertPet(tutor.documento.numero, data);
-
-    error = hasError(notification, response)
-
-    if (error) {
-        return
-    }
-
-    const parser = new DOMParser();
-    const petList = document.getElementById("petList")
-
-    const el = petItem.replace("{name}", response.nome).replaceAll("{id}", response.id);
-    const doc = parser.parseFromString(el, 'text/html');
-    petList.appendChild(doc.body.firstChild)
-    petList.lastElementChild.className = `${petList.lastElementChild.className} active`;
-
-    form.hidden = true
-    form.reset()
-    form.classList.remove('was-validated')
-}
-
-async function submitVac(notification, form, pet) {
-    const data = formDataToJson(form);
-    const response = await upsertVacina(pet.ID, data);
+    const response = await upsertVacina(petId, data);
     error = hasError(notification, response)
     if (error) {
         return
     }
 
-    const parser = new DOMParser();
-    const tbvacina = document.getElementById("tbVacina")
-        .getElementsByTagName('tbody')[0]
-    const rowHtml = `
-    <tr>
-      <td>${response.nome}</td>
-      <td>${response.dataDeAplicacao}</td>
-      <td>${response.dataDeValidade}</td>
-    </tr>
-  `;
-    const doc = parser.parseFromString(rowHtml, 'text/html');
-    tbvacina.appendChild(doc.body.firstChild);
+    renderizaVacinas(notification, { id: petId })
 
     form.hidden = true
     form.reset()
@@ -379,6 +400,10 @@ async function getVacinas(PetID) {
 }
 
 async function renderizaVacinas(notification, pet) {
+
+    const txtPetId = document.querySelector("#txtPetId")
+    txtPetId.textContent = pet.id
+
     var vacinas = await getVacinas(pet.id)
     error = hasError(notification, vacinas)
 
@@ -389,7 +414,7 @@ async function renderizaVacinas(notification, pet) {
     const tbvacina = document.getElementById("tbVacina")
         .getElementsByTagName('tbody')[0]
 
-    tbvacina.hidden = true
+    tbvacina.innerHTML = ""
 
     Array.from(vacinas).forEach((vac, i) => {
         const linha = tbvacina.insertRow(i)
@@ -447,8 +472,6 @@ async function deleteVacina(petId, vacinaId, notification) {
     const error = hasError(notification, response);
     return !error;
 }
-
-
 
 async function getConsultas(PetID) {
     const url = `${baseUrl}/${getConsultasEndpoint}`.replace("{id}", PetID);
@@ -516,6 +539,7 @@ async function upsertConsulta(PetId, consulta) {
         return { error: error }
     });
 }
+
 async function deleteConsulta(petId, consultaId, notification) {
     const url = `${baseUrl}/${getConsultasEndpoint.replace("{id}", petId)}/${consultaId}`;
 
@@ -537,6 +561,5 @@ async function deleteConsulta(petId, consultaId, notification) {
     const error = hasError(notification, response);
     return !error;
 }
-
 
 
