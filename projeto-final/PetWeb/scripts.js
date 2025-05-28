@@ -24,6 +24,8 @@ const petItem = '<button id="pet-{id}" key="{id}" type="button" class="list-grou
     const frmNewConsul = document.getElementById('frmNewConsul')
     const infoPet = document.getElementById("infoPet")
 
+    const txtPetId = document.querySelector("#txtPetId").textContent
+
     if (tutor) {
         pets = await renderizaPet(notification, tutor)
 
@@ -119,21 +121,30 @@ const petItem = '<button id="pet-{id}" key="{id}" type="button" class="list-grou
         btnNewConsul.addEventListener('click', (e) => {
 
             frmNewConsul.hidden = false
+            frmNewConsul.classList.remove('was-validated')
+
             infoPet.hidden = true
+
+            const tbConsulta = document.getElementById("tbConsulta")
+            Array.from(tbConsulta.rows).forEach(row => {
+                row.classList.add('table-row-class');
+            });
         })
 
         const consulForm = document.querySelector("#frmNewConsul")
         consulForm.addEventListener("submit", async e => {
             e.preventDefault()
             e.stopPropagation()
-
-            if (consulForm.checkValidity()) {
-                const data = submitConsul(notification, consulForm, pets)
-            }
-
-            frmNewConsul.hidden = true
-            infoPet.hidden = false
             consulForm.classList.add('was-validated')
+
+            const txtPetId = document.querySelector("#txtPetId")
+            if (consulForm.checkValidity()) {
+                const data = await submitConsul(notification, consulForm, txtPetId.textContent)
+
+                frmNewConsul.hidden = true
+                infoPet.hidden = false
+                consulForm.reset()
+            }
 
         })
 
@@ -150,7 +161,7 @@ async function submitVac(notification, form, petId) {
         return
     }
 
-    renderizaVacinas(notification, {id: petId})
+    renderizaVacinas(notification, { id: petId })
 
     form.hidden = true
     form.reset()
@@ -165,18 +176,8 @@ async function submitConsul(notification, form, pet) {
         return
     }
 
-    const parser = new DOMParser();
-    const tbvacina = document.getElementById("tbConsulta").getElementsByTagName('tbody')[0]
-    const rowHtml = `
-    <tr>
-      <td>${response.nomeDoutor}</td>
-      <td>${response.dataConsulta}</td>
-      <td>${response.diagnostico}</td>
-    </tr>
-    `;
+    renderizaConsultas(notification, { id: petId })
 
-    const doc = parser.parseFromString(rowHtml, 'text/html');
-    tbvacina.appendChild(doc.body.firstChild);
 
     form.hidden = true
     form.reset()
@@ -215,6 +216,13 @@ function petAddEventoClick(notification, petButton, pet) {
     petButton.addEventListener('click', (e) => {
         const infoPet = document.getElementById("infoPet")
         infoPet.hidden = false
+
+        const frmNewConsul = document.getElementById("frmNewConsul")
+        frmNewConsul.hidden = true
+
+        const frmNewPet = document.getElementById("frmNewPet")
+        frmNewPet.hidden = true
+
         renderizaVacinas(notification, pet)
         renderizaConsultas(notification, pet)
     })
@@ -253,6 +261,7 @@ function hasError(notification, data) {
     if (data.error) {
         toastTitle = notification.querySelector('#toastTitle')
         toastBody = notification.querySelector(".toast-body")
+        const toast = new bootstrap.Toast(notification)
 
         toastTitle.textContent = "Erro"
         toastBody.textContent = data.error
@@ -380,7 +389,7 @@ async function renderizaVacinas(notification, pet) {
 
     const tbvacina = document.getElementById("tbVacina")
         .getElementsByTagName('tbody')[0]
-    
+
     const frmVac = document.getElementById("frmNewVac")
     frmVac.hidden = true
 
@@ -464,8 +473,11 @@ async function getConsultas(PetID) {
 }
 
 async function renderizaConsultas(notification, pet) {
-    var consulta = await getConsultas(pet.id)
-    error = hasError(notification, consulta)
+    const txtPetId = document.querySelector("#txtPetId")
+    txtPetId.textContent = pet.id
+
+    var consultas = await getConsultas(pet.id)
+    error = hasError(notification, consultas)
 
     if (error) {
         return false
@@ -474,18 +486,22 @@ async function renderizaConsultas(notification, pet) {
     const tbconsulta = document.getElementById("tbConsulta")
         .getElementsByTagName('tbody')[0]
 
-    tbconsulta.innerHTML = ''
+    const frmConsul = document.getElementById("frmNewConsul")
+    frmConsul.hidden = true
 
-    Array.from(consulta).forEach((consulta, i) => {
+    tbconsulta.innerHTML = ""
+
+    Array.from(consultas).forEach((consult, i) => {
         const linha = tbconsulta.insertRow(i)
 
         const colnomeDoutor = linha.insertCell(0)
         const colDtConsulta = linha.insertCell(1)
-        const colDiagnostico = linha.insertCell(2)
+        const coldiagnostico = linha.insertCell(2)
 
-        colnomeDoutor.textContent = consulta.nomeDoutor
-        colDtConsulta.textContent = consulta.dataConsulta
-        colDiagnostico.textContent = consulta.diagnostico
+        colnomeDoutor.textContent = consult.nomeDoutor
+        colDtConsulta.textContent = consult.dataConsulta
+        coldiagnostico.textContent = consult.diagnostico
+
     })
 }
 
