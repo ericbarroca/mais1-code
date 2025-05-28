@@ -6,7 +6,6 @@ const getVacinasEndpoint = "pets/{id}/vacinas";
 const createVacinaEndpoint = "pets/{id}/vacinas";
 const getConsultasEndpoint = "pets/{id}/consultas";
 const createConsultaEndpoint = "pets/{id}/consultas";
-const deletePetEndpoint = "tutor/{id}/pets/{petId}";
 const deleteVacinaEndpoint = "pets/{id}/vacinas/{vacinaId}";
 const deleteConsultaEndpoint = "pets/{id}/consultas/{consultaId}";
 
@@ -19,13 +18,6 @@ const petItem = '<button id="pet-{id}" key="{id}" type="button" class="list-grou
     const tutor = await loadTutor(notification)
     let pets = []
 
-    const frmNewPet = document.getElementById('frmNewPet')
-    const frmNewVac = document.getElementById('frmNewVac')
-    const frmNewConsul = document.getElementById('frmNewConsul')
-    const infoPet = document.getElementById("infoPet")
-
-    const txtPetId = document.querySelector("#txtPetId").textContent
-
     if (tutor) {
         pets = await renderizaPet(notification, tutor)
 
@@ -37,10 +29,16 @@ const petItem = '<button id="pet-{id}" key="{id}" type="button" class="list-grou
 
         const btnNewPet = document.getElementById('btnNewPet')
         btnNewPet.addEventListener('click', (e) => {
-
+            const frmNewPet = document.getElementById('frmNewPet')
             frmNewPet.hidden = false
+
+            const frmNewVac = document.getElementById('frmNewVac')
             frmNewVac.hidden = true
+
+            const frmNewConsul = document.getElementById('frmNewConsul')
             frmNewConsul.hidden = true
+
+            const infoPet = document.getElementById("infoPet")
             infoPet.hidden = true
 
             const petList = document.getElementById("petList")
@@ -61,107 +59,79 @@ const petItem = '<button id="pet-{id}" key="{id}" type="button" class="list-grou
             frmNewPet.hidden = true
             infoPet.hidden = false
             petForm.classList.add('was-validated')
+
         })
-
-        async function submitPet(notification, form, tutor) {
-            const data = formDataToJson(form);
-            const response = await upsertPet(tutor.documento.numero, data);
-
-            error = hasError(notification, response)
-
-            if (error) {
-                return
-            }
-
-            const parser = new DOMParser();
-            const petList = document.getElementById("petList")
-
-            const el = petItem.replace("{name}", response.nome).replaceAll("{id}", response.id);
-            const doc = parser.parseFromString(el, 'text/html');
-            petList.appendChild(doc.body.firstChild)
-            petList.lastElementChild.className = `${petList.lastElementChild.className} active`;
-
-            form.hidden = true
-            form.reset()
-            form.classList.remove('was-validated')
-        }
 
         const btnNewVac = document.getElementById('btnNewVac')
         btnNewVac.addEventListener('click', (e) => {
-
+            const frmNewVac = document.getElementById('frmNewVac')
             frmNewVac.hidden = false
             frmNewVac.classList.remove('was-validated')
-
+            
+            const infoPet = document.getElementById("infoPet")
             infoPet.hidden = true
-
             const tbVacina = document.getElementById("tbVacina")
             Array.from(tbVacina.rows).forEach(row => {
                 row.classList.add('table-row-class');
             });
         })
 
-        const vacForm = document.querySelector("#frmNewVac")
-
-        vacForm.addEventListener("submit", async e => {
-            e.preventDefault()
-            e.stopPropagation()
-            vacForm.classList.add('was-validated')
-
-            const txtPetId = document.querySelector("#txtPetId")
-            if (vacForm.checkValidity()) {
-                const data = await submitVac(notification, vacForm, txtPetId.textContent)
-
-                frmNewVac.hidden = true
-                infoPet.hidden = false
-                vacForm.reset()
-            }
-        })
-
         const btnNewConsul = document.getElementById('btnNewConsul')
         btnNewConsul.addEventListener('click', (e) => {
-
+            const frmNewConsul = document.getElementById('frmNewConsul')
             frmNewConsul.hidden = false
-            frmNewConsul.classList.remove('was-validated')
 
+            const infoPet = document.getElementById("infoPet")
             infoPet.hidden = true
-
-            const tbConsulta = document.getElementById("tbConsulta")
-            Array.from(tbConsulta.rows).forEach(row => {
-                row.classList.add('table-row-class');
-            });
         })
 
-        const consulForm = document.querySelector("#frmNewConsul")
-        consulForm.addEventListener("submit", async e => {
-            e.preventDefault()
-            e.stopPropagation()
-            consulForm.classList.add('was-validated')
-
-            const txtPetId = document.querySelector("#txtPetId")
-            if (consulForm.checkValidity()) {
-                const data = await submitConsul(notification, consulForm, txtPetId.textContent)
-
-                frmNewConsul.hidden = true
-                infoPet.hidden = false
-                consulForm.reset()
-            }
-
-        })
 
     }
 })()
 
-
-
-async function submitVac(notification, form, petId) {
+async function submitPet(notification, form, tutor) {
     const data = formDataToJson(form);
-    const response = await upsertVacina(petId, data);
+    const response = await upsertPet(tutor.documento.numero, data);
+
+    error = hasError(notification, response)
+
+    if (error) {
+        return
+    }
+
+    const parser = new DOMParser();
+    const petList = document.getElementById("petList")
+
+    const el = petItem.replace("{name}", response.nome).replaceAll("{id}", response.id);
+    const doc = parser.parseFromString(el, 'text/html');
+    petList.appendChild(doc.body.firstChild)
+    petList.lastElementChild.className = `${petList.lastElementChild.className} active`;
+
+    form.hidden = true
+    form.reset()
+    form.classList.remove('was-validated')
+}
+
+async function submitVac(notification, form, pet) {
+    const data = formDataToJson(form);
+    const response = await upsertVacina(pet.ID, data);
     error = hasError(notification, response)
     if (error) {
         return
     }
 
-    renderizaVacinas(notification, { id: petId })
+    const parser = new DOMParser();
+    const tbvacina = document.getElementById("tbVacina")
+        .getElementsByTagName('tbody')[0]
+    const rowHtml = `
+    <tr>
+      <td>${response.nome}</td>
+      <td>${response.dataDeAplicacao}</td>
+      <td>${response.dataDeValidade}</td>
+    </tr>
+  `;
+    const doc = parser.parseFromString(rowHtml, 'text/html');
+    tbvacina.appendChild(doc.body.firstChild);
 
     form.hidden = true
     form.reset()
@@ -176,8 +146,18 @@ async function submitConsul(notification, form, pet) {
         return
     }
 
-    renderizaConsultas(notification, { id: petId })
+    const parser = new DOMParser();
+    const tbvacina = document.getElementById("tbConsulta").getElementsByTagName('tbody')[0]
+    const rowHtml = `
+    <tr>
+      <td>${response.nomeDoutor}</td>
+      <td>${response.dataConsulta}</td>
+      <td>${response.diagnostico}</td>
+    </tr>
+    `;
 
+    const doc = parser.parseFromString(rowHtml, 'text/html');
+    tbvacina.appendChild(doc.body.firstChild);
 
     form.hidden = true
     form.reset()
@@ -214,15 +194,6 @@ async function loadTutor(notification) {
 
 function petAddEventoClick(notification, petButton, pet) {
     petButton.addEventListener('click', (e) => {
-        const infoPet = document.getElementById("infoPet")
-        infoPet.hidden = false
-
-        const frmNewConsul = document.getElementById("frmNewConsul")
-        frmNewConsul.hidden = true
-
-        const frmNewPet = document.getElementById("frmNewPet")
-        frmNewPet.hidden = true
-
         renderizaVacinas(notification, pet)
         renderizaConsultas(notification, pet)
     })
@@ -261,7 +232,6 @@ function hasError(notification, data) {
     if (data.error) {
         toastTitle = notification.querySelector('#toastTitle')
         toastBody = notification.querySelector(".toast-body")
-        const toast = new bootstrap.Toast(notification)
 
         toastTitle.textContent = "Erro"
         toastBody.textContent = data.error
@@ -334,8 +304,8 @@ async function upsertPet(tutorID, pet) {
     });
 }
 async function deletePet(tutorId, petId, notification) {
-    const url = `${baseUrl}/${getPetsEndpoint.replace("{id}", tutorId)}/${petId}`;
-    const response = await fetch(url, {
+        const url = `${baseUrl}/${getPetsEndpoint.replace("{id}", tutorId)}/${petId}`;
+ const response = await fetch(url, {
         method: "DELETE",
         headers: {
             "Content-Type": "application/json"
@@ -376,10 +346,6 @@ async function getVacinas(PetID) {
 }
 
 async function renderizaVacinas(notification, pet) {
-
-    const txtPetId = document.querySelector("#txtPetId")
-    txtPetId.textContent = pet.id
-
     var vacinas = await getVacinas(pet.id)
     error = hasError(notification, vacinas)
 
@@ -390,10 +356,7 @@ async function renderizaVacinas(notification, pet) {
     const tbvacina = document.getElementById("tbVacina")
         .getElementsByTagName('tbody')[0]
 
-    const frmVac = document.getElementById("frmNewVac")
-    frmVac.hidden = true
-
-    tbvacina.innerHTML = ""
+    tbvacina.hidden = true
 
     Array.from(vacinas).forEach((vac, i) => {
         const linha = tbvacina.insertRow(i)
@@ -432,7 +395,7 @@ async function upsertVacina(PetId, vacina) {
 
 async function deleteVacina(petId, vacinaId, notification) {
     const url = `${baseUrl}/${getVacinasEndpoint.replace("{id}", petId)}/${vacinaId}`;
-
+    
     const response = await fetch(url, {
         method: "DELETE",
         headers: {
@@ -451,6 +414,23 @@ async function deleteVacina(petId, vacinaId, notification) {
     const error = hasError(notification, response);
     return !error;
 }
+
+       const deleteBtn = document.createElement('button');
+        deleteBtn.className = 'btn btn-sm btn-outline-danger';
+        deleteBtn.textContent = '×';
+        deleteBtn.setAttribute('data-vacina-id', vac.id);
+        colActions.appendChild(deleteBtn);
+        
+        deleteBtn.addEventListener('click', async (e) => {
+            e.stopPropagation();
+            const confirmed = confirm('Tem certeza que deseja excluir esta vacina?');
+            if (confirmed) {
+                const success = await deleteVacina(pet.id, vac.id, notification);
+                if (success) {
+                    linha.remove();
+                }
+            }
+        });
 
 async function getConsultas(PetID) {
     const url = `${baseUrl}/${getConsultasEndpoint}`.replace("{id}", PetID);
@@ -473,11 +453,8 @@ async function getConsultas(PetID) {
 }
 
 async function renderizaConsultas(notification, pet) {
-    const txtPetId = document.querySelector("#txtPetId")
-    txtPetId.textContent = pet.id
-
-    var consultas = await getConsultas(pet.id)
-    error = hasError(notification, consultas)
+    var consulta = await getConsultas(pet.id)
+    error = hasError(notification, consulta)
 
     if (error) {
         return false
@@ -486,22 +463,18 @@ async function renderizaConsultas(notification, pet) {
     const tbconsulta = document.getElementById("tbConsulta")
         .getElementsByTagName('tbody')[0]
 
-    const frmConsul = document.getElementById("frmNewConsul")
-    frmConsul.hidden = true
+    tbconsulta.innerHTML = ''
 
-    tbconsulta.innerHTML = ""
-
-    Array.from(consultas).forEach((consult, i) => {
+    Array.from(consulta).forEach((consulta, i) => {
         const linha = tbconsulta.insertRow(i)
 
         const colnomeDoutor = linha.insertCell(0)
         const colDtConsulta = linha.insertCell(1)
-        const coldiagnostico = linha.insertCell(2)
+        const colDiagnostico = linha.insertCell(2)
 
-        colnomeDoutor.textContent = consult.nomeDoutor
-        colDtConsulta.textContent = consult.dataConsulta
-        coldiagnostico.textContent = consult.diagnostico
-
+        colnomeDoutor.textContent = consulta.nomeDoutor
+        colDtConsulta.textContent = consulta.dataConsulta
+        colDiagnostico.textContent = consulta.diagnostico
     })
 }
 
@@ -527,7 +500,7 @@ async function upsertConsulta(PetId, consulta) {
 }
 async function deleteConsulta(petId, consultaId, notification) {
     const url = `${baseUrl}/${getConsultasEndpoint.replace("{id}", petId)}/${consultaId}`;
-
+    
     const response = await fetch(url, {
         method: "DELETE",
         headers: {
@@ -547,5 +520,21 @@ async function deleteConsulta(petId, consultaId, notification) {
     return !error;
 }
 
-
+       const deleteBtn = document.createElement('button');
+        deleteBtn.className = 'btn btn-sm btn-outline-danger';
+        deleteBtn.textContent = '×';
+        deleteBtn.setAttribute('data-consulta-id', consulta.id);
+        colActions.appendChild(deleteBtn);
+        
+    
+        deleteBtn.addEventListener('click', async (e) => {
+            e.stopPropagation();
+            const confirmed = confirm('Tem certeza que deseja excluir esta consulta?');
+            if (confirmed) {
+                const success = await deleteConsulta(pet.id, consulta.id, notification);
+                if (success) {
+                    linha.remove();
+                }
+            }
+        });
 
