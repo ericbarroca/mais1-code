@@ -213,6 +213,17 @@ async function submitConsul(notification, form, pet) {
     const doc = parser.parseFromString(rowHtml, 'text/html');
     tbvacina.appendChild(doc.body.firstChild);
 
+    doc.body.firstChild.querySelector("txtVacinaId").addEventListener('click', async (e) => {
+        e.stopPropagation();
+        if (confirm('Tem certeza que deseja excluir esta vacina?')) {
+            const vacinaId = e.currentTarget.getAttribute('data-vacina-id');
+            const success = await deleteVacina(pet.id, vacinaId, notification);
+            if (success) {
+                e.currentTarget.closest('tr').remove();
+            }
+        }
+    });
+
     form.hidden = true
     form.reset()
     form.classList.remove('was-validated')
