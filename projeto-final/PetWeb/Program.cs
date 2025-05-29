@@ -162,19 +162,15 @@ app.MapPost("/pets/{id}/vacinas", (PetRepository petRepo, VacinaRepository vacRe
 
 app.MapDelete("/vacina/{id}", (VacinaRepository repo, int id) =>
 {
-
     var vac = repo.Get(id);
-
     if (vac is null)
     {
         return Results.NotFound();
     }
-
     if (!repo.Remove(id))
     {
-        return Results.BadRequest();
+        return Results.BadRequest("Não foi possível remover a vacina.");
     }
-
     return Results.NoContent();
 });
 

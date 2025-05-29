@@ -70,6 +70,23 @@ namespace Libs.Repository
             return true;
         }
 
+        public bool Remove(int id)
+        {
+            if (id <= 0)
+            {
+                return false;
+            }
+
+            DAO.Vacina vacina = items.SingleOrDefault(p => p.ID == id);
+
+            if (vacina is null)
+            {
+                return false;
+            }
+
+            return items.Remove(vacina);
+        }
+
         public List<Vacina> List()
         {
             List<Vacina> vacinas = new List<Vacina>();
