@@ -199,7 +199,7 @@ async function submitConsul(notification, form, petID) {
         return
     }
 
-    renderizaConsultas(notification, {id: petID})
+    renderizaConsultas(notification, { id: petID })
 
     doc.body.firstChild.querySelector("txtVacinaId").addEventListener('click', async (e) => {
         e.stopPropagation();
@@ -215,7 +215,7 @@ async function submitConsul(notification, form, petID) {
     form.hidden = true
     form.reset()
     form.classList.remove('was-validated')
-    
+
 }
 
 function formDataToJson(form) {
@@ -284,6 +284,7 @@ async function renderizaPet(notification, tutor) {
 
 function hasError(notification, data) {
     if (data.error) {
+        const toast = new bootstrap.Toast(notification)
         toastTitle = notification.querySelector('#toastTitle')
         toastBody = notification.querySelector(".toast-body")
 
@@ -422,11 +423,17 @@ async function renderizaVacinas(notification, pet) {
         const colnome = linha.insertCell(0)
         const colDtAplic = linha.insertCell(1)
         const colDtVali = linha.insertCell(2)
+        const colAcoes = linha.insertCell(3)
 
         colnome.textContent = vac.nome
         colDtAplic.textContent = vac.dataDeAplicacao
         colDtVali.textContent = vac.dataDeValidade
 
+        const btnDelete = document.createElement("button")
+        btnDelete.textContent = "Deletar"
+        btnDelete.classList.add("btn", "btn-secondary")
+        btnDelete.onclick = () => deleteVacina(txtPetId.textContent, txtVacinaId.textContent, notification)
+        colAcoes.appendChild(btnDelete)
     })
 }
 
@@ -515,10 +522,17 @@ async function renderizaConsultas(notification, pet) {
         const colnomeDoutor = linha.insertCell(0)
         const colDtConsulta = linha.insertCell(1)
         const colDiagnostico = linha.insertCell(2)
+        const colAcoes = linha.insertCell(3)
 
         colnomeDoutor.textContent = consulta.nomeDoutor
         colDtConsulta.textContent = consulta.dataConsulta
         colDiagnostico.textContent = consulta.diagnostico
+
+        const btnDelete = document.createElement("button")
+        btnDelete.textContent = "Deletar"
+        btnDelete.classList.add("btn", "btn-secondary")
+        btnDelete.onclick = () => deleteVacina(txtPetId.textContent, txtVacinaId.textContent, notification)
+        colAcoes.appendChild(btnDelete)
     })
 }
 
