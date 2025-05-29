@@ -2,13 +2,13 @@ const baseUrl = "http://localhost:5118";
 const getTutorEndpoint = "tutor";
 const getPetsEndpoint = "tutor/{id}/pets";
 const createPetEndpoint = "tutor/{id}/pets";
+const deletePetEndpoint = "pets/Id";
 const getVacinasEndpoint = "pets/{id}/vacinas";
 const createVacinaEndpoint = "pets/{id}/vacinas";
+const deleteVacinaEndpoint = "vacina/{id}";
 const getConsultasEndpoint = "pets/{id}/consultas";
 const createConsultaEndpoint = "pets/{id}/consultas";
-const deletePetEndpoint = "tutor/{id}/pets/{petId}";
-const deleteVacinaEndpoint = "pets/{id}/vacinas/{vacinaId}";
-const deleteConsultaEndpoint = "pets/{id}/consultas/{consultaId}";
+const deleteConsultaEndpoint = "consultas/Id";
 
 const petItem = '<button id="pet-{id}" key="{id}" type="button" class="list-group-item list-group-item-action" aria-current="true" data-bs-toggle="list">{name}</button>';
 
@@ -205,7 +205,7 @@ async function submitConsul(notification, form, petID) {
         e.stopPropagation();
         if (confirm('Tem certeza que deseja excluir esta vacina?')) {
             const vacinaId = e.currentTarget.getAttribute('data-vacina-id');
-            const success = await deleteVacina(pet.id, vacinaId, notification);
+            const success = await deleteVacina(vacinaId, notification);
             if (success) {
                 e.currentTarget.closest('tr').remove();
             }
@@ -358,8 +358,8 @@ async function upsertPet(tutorID, pet) {
         return { error: error }
     });
 }
-async function deletePet(tutorId, petId, notification) {
-    const url = `${baseUrl}/${getPetsEndpoint.replace("{id}", tutorId)}/${petId}`;
+async function deletePet(petId, notification) {
+    const url = `${baseUrl}/${deletePetEndpoint.replace("{id}", petId)}`;
     const response = await fetch(url, {
         method: "DELETE",
         headers: {
@@ -432,7 +432,7 @@ async function renderizaVacinas(notification, pet) {
         const btnDelete = document.createElement("button")
         btnDelete.textContent = "Deletar"
         btnDelete.classList.add("btn", "btn-secondary")
-        btnDelete.onclick = () => deleteVacina(txtPetId.textContent, txtVacinaId.textContent, notification)
+        btnDelete.onclick = () => deleteVacina(txtVacinaId.textContent, notification)
         colAcoes.appendChild(btnDelete)
     })
 }
@@ -458,8 +458,8 @@ async function upsertVacina(PetId, vacina) {
     });
 }
 
-async function deleteVacina(petId, vacinaId, notification) {
-    const url = `${baseUrl}/${getVacinasEndpoint.replace("{id}", petId)}/${vacinaId}`;
+async function deleteVacina(vacinaId, notification) {
+    const url = `${baseUrl}/${deleteVacinaEndpoint.replace("{id}", vacinaId)}`;
 
     const response = await fetch(url, {
         method: "DELETE",
@@ -531,7 +531,7 @@ async function renderizaConsultas(notification, pet) {
         const btnDelete = document.createElement("button")
         btnDelete.textContent = "Deletar"
         btnDelete.classList.add("btn", "btn-secondary")
-        btnDelete.onclick = () => deleteVacina(txtPetId.textContent, txtVacinaId.textContent, notification)
+        btnDelete.onclick = () => deleteVacina(txtVacinaId.textContent, notification)
         colAcoes.appendChild(btnDelete)
     })
 }
@@ -557,8 +557,8 @@ async function upsertConsulta(PetId, consulta) {
     });
 }
 
-async function deleteConsulta(petId, consultaId, notification) {
-    const url = `${baseUrl}/${getConsultasEndpoint.replace("{id}", petId)}/${consultaId}`;
+async function deleteConsulta(consultaId, notification) {
+    const url = `${baseUrl}/${deleteConsultaEndpoint.replace("{id}", consultaId)}`;
 
     const response = await fetch(url, {
         method: "DELETE",

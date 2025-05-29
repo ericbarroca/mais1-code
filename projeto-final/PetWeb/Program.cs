@@ -160,6 +160,23 @@ app.MapPost("/pets/{id}/vacinas", (PetRepository petRepo, VacinaRepository vacRe
     return Results.Created("/pets/{id}/vacinas", vacina);
 });
 
+app.MapDelete("/vacina/{id}", (VacinaRepository repo, int id) =>
+{
+
+    var vac = repo.Get(id);
+
+    if (vac is null)
+    {
+        return Results.NotFound();
+    }
+
+    if (!repo.Remove(id))
+    {
+        return Results.BadRequest();
+    }
+
+    return Results.NoContent();
+});
 
 app.MapGet("/pets/{id}/consultas", (PetRepository petRepo, ConsultaRepository consultaRepo, int id) =>
 {
@@ -195,7 +212,7 @@ app.MapPost("/pets/{id}/consultas", (PetRepository petRepo, ConsultaRepository c
     return Results.Created("/pets/{id}/consultas", consulta);
 });
 
-app.MapDelete("/consultas/{id}", (ConsultaRepository consultaRepo, int id) =>
+app.MapDelete("/consulta/{id}", (ConsultaRepository consultaRepo, int id) =>
 {
 
     var consulta = consultaRepo.Get(id);
