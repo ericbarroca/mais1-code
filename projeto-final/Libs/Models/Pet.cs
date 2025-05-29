@@ -60,7 +60,7 @@ public class Pet
     public List<Consulta> Consultas(ConsultaRepository consultaRepository)
     {
         List<Consulta> consultas = consultaRepository.List();
-        return consultas.FindAll(p => p.ID == ID).ToList();
+        return consultas.FindAll(p => p.PetID == ID).ToList();
          
     }
 
