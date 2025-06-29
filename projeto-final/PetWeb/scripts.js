@@ -6,9 +6,6 @@ const getVacinasEndpoint = "pets/{id}/vacinas";
 const createVacinaEndpoint = "pets/{id}/vacinas";
 const getConsultasEndpoint = "pets/{id}/consultas";
 const createConsultaEndpoint = "pets/{id}/consultas";
-const deletePetEndpoint = "tutor/{id}/pets/{petId}";
-const deleteVacinaEndpoint = "pets/{id}/vacinas/{vacinaId}";
-const deleteConsultaEndpoint = "pets/{id}/consultas/{consultaId}";
 
 const petItem = '<button id="pet-{id}" key="{id}" type="button" class="list-group-item list-group-item-action" aria-current="true" data-bs-toggle="list">{name}</button>';
 
@@ -97,24 +94,6 @@ let currentPetId = null;
             }
         })
 
-
-        // const deleteBtnVac = document.createElement('button');
-        // deleteBtnVac.className = 'btn btn-sm btn-outline-danger'; deleteBtnVac.className = 'btn btn-sm btn-outline-danger';
-        // deleteBtnVac.textContent = '×'; deleteBtnVac.textContent = '×';
-        // deleteBtnVac.setAttribute('data-vacina-id', vac.id); deleteBtnVac.setAttribute('data-vacina-id', vac.id);
-        // colActions.appendChild(deleteBtnVac); colActions.appendChild(deleteBtnVac);
-
-        // deleteBtnVac.addEventListener('click', async (e) => {
-        //     e.stopPropagation();
-        //     const confirmed = confirm('Tem certeza que deseja excluir esta vacina?');
-        //     if (confirmed) {
-        //         const success = await deleteVacina(pet.id, vac.id, notification);
-        //         if (success) {
-        //             linha.remove();
-        //         }
-        //     }
-        // });
-
         const btnNewConsul = document.getElementById('btnNewConsul')
         btnNewConsul.addEventListener('click', (e) => {
 
@@ -139,24 +118,7 @@ let currentPetId = null;
             frmNewConsul.hidden = true
             infoPet.hidden = false
         })
-        // const deleteBtnConsult = document.createElement('button');
-        // deleteBtnConsult.className = 'btn btn-sm btn-outline-danger'; deleteBtnConsult.className = 'btn btn-sm btn-outline-danger';
-        // deleteBtnConsult.textContent = '×'; deleteBtnConsult.textContent = '×';
-        // deleteBtnConsult.setAttribute('data-consulta-id', consulta.id); deleteBtnConsult.setAttribute('data-consulta-id', consulta.id);
-        // colActions.appendChild(deleteBtnConsult); colActions.appendChild(deleteBtnConsult);
-
-
-        // deleteBtn.addEventListener('click', async (e) => {
-        //     e.stopPropagation();
-        //     const confirmed = confirm('Tem certeza que deseja excluir esta consulta?');
-        //     if (confirmed) {
-        //         const success = await deleteConsulta(pet.id, consulta.id, notification);
-        //         if (success) {
-        //             linha.remove();
-        //         }
-        //     }
-        // });
-
+       
     }
 })()
 
@@ -292,6 +254,7 @@ async function loadTutor(notification) {
 
 function petAddEventoClick(notification, petButton, pet) {
     petButton.addEventListener('click', (e) => {
+
         currentPetId = pet.id;
         renderizaVacinas(notification, pet)
         renderizaConsultas(notification, pet)
@@ -412,27 +375,6 @@ async function upsertPet(tutorID, pet) {
         return { error: error }
     });
 }
-async function deletePet(tutorId, petId, notification) {
-    const url = `${baseUrl}/${getPetsEndpoint.replace("{id}", tutorId)}/${petId}`;
-    const response = await fetch(url, {
-        method: "DELETE",
-        headers: {
-            "Content-Type": "application/json"
-        }
-    }).then(response => {
-        if (response.status === 204) {
-            return { success: true };
-        } else {
-            return { status: response.status, error: response.statusText };
-        }
-    }).catch(error => {
-        return { error: error };
-    });
-
-    const error = hasError(notification, response);
-    return !error;
-}
-
 
 async function getVacinas(PetID) {
     const url = `${baseUrl}/${getVacinasEndpoint}`.replace("{id}", PetID);
