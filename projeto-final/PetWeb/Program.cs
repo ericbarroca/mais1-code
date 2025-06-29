@@ -160,6 +160,24 @@ app.MapPost("/pets/{id}/vacinas", (PetRepository petRepo, VacinaRepository vacRe
     return Results.Created("/pets/{id}/vacinas", vacina);
 });
 
+app.MapDelete("/pets/{id}/vacinas/{vacinaId}", (PetRepository petRepo, VacinaRepository vacRepo, int id, int vacinaId) =>
+{
+    var pet = petRepo.Get(id);
+    if (pet is null)
+    {
+        return Results.NotFound();
+    }
+    var vacina = pet.Vacinas(vacRepo).FirstOrDefault(v => v.ID == vacinaId);
+    if (vacina is null)
+    {
+        return Results.NotFound();
+    }
+    if (!pet.RemoveVacina(vacRepo, vacinaId))
+    {
+        return Results.BadRequest();
+    }
+    return Results.NoContent();
+});
 
 app.MapGet("/pets/{id}/consultas", (PetRepository petRepo, ConsultaRepository consultaRepo, int id) =>
 {
@@ -195,21 +213,22 @@ app.MapPost("/pets/{id}/consultas", (PetRepository petRepo, ConsultaRepository c
     return Results.Created("/pets/{id}/consultas", consulta);
 });
 
-app.MapDelete("/consultas/{id}", (ConsultaRepository consultaRepo, int id) =>
+app.MapDelete("pets/{id}/consultas/{consultaId}", (PetRepository petRepo,ConsultaRepository consultaRepo, int id, int consultaId) =>
 {
-
-    var consulta = consultaRepo.Get(id);
-
-    if (consulta is null)
+    var pet = petRepo.Get(id);
+    if (pet is null)
     {
         return Results.NotFound();
     }
-
-    if (!consultaRepo.Remove(id))
+    var consultas = pet.Consultas(consultaRepo).FirstOrDefault(v => v.ID == consultaId);
+    if (consultas is null)
+    {
+        return Results.NotFound();
+    }
+    if (!pet.RemoveConsulta(consultaRepo, consultaId))
     {
         return Results.BadRequest();
     }
-
     return Results.NoContent();
 });
 

@@ -57,11 +57,18 @@ public class Pet
         return vacinaRepository.Upsert(vacina);
     }
 
+
+    public bool RemoveVacina(VacinaRepository vacinaRepository, int vacinaID)
+    {
+        return vacinaRepository.Remove(vacinaID);
+    }
+
+
     public List<Consulta> Consultas(ConsultaRepository consultaRepository)
     {
         List<Consulta> consultas = consultaRepository.List();
         return consultas.FindAll(p => p.PetID == ID).ToList();
-         
+
     }
 
     public bool UpsertConsulta(ConsultaRepository consultaRepository, Consulta consulta)
@@ -70,7 +77,7 @@ public class Pet
         return consultaRepository.Upsert(consulta);
     }
 
-    public bool RemoveConsulta(ConsultaRepository consultaRepository, int consultaID) 
+    public bool RemoveConsulta(ConsultaRepository consultaRepository, int consultaID)
     {
         return consultaRepository.Remove(consultaID);
     }
