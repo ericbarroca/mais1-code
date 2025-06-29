@@ -631,5 +631,3 @@ async function deleteConsulta(petId, consultaId, notification) {
     const error = hasError(notification, response);
     return !error;
 }
-
-
