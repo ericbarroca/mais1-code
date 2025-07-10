@@ -69,10 +69,8 @@ namespace Libs.Repository
 
             return true;
         }
-
         public bool Remove(int id)
         {
-<<<<<<< HEAD
             if (id <= 0) {
                 return false;
             }
@@ -80,27 +78,11 @@ namespace Libs.Repository
             DAO.Vacina vacina = items.SingleOrDefault(p=>p.ID == id);
 
             if(vacina is null) {
-=======
-            if (id <= 0)
-            {
-                return false;
-            }
-
-            DAO.Vacina vacina = items.SingleOrDefault(p => p.ID == id);
-
-            if (vacina is null)
-            {
->>>>>>> 742809fa3d0fc8b07945ba7c6f0644e96848f19d
                 return false;
             }
 
             return items.Remove(vacina);
         }
-<<<<<<< HEAD
-    
-=======
->>>>>>> 742809fa3d0fc8b07945ba7c6f0644e96848f19d
-
         public List<Vacina> List()
         {
             List<Vacina> vacinas = new List<Vacina>();

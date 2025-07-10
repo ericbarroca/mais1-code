@@ -160,7 +160,7 @@ app.MapPost("/pets/{id}/vacinas", (PetRepository petRepo, VacinaRepository vacRe
     return Results.Created("/pets/{id}/vacinas", vacina);
 });
 
-<<<<<<< HEAD
+
 app.MapDelete("/pets/{id}/vacinas/{vacinaId}", (PetRepository petRepo, VacinaRepository vacRepo, int id, int vacinaId) =>
 {
     var pet = petRepo.Get(id);
@@ -176,18 +176,6 @@ app.MapDelete("/pets/{id}/vacinas/{vacinaId}", (PetRepository petRepo, VacinaRep
     if (!pet.RemoveVacina(vacRepo, vacinaId))
     {
         return Results.BadRequest();
-=======
-app.MapDelete("/vacina/{id}", (VacinaRepository repo, int id) =>
-{
-    var vac = repo.Get(id);
-    if (vac is null)
-    {
-        return Results.NotFound();
-    }
-    if (!repo.Remove(id))
-    {
-        return Results.BadRequest("Não foi possível remover a vacina.");
->>>>>>> 742809fa3d0fc8b07945ba7c6f0644e96848f19d
     }
     return Results.NoContent();
 });
@@ -226,11 +214,8 @@ app.MapPost("/pets/{id}/consultas", (PetRepository petRepo, ConsultaRepository c
     return Results.Created("/pets/{id}/consultas", consulta);
 });
 
-<<<<<<< HEAD
 app.MapDelete("pets/{id}/consultas/{consultaId}", (PetRepository petRepo,ConsultaRepository consultaRepo, int id, int consultaId) =>
-=======
-app.MapDelete("/consulta/{id}", (ConsultaRepository consultaRepo, int id) =>
->>>>>>> 742809fa3d0fc8b07945ba7c6f0644e96848f19d
+
 {
     var pet = petRepo.Get(id);
     if (pet is null)
