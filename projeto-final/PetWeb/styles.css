@@ -1,0 +1,13 @@
+nav.navbar.petpass-nav {
+    color: white;
+    font-weight: bold;
+}
+
+#vacinas, #consultas{
+    display: flex;
+    justify-content: space-around;
+}
+
+.posicao-nomes{
+    margin-right: 30%;
+}
